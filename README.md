@@ -16,7 +16,7 @@ Setup the enviroment as follows.
 cd backend
 ```
 
-2. Create a python virtual encviroment
+2. Create a python virtual environment
 ```
 python -m venv .env
 ```
