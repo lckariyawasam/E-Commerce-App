@@ -21,12 +21,17 @@ cd backend
 python -m venv .env
 ```
 
-3. Install the requirements
+3. Activate the venv
+```
+source .env/bin/activate
+```
+
+4. Install the requirements
 ```
 pip install -r requirements.txt
 ```
 
-4. Run the flask application
+5. Run the flask application
 ```
 flask run
 ```
