@@ -4,5 +4,8 @@
 # Ignore the database configuration file
 db_config.json
 
+# Ignore the session files
+/flask_session
+
 # Cache Files
 __pycache__/
