@@ -1,8 +1,13 @@
-from flask import Flask, request, render_template, redirect
+from flask import Flask, request, render_template, redirect, session
+from flask_session import Session
 from db_connector import get_database_connection, close_database_connection
 from passlib.hash import bcrypt_sha256
 
 app = Flask(__name__)
+app.config["SESSION_PERMANENT"] = False
+app.config["SESSION_TYPE"] = "filesystem"
+Session(app)
+
 
 # Connect to the database
 connection = get_database_connection()
@@ -11,7 +16,10 @@ cursor = connection.cursor(dictionary=True) # This is used to execute queries
 
 @app.route('/')
 def index():
-    return "Hello World!"
+    if session.get("name"):
+        return "Hello World!"
+    else:
+        return "Login to access this page"
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -31,11 +39,12 @@ def login():
             
             # Check if the user exists
             if result:
-                real_password_hash = result[1]
+                real_password_hash = result["password"]
 
                 # Verify the password
                 if bcrypt_sha256.verify(input_password, real_password_hash):
                     # Passwords match
+                    session["name"] = username
                     return ("Login Successful", 200)
                 else:
                     # Passwords do not match
@@ -86,6 +95,11 @@ def register():
     
     return "Page Under Construction"
 
+
+@app.route('/logout')
+def logout():
+    session.clear()
+    return "Logged out"
 
 
 @app.route('/products/<string:category>')
