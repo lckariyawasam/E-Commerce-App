@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 # Connect to the database
 connection = get_database_connection()
-cursor = connection.cursor() # This is used to execute queries
+cursor = connection.cursor(dictionary=True) # This is used to execute queries
 
 
 @app.route('/')
@@ -85,6 +85,42 @@ def register():
             return ("Registration Failed, incomplete request", 401)
     
     return "Page Under Construction"
+
+
+
+@app.route('/products/<string:category>')
+def products(category):
+    if category is None:
+        # Query the database for all products
+        cursor.execute("SELECT * FROM product")
+        result = cursor.fetchall()
+
+        return result
+    
+    else:
+        return "Categorical Sorting not yet implemented"
+
+
+@app.route('/products/<int:product_id>')
+def product(product_id):
+    # Query the database for the product
+    cursor.execute("SELECT * FROM product WHERE product_id = %s", (product_id,))
+    product = cursor.fetchone()
+
+    cursor.execute("SELECT custom_attribute_name, custom_attribute_value FROM product_custom_property WHERE product_id = %s", (product_id,))
+
+
+    # Add the custom attributes to the product
+    for row in cursor.fetchall():
+        product[row["custom_attribute_name"]] = row["custom_attribute_value"]
+
+    # Get the products variants
+    cursor.execute("SELECT price, variant_attribute_value_1, variant_attribute_value_2 FROM variant WHERE product_id = %s", (product_id,))
+    result = cursor.fetchall()
+
+    product["variants"] = result
+
+    return product
 
 
 # For debugging purposes, do not run in production!
