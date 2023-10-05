@@ -1,5 +1,8 @@
 # Ignore the virtual environment
 /.env
 
+# Ignore the database configuration file
+db_config.json
+
 # Cache Files
 __pycache__/
