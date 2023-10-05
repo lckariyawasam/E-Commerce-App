@@ -33,6 +33,9 @@ def get_database_connection():
         if db_connection.is_connected():
             print("Connected to MySQL database")
             return db_connection
+        
+        else:
+            raise Exception("Failed to connect to MySQL database")
 
     except mysql.connector.Error as error:
         print("Error:", error)

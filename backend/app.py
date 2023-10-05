@@ -26,7 +26,7 @@ def login():
             input_password = data["password"]
 
             # Query the database for the user
-            cursor.execute("SELECT ID, password FROM users WHERE username = %s", (username,))
+            cursor.execute("SELECT ID, password FROM user WHERE username = %s", (username,))
             result = cursor.fetchone()
             
             # Check if the user exists
@@ -64,7 +64,7 @@ def register():
             input_password = data["password"]
 
             # Query the database for the user to check if they already exist
-            cursor.execute("SELECT ID, password FROM users WHERE username = %s", (username,))
+            cursor.execute("SELECT ID, password FROM user WHERE username = %s", (username,))
             result = cursor.fetchone()
 
             # Check if the user with username exists
@@ -76,7 +76,7 @@ def register():
                 password_hash = bcrypt_sha256.hash(input_password)
 
                 # Insert the user into the database
-                cursor.execute("INSERT INTO users (name, username, password) VALUES (%s, %s, %s)", (name, username, password_hash))
+                cursor.execute("INSERT INTO user (name, username, password) VALUES (%s, %s, %s)", (name, username, password_hash))
                 connection.commit()
 
                 return ("Registration Successful", 200)
