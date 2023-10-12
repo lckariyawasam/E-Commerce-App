@@ -1,5 +1,3 @@
-
-
 -- Insert data for Mobile Phones
 INSERT INTO Ecom_platform.Product (title, weight, brand, SKU, Variant_attribute_type_1, Variant_attribute_type_2)
 VALUES
