@@ -28,23 +28,23 @@ def login():
         data = request.get_json()
         print(data)
 
-        # Check if the request is valid, whether it contains the username and password
-        if data.get("username") and data.get("password"):
-            username = data["username"]
+        # Check if the request is valid, whether it contains the email and password
+        if data.get("email") and data.get("password"):
+            email = data["email"]
             input_password = data["password"]
 
             # Query the database for the user
-            cursor.execute("SELECT ID, password FROM user WHERE username = %s", (username,))
+            cursor.execute("SELECT user_id, password_hash FROM user WHERE email = %s", (email,))
             result = cursor.fetchone()
             
             # Check if the user exists
             if result:
-                real_password_hash = result["password"]
+                real_password_hash = result["password_hash"]
 
                 # Verify the password
                 if bcrypt_sha256.verify(input_password, real_password_hash):
                     # Passwords match
-                    session["name"] = username
+                    session["name"] = email
                     return ("Login Successful", 200)
                 else:
                     # Passwords do not match
@@ -54,7 +54,7 @@ def login():
             else:
                 return ("Login Failed, User does not exist", 401)
         
-        # Request is invalid, does not contain username and/or password
+        # Request is invalid, does not contain email and/or password
         else:
             return ("Login Failed, incomplete request", 401)
     
@@ -67,25 +67,37 @@ def register():
         data = request.get_json()
         print(data)
 
-        if data.get("name") and data.get("username") and data.get("password"):
-            name = data["name"]
-            username = data["username"]
-            input_password = data["password"]
+        if data.get("first_name") and data.get("email") and data.get("password"):
+            first_name = data.get("first_name")
+            last_name = data.get("last_name")
+            email = data.get("email")
+            input_password = data.get("password")
+            phone_number = data.get("phone_number")
+            address_line01 = data.get("address_line01")
+            address_city = data.get("address_city")
+            address_state = data.get("address_state")
+            address_zip_code = data.get("address_zip_code")
+            address_country = data.get("address_country")
 
             # Query the database for the user to check if they already exist
-            cursor.execute("SELECT ID, password FROM user WHERE username = %s", (username,))
+            cursor.execute("SELECT user_id, password_hash FROM user WHERE email = %s", (email,))
             result = cursor.fetchone()
 
-            # Check if the user with username exists
+            # Check if the user with email exists
             if result:
-                return ("Registration Failed, username already in use", 401)
+                return ("Registration Failed, email already in use", 401)
             
             else:
                 # Encrypt the password
                 password_hash = bcrypt_sha256.hash(input_password)
 
                 # Insert the user into the database
-                cursor.execute("INSERT INTO user (name, username, password) VALUES (%s, %s, %s)", (name, username, password_hash))
+                cursor.execute("""INSERT INTO user (user_id, user_type, first_name, last_name, email, password_hash, phone_number, address_line01, 
+                                  address_city, address_state, address_zip_code, address_country)
+                                VALUES (%s, 'user', %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)""",
+                                ('46', first_name, last_name, email, password_hash, phone_number, address_line01, 
+                                 address_city, address_state, address_zip_code, address_country))
+                
                 connection.commit()
 
                 return ("Registration Successful", 200)
@@ -121,7 +133,7 @@ def product(product_id):
     cursor.execute("SELECT * FROM product WHERE product_id = %s", (product_id,))
     product = cursor.fetchone()
 
-    cursor.execute("SELECT custom_attribute_name, custom_attribute_value FROM product_custom_property WHERE product_id = %s", (product_id,))
+    cursor.execute("SELECT custom_attribute_type, custom_attribute_value FROM product_custom_property WHERE product_id = %s", (product_id,))
 
 
     # Add the custom attributes to the product
