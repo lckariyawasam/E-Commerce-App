@@ -16,7 +16,7 @@ cursor = connection.cursor(dictionary=True) # This is used to execute queries
 
 @app.route('/')
 def index():
-    if session.get("name"):
+    if session.get("user_id"):
         return "Hello World!"
     else:
         return "Login to access this page"
@@ -34,7 +34,7 @@ def login():
             input_password = data["password"]
 
             # Query the database for the user
-            cursor.execute("SELECT user_id, password_hash FROM user WHERE email = %s", (email,))
+            cursor.execute("SELECT user_id, user_type, password_hash FROM user WHERE email = %s", (email,))
             result = cursor.fetchone()
             
             # Check if the user exists
@@ -44,7 +44,8 @@ def login():
                 # Verify the password
                 if bcrypt_sha256.verify(input_password, real_password_hash):
                     # Passwords match
-                    session["name"] = email
+                    session["user_id"] = result["user_id"]
+                    session["user_type"] = result["user_type"]
                     return ("Login Successful", 200)
                 else:
                     # Passwords do not match
@@ -147,6 +148,23 @@ def product(product_id):
     product["variants"] = result
 
     return product
+
+
+@app.route('/cart')
+def cart():
+    # Only allow user to access their own cart
+    # Admins can access any cart
+    if session.get("user_id"):
+        # Query the database for the user's cart
+        cursor.execute("SELECT * FROM cart WHERE user_id = %s AND status = 'Pending' ", (session.get("user_id"),))
+        result = cursor.fetchall()
+
+        return result[0]
+    
+    else:
+        return ("Unauthorized", 401)
+
+
 
 
 # For debugging purposes, do not run in production!
