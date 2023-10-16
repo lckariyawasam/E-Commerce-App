@@ -54,16 +54,16 @@ CREATE TABLE IF NOT EXISTS Ecom_platform.Product_Sub_Category (
 CREATE TABLE IF NOT EXISTS Ecom_platform.User (
   user_id INT NOT NULL,
   user_type VARCHAR(31) NOT NULL,
-  first_name VARCHAR(64) NOT NULL,
-  last_name VARCHAR(64) NOT NULL,
-  email VARCHAR(128) NOT NULL,
-  password_hash VARCHAR(256) NOT NULL,
-  phone_number VARCHAR(64) NOT NULL,
-  address_line01 VARCHAR(128) NOT NULL,
-  address_city VARCHAR(64) NOT NULL,
-  address_state VARCHAR(64) NOT NULL,
-  address_zip_code VARCHAR(64) NOT NULL,
-  address_country VARCHAR(64) NOT NULL,
+  first_name VARCHAR(64) NULL,
+  last_name VARCHAR(64) NULL,
+  email VARCHAR(128) NULL,
+  password_hash VARCHAR(256) NULL,
+  phone_number VARCHAR(64) NULL,
+  address_line01 VARCHAR(128) NULL,
+  address_city VARCHAR(64) NULL,
+  address_state VARCHAR(64) NULL,
+  address_zip_code VARCHAR(64) NULL,
+  address_country VARCHAR(64) NULL,
   PRIMARY KEY (user_id)
 ) ENGINE = InnoDB;
 
