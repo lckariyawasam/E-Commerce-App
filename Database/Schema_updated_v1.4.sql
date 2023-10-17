@@ -192,7 +192,7 @@ END;
 //
 DELIMITER ;
 
-
+DELIMITER //
 CREATE PROCEDURE update_cart_on_order(IN user_id_param INT)
 BEGIN
 	DECLARE cartID INT;
