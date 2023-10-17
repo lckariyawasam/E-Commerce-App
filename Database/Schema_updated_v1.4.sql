@@ -177,7 +177,7 @@ CREATE INDEX user_id_idx
 	ON `Order`(user_id);
     
 DELIMITER //
-CREATE PROCEDURE update_inventory_quantity(IN variant_id_param INT, IN quantity_param INT)
+CREATE PROCEDURE update_inventory_quantity_for(IN variant_id_param INT, IN quantity_param INT)
 BEGIN
   DECLARE inventory_count INT;
   SELECT quantity INTO inventory_count FROM Inventory WHERE variant_id = variant_id_param;
@@ -191,6 +191,7 @@ BEGIN
 END;
 //
 DELIMITER ;
+
 
 DELIMITER //
 CREATE PROCEDURE update_cart_on_order(IN user_id_param INT)
@@ -209,7 +210,7 @@ BEGIN
         IF done THEN
 			LEAVE read_loop;
 		END IF;
-        CALL update_inventory_quantity(vID, q);
+        CALL update_inventory_quantity_for(vID, q);
         UPDATE Cart_item SET status = 'Complete' WHERE variant_id = vID;
         UPDATE Cart_item SET sold_date = CURDATE() WHERE variant_id = vID;
         
@@ -219,3 +220,22 @@ BEGIN
 END;
 //
 DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE create_new_cart_for(IN user_id_param INT)
+BEGIN
+	INSERT INTO Ecom_platform.Cart(user_id, status) VALUES (user_id_param, 'Pending');
+END
+//
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE checkout_user(IN user_id_param INT)
+BEGIN
+	CALL update_cart_on_order(user_id_param);
+    CALL create_new_cart_for(user_id_param);
+END
+//
+DELIMITER ;
+
+
