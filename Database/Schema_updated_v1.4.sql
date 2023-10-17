@@ -84,7 +84,7 @@ CREATE TABLE IF NOT EXISTS Ecom_platform.Cart (
 
 -- Create the Variant table
 CREATE TABLE IF NOT EXISTS Ecom_platform.Variant (
-  variant_id INT NOT NULL,
+  variant_id INT NOT NULL AUTO_INCREMENT,
   Product_id INT NOT NULL,
   variant_attribute_value_1 VARCHAR(128) NULL,
   variant_attribute_value_2 VARCHAR(128) NULL,
@@ -101,7 +101,7 @@ CREATE TABLE IF NOT EXISTS Ecom_platform.Variant (
 
 -- Create the Cart_item table
 CREATE TABLE IF NOT EXISTS Ecom_platform.Cart_item (
-  cart_item_id INT NOT NULL,
+  cart_item_id INT NOT NULL AUTO_INCREMENT,
   variant_id INT NOT NULL,
   cart_id INT NOT NULL,
   quantity VARCHAR(31) NOT NULL,
@@ -124,7 +124,7 @@ CREATE INDEX cart_id_idx
 
 -- Create the Product_Custom_Property table
 CREATE TABLE IF NOT EXISTS Ecom_platform.Product_Custom_Property (
-  custom_attribute_id INT NOT NULL,
+  custom_attribute_id INT NOT NULL AUTO_INCREMENT,
   product_id INT NOT NULL,
   custom_attribute_type VARCHAR(31) NULL,
   custom_attribute_value VARCHAR(31) NULL,
@@ -138,7 +138,7 @@ CREATE TABLE IF NOT EXISTS Ecom_platform.Product_Custom_Property (
 
 -- Create the Inventory table
 CREATE TABLE IF NOT EXISTS Ecom_platform.Inventory (
-  Inventory_id INT NOT NULL,
+  Inventory_id INT NOT NULL AUTO_INCREMENT,
   variant_id INT NOT NULL,
   quantity INT NULL,
   PRIMARY KEY (Inventory_id, variant_id),
