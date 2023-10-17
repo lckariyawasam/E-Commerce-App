@@ -49,8 +49,8 @@ CREATE TABLE IF NOT EXISTS Ecom_platform.Product_Sub_Category (
 ) ENGINE = InnoDB;
 
 -- Create the User table
-CREATE TABLE IF NOT EXISTS Ecom_platform.User (
-  user_id INT NOT NULL,
+CREATE TABLE IF NOT EXISTS Ecom_platform.`User` (
+  user_id INT NOT NULL AUTO_INCREMENT,
   user_type VARCHAR(31) NOT NULL,
   first_name VARCHAR(64) NULL,
   last_name VARCHAR(64) NULL,
@@ -70,7 +70,7 @@ CREATE INDEX email_idx
 
 -- Create the Cart table
 CREATE TABLE IF NOT EXISTS Ecom_platform.Cart (
-  cart_id INT NOT NULL,
+  cart_id INT NOT NULL AUTO_INCREMENT,
   user_id INT NOT NULL,
   status VARCHAR(31) NOT NULL,
   PRIMARY KEY (cart_id),
@@ -192,7 +192,7 @@ END;
 //
 DELIMITER ;
 
-DELIMITER //
+
 CREATE PROCEDURE update_cart_on_order(IN user_id_param INT)
 BEGIN
 	DECLARE cartID INT;
@@ -202,7 +202,6 @@ BEGIN
 	DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
 
     SELECT cart_id INTO cartID FROM cart WHERE user_id = user_id_param AND status = 'Pending';
-    
     
     OPEN cur;
     read_loop:LOOP
@@ -220,5 +219,3 @@ BEGIN
 END;
 //
 DELIMITER ;
-
-
