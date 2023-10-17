@@ -62,51 +62,52 @@ def login():
     return "Page Under Construction"
 
 
-@app.route('/register', methods=['GET', 'POST'])
+@app.route('/register', methods=['POST'])
 def register():
-    if request.method == 'POST':
-        data = request.get_json()
-        print(data)
+    data = request.get_json()
+    print(data)
 
-        if data.get("first_name") and data.get("email") and data.get("password"):
-            first_name = data.get("first_name")
-            last_name = data.get("last_name")
-            email = data.get("email")
-            input_password = data.get("password")
-            phone_number = data.get("phone_number")
-            address_line01 = data.get("address_line01")
-            address_city = data.get("address_city")
-            address_state = data.get("address_state")
-            address_zip_code = data.get("address_zip_code")
-            address_country = data.get("address_country")
+    if data.get("first_name") and data.get("email") and data.get("password"):
+        first_name = data.get("first_name")
+        last_name = data.get("last_name")
+        email = data.get("email")
+        input_password = data.get("password")
+        # phone_number = data.get("phone_number")
+        # address_line01 = data.get("address_line01")
+        # address_city = data.get("address_city")
+        # address_state = data.get("address_state")
+        # address_zip_code = data.get("address_zip_code")
+        # address_country = data.get("address_country")
 
-            # Query the database for the user to check if they already exist
-            cursor.execute("SELECT user_id, password_hash FROM user WHERE email = %s", (email,))
-            result = cursor.fetchone()
 
-            # Check if the user with email exists
-            if result:
-                return ("Registration Failed, email already in use", 401)
-            
-            else:
-                # Encrypt the password
-                password_hash = bcrypt_sha256.hash(input_password)
+        # Phone number and address details are ignored and commented out for now
 
-                # Insert the user into the database
-                cursor.execute("""INSERT INTO user (user_id, user_type, first_name, last_name, email, password_hash, phone_number, address_line01, 
-                                  address_city, address_state, address_zip_code, address_country)
-                                VALUES (%s, 'user', %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)""",
-                                ('46', first_name, last_name, email, password_hash, phone_number, address_line01, 
-                                 address_city, address_state, address_zip_code, address_country))
-                
-                connection.commit()
+        # Query the database for the user to check if they already exist
+        cursor.execute("SELECT user_id, password_hash FROM user WHERE email = %s", (email,))
+        result = cursor.fetchone()
 
-                return ("Registration Successful", 200)
+        # Check if the user with email exists
+        if result:
+            return ("Registration Failed, email already in use", 401)
         
         else:
-            return ("Registration Failed, incomplete request", 401)
+            # Encrypt the password
+            password_hash = bcrypt_sha256.hash(input_password)
+
+            # Insert the user into the database
+            cursor.execute("""INSERT INTO user (user_id, user_type, first_name, last_name, email, password_hash, phone_number, address_line01, 
+                                address_city, address_state, address_zip_code, address_country)
+                            VALUES ('user', %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)""",
+                            (first_name, last_name, email, password_hash, 
+                                None, None, None, None, None, None
+                                ))
+            
+            connection.commit()
+
+            return ("Registration Successful", 200)
     
-    return "Page Under Construction"
+    else:
+        return ("Registration Failed, incomplete request", 401)
 
 
 @app.route('/logout')
@@ -156,15 +157,83 @@ def cart():
     # Admins can access any cart
     if session.get("user_id"):
         # Query the database for the user's cart
-        cursor.execute("SELECT * FROM cart WHERE user_id = %s AND status = 'Pending' ", (session.get("user_id"),))
-        result = cursor.fetchall()
+        cursor.execute("SELECT cart_id FROM cart WHERE user_id = %s AND status = 'Pending' ", (session.get("user_id"),))
 
-        return result[0]
+        cart_id = cursor.fetchone()["cart_id"]
+
+        # Query the database for the cart items
+        cursor.execute("SELECT * FROM cart_item JOIN variant using(variant_id) JOIN product using(product_id) WHERE cart_id = (%s)", (cart_id, ))
+
+        results = []
+
+        for cart_item in cursor.fetchall():
+            # Return only the necessary details of the products in the cart
+            modified_cart_item = {
+                "variant_id": cart_item["variant_id"],
+                "title": cart_item["title"],
+                "price": cart_item["price"],
+                "quantity": cart_item["quantity"],
+                "cart_item_id": cart_item["cart_item_id"]
+            }
+            results.append(modified_cart_item)
+
+        return results
     
     else:
         return ("Unauthorized", 401)
+    
+
+@app.route('/cart/add', methods=['POST'])
+def add_to_cart():
+    data = request.get_json()
+    # print(data)
+
+    if data.get("variant_id") and data.get("quantity"):
+        variant_id = data.get("variant_id")
+        quantity = data.get("quantity")
+
+        # Get the cart of the user
+        cursor.execute("SELECT cart_id FROM cart WHERE user_id = %s AND status = 'Pending'", (session.get("user_id"),))
+
+        cart_id = cursor.fetchone()["cart_id"]
+
+        cursor.execute("INSERT INTO cart_item VALUES (%s, %s, %s, 'Cart', NULL)", (variant_id, cart_id, quantity))
+        connection.commit()
 
 
+        return ("Item Added", 200)
+
+    else:
+        return ("Incomplete Request", 401)
+
+
+@app.route("/cart/remove", methods=['POST'])
+def remove_from_cart():
+    data = request.get_json()
+    # print(data)
+
+    if data.get("cart_item_id"):
+        cart_item_id = data.get("cart_item_id")
+
+        # Get the cart of the user
+        cursor.execute("SELECT cart_id FROM cart WHERE user_id = %s AND status = 'Pending'", (session.get("user_id"),))
+
+        cart_id = cursor.fetchone()["cart_id"]
+
+        cursor.execute("SELECT cart_item_id FROM cart_item WHERE cart_id = %s", (cart_id,))
+
+        if (cart_item_id not in [row["cart_item_id"] for row in cursor.fetchall()]):
+            return ("Unauthorized", 401)
+        
+        else:
+            print("this RAN")
+            cursor.execute("DELETE FROM cart_item WHERE cart_item_id = %s", (cart_item_id,))
+            connection.commit()
+
+        return ("Item Removed", 200)
+
+    else:
+        return ("Incomplete Request", 401)
 
 
 # For debugging purposes, do not run in production!
