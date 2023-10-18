@@ -1,13 +1,13 @@
 from flask import Flask, request, render_template, redirect, session
 from flask_session import Session
-from flask_cors import CORS
+from flask_cors import CORS, cross_origin
 from db_connector import get_database_connection, close_database_connection
 from passlib.hash import bcrypt_sha256
 
 app = Flask(__name__)
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
-CORS(app, supports_credentials=True)
+CORS(app, supports_credentials=True, origins=["http://localhost:3000"])
 Session(app)
 
 
@@ -26,12 +26,12 @@ def index():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    print(request.method)
     if request.method == 'POST':
         data = request.get_json()
 
         # Check if the request is valid, whether it contains the email and password
-        if data.get("body").get("email") and data.get("body").get("password"):
-            data = data["body"]
+        if data.get("email") and data.get("password"):
             email = data["email"]
             input_password = data["password"]
 
@@ -48,6 +48,7 @@ def login():
                     # Passwords match
                     session["user_id"] = result["user_id"]
                     session["user_type"] = result["user_type"]
+                    print(session["user_id"])
                     return ("Login Successful", 200)
                 else:
                     # Passwords do not match
@@ -61,7 +62,7 @@ def login():
         else:
             return ("Login Failed, incomplete request", 401)
     
-    return "Page Under Construction"
+    return ("Page Under Construction", 200)
 
 
 @app.route('/register', methods=['POST'])
@@ -154,10 +155,11 @@ def product(product_id):
 
 
 @app.route('/cart')
+@cross_origin(supports_credentials=True)
 def cart():
     # Only allow user to access their own cart
     # Admins can access any cart
-    print(session.get("user_id"))
+    print(session["user_id"])
     if session.get("user_id"):
         # Query the database for the user's cart
         cursor.execute("SELECT cart_id FROM cart WHERE user_id = %s AND status = 'Pending' ", (session.get("user_id"),))

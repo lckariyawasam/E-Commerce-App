@@ -5,19 +5,19 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 const authenticate = async () => {
-    const data = await axios.post('http://localhost:5000/login', {
-        withCredentials: true,
+    axios.post('http://localhost:5000/login', 
+    {
+        "email" : 'jane@example.com',
+        "password" : 'asd123'
+    }, 
+    {
         headers: {
             'Content-Type': 'application/json',
             'Accept': 'application/json'
         },
-        body: {
-            "email" : 'jane@example.com',
-            "password" : 'asd123'
-        }
+        withCredentials: true,
     })
-
-    console.log(data)
+    .then(res => console.log(res))
 
 }
 
