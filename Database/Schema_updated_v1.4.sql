@@ -107,6 +107,7 @@ CREATE TABLE IF NOT EXISTS Ecom_platform.Cart_item (
   quantity VARCHAR(31) NOT NULL,
   status VARCHAR(31) NOT NULL,
   sold_date DATE NULL,
+  sold_price_per_item VARCHAR(64) NULL,
   PRIMARY KEY (cart_item_id),
   CONSTRAINT fk_Cart_item_Cart
     FOREIGN KEY (cart_id)
@@ -213,6 +214,8 @@ BEGIN
         CALL update_inventory_quantity_for(vID, q);
         UPDATE Cart_item SET status = 'Complete' WHERE variant_id = vID;
         UPDATE Cart_item SET sold_date = CURDATE() WHERE variant_id = vID;
+        UPDATE Cart_item SET sold_price_per_item = (SELECT price FROM Variant WHERE variant_id = vID) WHERE variant_id = vID;
+        
         
 	END LOOP;
     CLOSE cur;
