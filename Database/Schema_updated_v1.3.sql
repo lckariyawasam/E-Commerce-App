@@ -175,3 +175,77 @@ CREATE TABLE IF NOT EXISTS Ecom_platform.`Order` (
 ) ENGINE = InnoDB;
 CREATE INDEX user_id_idx
 	ON `Order`(user_id);
+    
+DELIMITER //
+CREATE PROCEDURE update_inventory_quantity(IN variant_id_param INT, IN quantity_param INT)
+BEGIN
+  DECLARE inventory_count INT;
+  SELECT quantity INTO inventory_count FROM Inventory WHERE variant_id = variant_id_param;
+  
+  IF inventory_count >= quantity_param THEN
+    UPDATE Inventory SET quantity = quantity - quantity_param WHERE variant_id = variant_id_param;
+  ELSE
+    SIGNAL SQLSTATE '45000'
+    SET MESSAGE_TEXT = 'Variant does not exist in the Inventory table';
+  END IF;
+END;
+//
+DELIMITER ;
+
+-- DELIMITER //
+-- CREATE PROCEDURE update_cart_on_order(IN user_id_param INT)
+-- BEGIN
+-- 	DECLARE cartID INT;
+-- 	DECLARE vID, q INT;
+--     DECLARE done INT DEFAULT FALSE;
+--     
+-- 	DECLARE cur CURSOR FOR SELECT variant_id,quantity FROM cart_item WHERE cart_id = (
+-- 		SELECT cart_id FROM cart WHERE user_id = user_id_param AND status = 'Pending');
+-- 	DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
+--     
+--     UPDATE Cart SET status = 'Complete' WHERE cart_id = (
+-- 		SELECT cart_id FROM cart WHERE user_id = user_id_param AND status = 'Pending');
+--     
+--     OPEN cur;
+--     read_loop:LOOP
+-- 		FETCH cur INTO vID, q;
+--         IF done THEN
+-- 			LEAVE read_loop;
+-- 		END IF;
+--         CALL UpdateInventoryQuantity(vID, q);
+--         UPDATE Cart_item SET status = 'Complete' WHERE variant_id = vID;
+--         UPDATE Cart_item SET sold_date = CURDATE() WHERE variant_id = vID;
+--         
+-- 	END LOOP;
+--     CLOSE cur;
+-- END;
+-- //
+-- DELIMITER ;
+DELIMITER //
+CREATE PROCEDURE update_cart_on_order(IN user_id_param INT)
+BEGIN
+	DECLARE cartID INT;
+	DECLARE vID, q INT;
+    DECLARE done INT DEFAULT FALSE;
+    DECLARE cur CURSOR FOR SELECT variant_id, quantity FROM cart_item WHERE cart_id = cartID;
+	DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
+
+    SELECT cart_id INTO cartID FROM cart WHERE user_id = user_id_param AND status = 'Pending';
+    
+    
+    OPEN cur;
+    read_loop:LOOP
+		FETCH cur INTO vID, q;
+        IF done THEN
+			LEAVE read_loop;
+		END IF;
+        CALL update_inventory_quantity(vID, q);
+        UPDATE Cart_item SET status = 'Complete' WHERE variant_id = vID;
+        UPDATE Cart_item SET sold_date = CURDATE() WHERE variant_id = vID;
+        
+	END LOOP;
+    CLOSE cur;
+    UPDATE Cart SET status = 'Complete' WHERE cart_id = cartID;
+END;
+//
+DELIMITER ;
