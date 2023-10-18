@@ -95,12 +95,9 @@ def register():
             password_hash = bcrypt_sha256.hash(input_password)
 
             # Insert the user into the database
-            cursor.execute("""INSERT INTO user (user_id, user_type, first_name, last_name, email, password_hash, phone_number, address_line01, 
-                                address_city, address_state, address_zip_code, address_country)
-                            VALUES ('user', %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)""",
-                            (first_name, last_name, email, password_hash, 
-                                None, None, None, None, None, None
-                                ))
+            cursor.execute("""INSERT INTO user (user_type, first_name, last_name, email, password_hash)
+                            VALUES ('user', %s, %s, %s, %s)""",
+                            (first_name, last_name, email, password_hash))
             
             connection.commit()
 
@@ -197,7 +194,7 @@ def add_to_cart():
 
         cart_id = cursor.fetchone()["cart_id"]
 
-        cursor.execute("INSERT INTO cart_item VALUES (%s, %s, %s, 'Cart', NULL)", (variant_id, cart_id, quantity))
+        cursor.execute("INSERT INTO cart_item (variant_id, cart_id, quantity, status) VALUES (%s, %s, %s, %s)", (variant_id, cart_id, quantity, "Pending"))
         connection.commit()
 
 
