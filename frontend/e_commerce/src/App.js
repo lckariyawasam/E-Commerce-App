@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import HomePage from './Screens/HomePage';
 import RegisterPage from './Screens/RegisterPage';
 import LoginPage from './Screens/LoginPage';
+import Cart from './Screens/Cart';
 
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
           <Route path="/" Component={HomePage} />
           <Route path="/login" Component={LoginPage} />
           <Route path="/register" Component={RegisterPage} />
+          <Route path="/cart" Component={Cart} />
         </Routes>
     </Router>
   );

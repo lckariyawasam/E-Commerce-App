@@ -1,11 +1,13 @@
 from flask import Flask, request, render_template, redirect, session
 from flask_session import Session
+from flask_cors import CORS
 from db_connector import get_database_connection, close_database_connection
 from passlib.hash import bcrypt_sha256
 
 app = Flask(__name__)
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
+CORS(app, supports_credentials=True)
 Session(app)
 
 
@@ -26,10 +28,10 @@ def index():
 def login():
     if request.method == 'POST':
         data = request.get_json()
-        print(data)
 
         # Check if the request is valid, whether it contains the email and password
-        if data.get("email") and data.get("password"):
+        if data.get("body").get("email") and data.get("body").get("password"):
+            data = data["body"]
             email = data["email"]
             input_password = data["password"]
 
@@ -155,6 +157,7 @@ def product(product_id):
 def cart():
     # Only allow user to access their own cart
     # Admins can access any cart
+    print(session.get("user_id"))
     if session.get("user_id"):
         # Query the database for the user's cart
         cursor.execute("SELECT cart_id FROM cart WHERE user_id = %s AND status = 'Pending' ", (session.get("user_id"),))
