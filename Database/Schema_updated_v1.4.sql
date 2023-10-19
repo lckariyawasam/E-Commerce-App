@@ -1,5 +1,4 @@
 -- drop database ecom_platform
--- drop database dbms_project
 
 -- Create the Ecom_platform schema if it doesn't exist
 CREATE SCHEMA IF NOT EXISTS Ecom_platform DEFAULT CHARACTER SET utf8;
@@ -88,7 +87,7 @@ CREATE TABLE IF NOT EXISTS Ecom_platform.Variant (
   Product_id INT NOT NULL,
   variant_attribute_value_1 VARCHAR(128) NULL,
   variant_attribute_value_2 VARCHAR(128) NULL,
-  price VARCHAR(64) NOT NULL,
+  price NUMERIC(10,2) NOT NULL,
   sku VARCHAR(64) NOT NULL,
   icon VARCHAR(511) NULL,
   PRIMARY KEY (variant_id),
@@ -107,7 +106,7 @@ CREATE TABLE IF NOT EXISTS Ecom_platform.Cart_item (
   quantity VARCHAR(31) NOT NULL,
   status VARCHAR(31) NOT NULL,
   sold_date DATE NULL,
-  sold_price_per_item VARCHAR(64) NULL,
+  sold_price_per_item NUMERIC(10,2) NULL,
   PRIMARY KEY (cart_item_id),
   CONSTRAINT fk_Cart_item_Cart
     FOREIGN KEY (cart_id)
@@ -240,5 +239,4 @@ BEGIN
 END
 //
 DELIMITER ;
-
 
