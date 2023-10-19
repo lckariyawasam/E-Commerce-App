@@ -103,7 +103,7 @@ CREATE TABLE IF NOT EXISTS Ecom_platform.Cart_item (
   cart_item_id INT NOT NULL AUTO_INCREMENT,
   variant_id INT NOT NULL,
   cart_id INT NOT NULL,
-  quantity VARCHAR(31) NOT NULL,
+  quantity INT NOT NULL,
   status VARCHAR(31) NOT NULL,
   sold_date DATE NULL,
   sold_price_per_item NUMERIC(10,2) NULL,
