@@ -16,7 +16,21 @@ connection = get_database_connection()
 cursor = connection.cursor(dictionary=True) # This is used to execute queries
 
 
+# Write a decorator to check if the user is logged in
+def session_required(f):
+    def decorated_function(*args, **kwargs):
+        if session.get("user_id") is None:
+            # Create a guest user
+            cursor.execute("INSERT INTO user (user_type) VALUES ('Guest')")
+            connection.commit()
+            session["user_id"] = cursor.lastrowid
+            session["user_type"] = "Guest"
+        return f(*args, **kwargs)
+    return decorated_function
+
+
 @app.route('/')
+@session_required
 def index():
     if session.get("user_id"):
         return "Hello World!"
@@ -26,7 +40,6 @@ def index():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    print(request.method)
     if request.method == 'POST':
         data = request.get_json()
 
@@ -48,7 +61,6 @@ def login():
                     # Passwords match
                     session["user_id"] = result["user_id"]
                     session["user_type"] = result["user_type"]
-                    print(session["user_id"])
                     return ("Login Successful", 200)
                 else:
                     # Passwords do not match
@@ -68,7 +80,6 @@ def login():
 @app.route('/register', methods=['POST'])
 def register():
     data = request.get_json()
-    print(data)
 
     if data.get("first_name") and data.get("email") and data.get("password"):
         first_name = data.get("first_name")
@@ -151,12 +162,11 @@ def product(product_id):
     return product
 
 
-@app.route('/cart')
-@cross_origin(supports_credentials=True)
+@app.route('/cart', endpoint='cart')
+@session_required
 def cart():
     # Only allow user to access their own cart
     # Admins can access any cart
-    print(session["user_id"])
     if session.get("user_id"):
         # Query the database for the user's cart
         cursor.execute("SELECT cart_id FROM cart WHERE user_id = %s AND status = 'Pending' ", (session.get("user_id"),))
@@ -185,10 +195,10 @@ def cart():
         return ("Unauthorized", 401)
     
 
-@app.route('/cart/add', methods=['POST'])
+@app.route('/cart/add', methods=['POST'], endpoint='add_to_cart')
+@session_required
 def add_to_cart():
     data = request.get_json()
-    # print(data)
 
     if data.get("variant_id") and data.get("quantity"):
         variant_id = data.get("variant_id")
@@ -212,7 +222,6 @@ def add_to_cart():
 @app.route("/cart/remove", methods=['POST'])
 def remove_from_cart():
     data = request.get_json()
-    # print(data)
 
     if data.get("cart_item_id"):
         cart_item_id = data.get("cart_item_id")
@@ -228,7 +237,6 @@ def remove_from_cart():
             return ("Unauthorized", 401)
         
         else:
-            print("this RAN")
             cursor.execute("DELETE FROM cart_item WHERE cart_item_id = %s", (cart_item_id,))
             connection.commit()
 
