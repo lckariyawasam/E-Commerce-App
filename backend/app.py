@@ -127,20 +127,24 @@ def logout():
     return "Logged out"
 
 
+@app.route('/products')
+def products():
+    # Query the database for all products
+    cursor.execute("SELECT * FROM product")
+    result = cursor.fetchall()
+
+    return result
+
 @app.route('/products/<string:category>')
-def products(category):
-    if category is None:
-        # Query the database for all products
-        cursor.execute("SELECT * FROM product")
-        result = cursor.fetchall()
+def products_by_category(category):
+    # Query the database for all products
+    cursor.execute("SELECT * FROM (product NATURAL JOIN product_sub_category) JOIN category using(category_id) WHERE category.name = %s", (category,))
+    result = cursor.fetchall()
 
-        return result
-    
-    else:
-        return "Categorical Sorting not yet implemented"
+    return result
 
 
-@app.route('/products/<int:product_id>')
+@app.route('/product/<int:product_id>')
 def product(product_id):
     # Query the database for the product
     cursor.execute("SELECT * FROM product WHERE product_id = %s", (product_id,))
@@ -154,7 +158,7 @@ def product(product_id):
         product[row["custom_attribute_name"]] = row["custom_attribute_value"]
 
     # Get the products variants
-    cursor.execute("SELECT price, variant_attribute_value_1, variant_attribute_value_2 FROM variant WHERE product_id = %s", (product_id,))
+    cursor.execute("SELECT variant_id, price, variant_attribute_value_1, variant_attribute_value_2 FROM variant WHERE product_id = %s", (product_id,))
     result = cursor.fetchall()
 
     product["variants"] = result
