@@ -7,6 +7,8 @@ import HomePage from './Screens/HomePage';
 import RegisterPage from './Screens/RegisterPage';
 import LoginPage from './Screens/LoginPage';
 import Cart from './Screens/Cart';
+import TempProduct from './Screens/TempProduct';
+import TempProducts from './Screens/TempProducts';
 
 
 function App() {
@@ -17,6 +19,8 @@ function App() {
           <Route path="/login" Component={LoginPage} />
           <Route path="/register" Component={RegisterPage} />
           <Route path="/cart" Component={Cart} />
+          <Route path="/product/:id" Component={TempProduct} />
+          <Route path="/products" Component={TempProducts} />
         </Routes>
     </Router>
   );
