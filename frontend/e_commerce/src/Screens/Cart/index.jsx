@@ -21,13 +21,13 @@ const Cart = () => {
     )
   }
 
-  const removeItem = (itemId) => {
-    const updatedCart = cartItems.filter((item) => item.id !== itemId);
+  const removeItem = (cart_item_id) => {
+    const updatedCart = cartItems.filter((item) => item.cart_item_id !== cart_item_id);
     setCartItems(updatedCart);
 
     axios.post('http://localhost:5000/cart/remove',
     {
-      "cart_item_id": itemId,
+      "cart_item_id": cart_item_id,
     },
     {
       headers: {
