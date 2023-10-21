@@ -320,3 +320,21 @@ BEGIN
     RETURN MONTHNAME(CONCAT(YEAR(CURDATE()), '-', most_interest_period, '-01'));
 END //
 DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE order_report_on_customer(IN user_id_param INT)
+BEGIN
+SELECT
+	o.order_id,
+    o.cart_id,
+    o.user_id,
+    o.payment_type,
+    u.user_type,
+    o.order_date,
+    o.`status`
+FROM `Order` o
+INNER JOIN `User` u ON o.user_id = u.user_id
+WHERE o.user_id = user_id_param;
+END //
+DELIMITER ;
+
