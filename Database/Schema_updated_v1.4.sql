@@ -240,3 +240,35 @@ END
 //
 DELIMITER ;
 
+DELIMITER //
+CREATE PROCEDURE products_with_most_number_of_sales_between(
+    IN start_date_param DATE, IN end_date_param DATE)
+BEGIN
+    SELECT 
+    p.product_id,
+    p.title,
+    v.sku,
+	SUM(ci.quantity) AS total_sales
+    FROM Cart_Item ci
+    INNER JOIN Variant v 
+		ON ci.variant_id = v.variant_id
+	INNER JOIN Product p
+		ON p.product_id = v.product_id
+    WHERE ci.sold_date BETWEEN start_date_param AND end_date_param
+    GROUP BY ci.variant_id
+    ORDER BY total_sales DESC
+    LIMIT 10; 
+END //
+DELIMITER ;
+
+
+DELIMITER //
+CREATE PROCEDURE quarterly_sales_reports_for_year(year_param INT)
+BEGIN
+SELECT DISTINCT
+	CONCAT('Q', CAST(QUARTER(sold_date) AS CHAR)) AS Quarter,
+	SUM(sold_price_per_item * quantity) OVER (PARTITION BY QUARTER(sold_date)) AS 'Total Sales'
+FROM Cart_item
+WHERE YEAR(sold_date) = year_param;
+END //
+DELIMITER ;
