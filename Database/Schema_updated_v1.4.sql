@@ -294,3 +294,29 @@ BEGIN
     RETURN category_name;
 END //
 DELIMITER ;
+
+DELIMITER //
+CREATE FUNCTION most_interest_month_for_product(product_id_param INT)
+RETURNS VARCHAR(31)
+DETERMINISTIC
+NO SQL
+READS SQL DATA
+BEGIN
+    DECLARE most_interest_period INT;
+    SELECT
+        MAX(period_number) INTO most_interest_period
+    FROM (
+        SELECT
+            DATE_FORMAT(sold_date, '%Y-%m-01') AS period_start,
+            COUNT(*) AS activity_count,
+            CEIL(MONTH(sold_date)) AS period_number
+        FROM Cart_Item ci
+        INNER JOIN Variant v ON v.variant_id = ci.variant_id
+        WHERE v.product_id = product_id_param
+        GROUP BY period_start, period_number
+        ORDER BY activity_count DESC
+        LIMIT 1
+    ) AS interest_period;
+    RETURN MONTHNAME(CONCAT(YEAR(CURDATE()), '-', most_interest_period, '-01'));
+END //
+DELIMITER ;
