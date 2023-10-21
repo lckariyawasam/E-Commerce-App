@@ -272,3 +272,25 @@ FROM Cart_item
 WHERE YEAR(sold_date) = year_param;
 END //
 DELIMITER ;
+
+
+DELIMITER //
+CREATE FUNCTION category_with_most_orders()
+RETURNS VARCHAR(31)
+DETERMINISTIC
+READS SQL DATA
+BEGIN
+    DECLARE category_name VARCHAR(31);
+    SELECT c.name INTO category_name
+    FROM Cart_Item ci
+    INNER JOIN Variant v ON ci.variant_id = v.variant_id
+    INNER JOIN Product p ON p.product_id = v.product_id
+    INNER JOIN product_sub_category psc ON psc.product_id = p.product_id
+    INNER JOIN Category c ON c.category_id = psc.category_id
+    WHERE c.parent_category_id IS NOT NULL
+    GROUP BY psc.category_id
+    ORDER BY SUM(ci.quantity) DESC
+    LIMIT 1;
+    RETURN category_name;
+END //
+DELIMITER ;
