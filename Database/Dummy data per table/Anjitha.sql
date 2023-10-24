@@ -88,16 +88,16 @@ VALUES
 -- Variants for Gaming Consoles with Price, SKU, and Icon
 INSERT INTO Ecom_platform.Variant (variant_id, Product_id, variant_attribute_value_1, variant_attribute_value_2, price, sku, icon)
 VALUES
-  (71, 36, '1TB', 'White', '499.99', 'CONSOLE-001-1TB-White', ' '),
-  (72, 36, '512GB', 'Black', '549.99', 'CONSOLE-001-512GB-Black', ''),
-  (73, 37, '1TB', 'Black', '499.99', 'CONSOLE-002-1TB-Black', ' '),
-  (74, 37, '512GB', 'White', '549.99', 'CONSOLE-002-512GB-White', ''),
-  (75, 38, '32GB', 'Neon Blue/Red', '299.99', 'CONSOLE-003-32GB-NeonBlueRed', ' '),
-  (76, 38, '64GB', 'Turquoise', '349.99', 'CONSOLE-003-64GB-Turquoise', ' '),
-  (77, 39, '1TB', 'Jet Black', '499.99', 'CONSOLE-004-1TB-JetBlack', ' '),
-  (78, 39, '512GB', 'Robot White', '549.99', 'CONSOLE-004-512GB-RobotWhite', ' '),
-  (79, 40, '1TB', 'Cyberpunk 2077 Edition', '599.99', 'CONSOLE-005-1TB-Cyberpunk2077', ' '),
-  (80, 40, '512GB', 'Robot White', '549.99', 'CONSOLE-005-512GB-RobotWhite', ' ');
+  (36, '1TB', 'White', '499.99', 'CONSOLE-001-1TB-White', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/71.jpg?alt=media&token=d7617a88-c3d8-44f5-918a-3abe630f4f0c&_gl=1*6if2wm*_ga*Nzk0MzkyMTY2LjE2OTgxMzI1MTY.*_ga_CW55HF8NVT*MTY5ODEzNTI2Ny4yLjEuMTY5ODEzODA2NS4zMC4wLjA. '),
+  (36, '512GB', 'Black', '549.99', 'CONSOLE-001-512GB-Black', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/72.jpg?alt=media&token=c60669f3-fa9c-4451-ac50-fe27a31129b3&_gl=1*116n53h*_ga*Nzk0MzkyMTY2LjE2OTgxMzI1MTY.*_ga_CW55HF8NVT*MTY5ODEzNTI2Ny4yLjEuMTY5ODEzODI3OC42MC4wLjA. '),
+  (37, '1TB', 'Black', '499.99', 'CONSOLE-002-1TB-Black', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/73.jpg?alt=media&token=827e82f8-f51d-4a6c-9caa-c57796355ced&_gl=1*n1dsvw*_ga*Nzk0MzkyMTY2LjE2OTgxMzI1MTY.*_ga_CW55HF8NVT*MTY5ODEzNTI2Ny4yLjEuMTY5ODEzODMxMC4yOC4wLjA. '),
+  (37, '512GB', 'White', '549.99', 'CONSOLE-002-512GB-White', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/74.jpg?alt=media&token=8e113aff-473d-493b-bab4-0c78edb6f62a&_gl=1*11ohql1*_ga*Nzk0MzkyMTY2LjE2OTgxMzI1MTY.*_ga_CW55HF8NVT*MTY5ODEzNTI2Ny4yLjEuMTY5ODEzODMzMC44LjAuMA.. '),
+  (38, '32GB', 'Neon Blue/Red', '299.99', 'CONSOLE-003-32GB-NeonBlueRed', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/75.jpg?alt=media&token=044159a2-6571-4475-bebf-2df18f361a87&_gl=1*jixo5e*_ga*Nzk0MzkyMTY2LjE2OTgxMzI1MTY.*_ga_CW55HF8NVT*MTY5ODEzNTI2Ny4yLjEuMTY5ODEzODM0OC42MC4wLjA. '),
+  (38, '64GB', 'Turquoise', '349.99', 'CONSOLE-003-64GB-Turquoise', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/76.jpg?alt=media&token=c2c8556d-3f26-4e99-a1e0-c21641a1fcde&_gl=1*19pgfmp*_ga*Nzk0MzkyMTY2LjE2OTgxMzI1MTY.*_ga_CW55HF8NVT*MTY5ODEzNTI2Ny4yLjEuMTY5ODEzODM2OC40MC4wLjA. '),
+  (39, '1TB', 'Jet Black', '499.99', 'CONSOLE-004-1TB-JetBlack', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/77.jpg?alt=media&token=47fe3eb2-ac95-42bf-b7bc-acacde26fdf6&_gl=1*55wih0*_ga*Nzk0MzkyMTY2LjE2OTgxMzI1MTY.*_ga_CW55HF8NVT*MTY5ODEzNTI2Ny4yLjEuMTY5ODEzODM5MC4xOC4wLjA. '),
+  (39, '512GB', 'Robot White', '549.99', 'CONSOLE-004-512GB-RobotWhite', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/78.jpg?alt=media&token=da12ee70-9acf-44b7-ac7f-a1ab3cce8257&_gl=1*1c8xkac*_ga*Nzk0MzkyMTY2LjE2OTgxMzI1MTY.*_ga_CW55HF8NVT*MTY5ODEzNTI2Ny4yLjEuMTY5ODEzODQxMC42MC4wLjA. '),
+  (40, '1TB', 'Cyberpunk 2077 Edition', '599.99', 'CONSOLE-005-1TB-Cyberpunk2077', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/79.jpg?alt=media&token=e93f4999-72d2-4d99-af73-87e5cc379cb9&_gl=1*8sbliv*_ga*Nzk0MzkyMTY2LjE2OTgxMzI1MTY.*_ga_CW55HF8NVT*MTY5ODEzNTI2Ny4yLjEuMTY5ODEzODQyOS40MS4wLjA. '),
+  (40, '512GB', 'Robot White', '549.99', 'CONSOLE-005-512GB-RobotWhite', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/80.jpg?alt=media&token=817acc6d-e069-4111-b017-cb4674a337e1&_gl=1*1qf11ng*_ga*Nzk0MzkyMTY2LjE2OTgxMzI1MTY.*_ga_CW55HF8NVT*MTY5ODEzNTI2Ny4yLjEuMTY5ODEzODQ2NC42LjAuMA.. ');
   
 -- Variants for Smart Home Security with Price, SKU, and Icon
 INSERT INTO Ecom_platform.Variant (variant_id, Product_id, variant_attribute_value_1, variant_attribute_value_2, price, sku, icon)
