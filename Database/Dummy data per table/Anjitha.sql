@@ -74,30 +74,30 @@ VALUES
 -- Variants for Home Appliances with Price, SKU, and Icon
 INSERT INTO Ecom_platform.Variant (variant_id, Product_id, variant_attribute_value_1, variant_attribute_value_2, price, sku, icon)
 VALUES
-  (61, 31, '600L', 'Stainless Steel', '999.99', 'APPLIANCE-001-600L-StainlessSteel', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/eubj2pxfxjdxapyl_setting_xxx_0_90_end_2000.png?alt=media&token=70fc21f0-7afb-4399-b2f2-67ff1a39beed '),
-  (62, 31, '450L', 'Black', '799.99', 'APPLIANCE-001-450L-Black', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/eubj2pxfxjdxapyl_setting_xxx_0_90_end_2000.png?alt=media&token=70fc21f0-7afb-4399-b2f2-67ff1a39beed '),
-  (63, 32, '8kg', 'White', '349.99', 'APPLIANCE-002-8kg-White', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/eubj2pxfxjdxapyl_setting_xxx_0_90_end_2000.png?alt=media&token=70fc21f0-7afb-4399-b2f2-67ff1a39beed '),
-  (64, 32, '7kg', 'Silver', '299.99', 'APPLIANCE-002-7kg-Silver', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/eubj2pxfxjdxapyl_setting_xxx_0_90_end_2000.png?alt=media&token=70fc21f0-7afb-4399-b2f2-67ff1a39beed '),
-  (65, 33, '1000W', 'Stainless Steel', '149.99', 'APPLIANCE-003-1000W-StainlessSteel', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/eubj2pxfxjdxapyl_setting_xxx_0_90_end_2000.png?alt=media&token=70fc21f0-7afb-4399-b2f2-67ff1a39beed '),
-  (66, 33, '800W', 'Black', '129.99', 'APPLIANCE-003-800W-Black', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/eubj2pxfxjdxapyl_setting_xxx_0_90_end_2000.png?alt=media&token=70fc21f0-7afb-4399-b2f2-67ff1a39beed '),
-  (67, 34, '10 Cups', 'Stainless Steel', '89.99', 'APPLIANCE-004-10Cups-StainlessSteel', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/eubj2pxfxjdxapyl_setting_xxx_0_90_end_2000.png?alt=media&token=70fc21f0-7afb-4399-b2f2-67ff1a39beed '),
-  (68, 34, '8 Cups', 'Glass', '79.99', 'APPLIANCE-004-8Cups-Glass', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/eubj2pxfxjdxapyl_setting_xxx_0_90_end_2000.png?alt=media&token=70fc21f0-7afb-4399-b2f2-67ff1a39beed '),
-  (69, 35, 'Corded', 'Purple', '119.99', 'APPLIANCE-005-Corded-Purple', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/eubj2pxfxjdxapyl_setting_xxx_0_90_end_2000.png?alt=media&token=70fc21f0-7afb-4399-b2f2-67ff1a39beed '),
-  (70, 35, 'Cordless', 'Red', '129.99', 'APPLIANCE-005-Cordless-Red', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/eubj2pxfxjdxapyl_setting_xxx_0_90_end_2000.png?alt=media&token=70fc21f0-7afb-4399-b2f2-67ff1a39beed ');
+  (31, '600L', 'Stainless Steel', '999.99', 'APPLIANCE-001-600L-StainlessSteel', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/61.jpg?alt=media&token=a2496287-96e9-4d84-bad4-c8ff52d35ab9&_gl=1*cgs5dy*_ga*Nzk0MzkyMTY2LjE2OTgxMzI1MTY.*_ga_CW55HF8NVT*MTY5ODEzNTI2Ny4yLjEuMTY5ODEzNzA4Ni43LjAuMA.. '),
+  (31, '450L', 'Black', '799.99', 'APPLIANCE-001-450L-Black', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/62.jpg?alt=media&token=28766fdb-9a2d-43d5-a223-db634f61224c&_gl=1*105lk48*_ga*Nzk0MzkyMTY2LjE2OTgxMzI1MTY.*_ga_CW55HF8NVT*MTY5ODEzNTI2Ny4yLjEuMTY5ODEzNzE1Ni42MC4wLjA.'),
+  (32, '8kg', 'White', '349.99', 'APPLIANCE-002-8kg-White', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/63.jpg?alt=media&token=cb41538c-65fa-4c68-b74d-f515b5326616&_gl=1*1gkvlq3*_ga*Nzk0MzkyMTY2LjE2OTgxMzI1MTY.*_ga_CW55HF8NVT*MTY5ODEzNTI2Ny4yLjEuMTY5ODEzNzE5NC4yMi4wLjA.'),
+  (32, '7kg', 'Silver', '299.99', 'APPLIANCE-002-7kg-Silver', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/64.jpg?alt=media&token=8cb69db3-2f23-4220-b0b3-866e6917c890&_gl=1*g8t30p*_ga*Nzk0MzkyMTY2LjE2OTgxMzI1MTY.*_ga_CW55HF8NVT*MTY5ODEzNTI2Ny4yLjEuMTY5ODEzNzIzNi42MC4wLjA.'),
+  (33, '1000W', 'Stainless Steel', '149.99', 'APPLIANCE-003-1000W-StainlessSteel', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/65.jpg?alt=media&token=350314a1-11a9-4848-87a4-259fa90d5c10&_gl=1*14zu1x5*_ga*Nzk0MzkyMTY2LjE2OTgxMzI1MTY.*_ga_CW55HF8NVT*MTY5ODEzNTI2Ny4yLjEuMTY5ODEzNzI4My4xMy4wLjA. '),
+  (33, '800W', 'Black', '129.99', 'APPLIANCE-003-800W-Black', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/66.jpg?alt=media&token=a535fa90-140c-4410-887e-622aa14ed79c&_gl=1*1t6wxrr*_ga*Nzk0MzkyMTY2LjE2OTgxMzI1MTY.*_ga_CW55HF8NVT*MTY5ODEzNTI2Ny4yLjEuMTY5ODEzNzMxMy42MC4wLjA.'),
+  (34, '10 Cups', 'Stainless Steel', '89.99', 'APPLIANCE-004-10Cups-StainlessSteel', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/67.jpg?alt=media&token=ec0506ae-71a9-44a2-943e-978627757f36&_gl=1*3uow0u*_ga*Nzk0MzkyMTY2LjE2OTgxMzI1MTY.*_ga_CW55HF8NVT*MTY5ODEzNTI2Ny4yLjEuMTY5ODEzNzM3Ni42MC4wLjA. '),
+  (34, '8 Cups', 'Glass', '79.99', 'APPLIANCE-004-8Cups-Glass', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/68.jpg?alt=media&token=77274b55-7eaa-4a84-a9b9-17df6553e3e1&_gl=1*ar7hck*_ga*Nzk0MzkyMTY2LjE2OTgxMzI1MTY.*_ga_CW55HF8NVT*MTY5ODEzNTI2Ny4yLjEuMTY5ODEzNzQwOS4yNy4wLjA.'),
+  (35, 'Corded', 'Purple', '119.99', 'APPLIANCE-005-Corded-Purple', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/69.jpg?alt=media&token=7d069e16-3e26-4d35-a877-959bb5ca943d&_gl=1*4sefic*_ga*Nzk0MzkyMTY2LjE2OTgxMzI1MTY.*_ga_CW55HF8NVT*MTY5ODEzNTI2Ny4yLjEuMTY5ODEzNzQzOC42MC4wLjA. '),
+  (35, 'Cordless', 'Red', '129.99', 'APPLIANCE-005-Cordless-Red', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/70.jpg?alt=media&token=077e2d6b-fd6d-4ef6-b4c3-68ff4e217cfe&_gl=1*1wql53b*_ga*Nzk0MzkyMTY2LjE2OTgxMzI1MTY.*_ga_CW55HF8NVT*MTY5ODEzNTI2Ny4yLjEuMTY5ODEzNzQ2OC4zMC4wLjA. ');
   
 -- Variants for Gaming Consoles with Price, SKU, and Icon
 INSERT INTO Ecom_platform.Variant (variant_id, Product_id, variant_attribute_value_1, variant_attribute_value_2, price, sku, icon)
 VALUES
-  (71, 36, '1TB', 'White', '499.99', 'CONSOLE-001-1TB-White', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/eubj2pxfxjdxapyl_setting_xxx_0_90_end_2000.png?alt=media&token=70fc21f0-7afb-4399-b2f2-67ff1a39beed '),
-  (72, 36, '512GB', 'Black', '549.99', 'CONSOLE-001-512GB-Black', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/eubj2pxfxjdxapyl_setting_xxx_0_90_end_2000.png?alt=media&token=70fc21f0-7afb-4399-b2f2-67ff1a39beed '),
-  (73, 37, '1TB', 'Black', '499.99', 'CONSOLE-002-1TB-Black', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/eubj2pxfxjdxapyl_setting_xxx_0_90_end_2000.png?alt=media&token=70fc21f0-7afb-4399-b2f2-67ff1a39beed '),
-  (74, 37, '512GB', 'White', '549.99', 'CONSOLE-002-512GB-White', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/eubj2pxfxjdxapyl_setting_xxx_0_90_end_2000.png?alt=media&token=70fc21f0-7afb-4399-b2f2-67ff1a39beed '),
-  (75, 38, '32GB', 'Neon Blue/Red', '299.99', 'CONSOLE-003-32GB-NeonBlueRed', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/eubj2pxfxjdxapyl_setting_xxx_0_90_end_2000.png?alt=media&token=70fc21f0-7afb-4399-b2f2-67ff1a39beed '),
-  (76, 38, '64GB', 'Turquoise', '349.99', 'CONSOLE-003-64GB-Turquoise', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/eubj2pxfxjdxapyl_setting_xxx_0_90_end_2000.png?alt=media&token=70fc21f0-7afb-4399-b2f2-67ff1a39beed '),
-  (77, 39, '1TB', 'Jet Black', '499.99', 'CONSOLE-004-1TB-JetBlack', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/eubj2pxfxjdxapyl_setting_xxx_0_90_end_2000.png?alt=media&token=70fc21f0-7afb-4399-b2f2-67ff1a39beed '),
-  (78, 39, '512GB', 'Robot White', '549.99', 'CONSOLE-004-512GB-RobotWhite', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/eubj2pxfxjdxapyl_setting_xxx_0_90_end_2000.png?alt=media&token=70fc21f0-7afb-4399-b2f2-67ff1a39beed '),
-  (79, 40, '1TB', 'Cyberpunk 2077 Edition', '599.99', 'CONSOLE-005-1TB-Cyberpunk2077', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/eubj2pxfxjdxapyl_setting_xxx_0_90_end_2000.png?alt=media&token=70fc21f0-7afb-4399-b2f2-67ff1a39beed '),
-  (80, 40, '512GB', 'Robot White', '549.99', 'CONSOLE-005-512GB-RobotWhite', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/eubj2pxfxjdxapyl_setting_xxx_0_90_end_2000.png?alt=media&token=70fc21f0-7afb-4399-b2f2-67ff1a39beed ');
+  (71, 36, '1TB', 'White', '499.99', 'CONSOLE-001-1TB-White', ' '),
+  (72, 36, '512GB', 'Black', '549.99', 'CONSOLE-001-512GB-Black', ''),
+  (73, 37, '1TB', 'Black', '499.99', 'CONSOLE-002-1TB-Black', ' '),
+  (74, 37, '512GB', 'White', '549.99', 'CONSOLE-002-512GB-White', ''),
+  (75, 38, '32GB', 'Neon Blue/Red', '299.99', 'CONSOLE-003-32GB-NeonBlueRed', ' '),
+  (76, 38, '64GB', 'Turquoise', '349.99', 'CONSOLE-003-64GB-Turquoise', ' '),
+  (77, 39, '1TB', 'Jet Black', '499.99', 'CONSOLE-004-1TB-JetBlack', ' '),
+  (78, 39, '512GB', 'Robot White', '549.99', 'CONSOLE-004-512GB-RobotWhite', ' '),
+  (79, 40, '1TB', 'Cyberpunk 2077 Edition', '599.99', 'CONSOLE-005-1TB-Cyberpunk2077', ' '),
+  (80, 40, '512GB', 'Robot White', '549.99', 'CONSOLE-005-512GB-RobotWhite', ' ');
   
 -- Variants for Smart Home Security with Price, SKU, and Icon
 INSERT INTO Ecom_platform.Variant (variant_id, Product_id, variant_attribute_value_1, variant_attribute_value_2, price, sku, icon)
