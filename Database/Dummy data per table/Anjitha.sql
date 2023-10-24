@@ -102,16 +102,16 @@ VALUES
 -- Variants for Smart Home Security with Price, SKU, and Icon
 INSERT INTO Ecom_platform.Variant (variant_id, Product_id, variant_attribute_value_1, variant_attribute_value_2, price, sku, icon)
 VALUES
-  (81, 41, 'Base Station, Contact Sensor, Keypad, Motion Detector', 'White', '399.99', 'SECURITY-001-BaseStation-White', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/eubj2pxfxjdxapyl_setting_xxx_0_90_end_2000.png?alt=media&token=70fc21f0-7afb-4399-b2f2-67ff1a39beed '),
-  (82, 41, 'Base Station, Contact Sensor', 'White', '349.99', 'SECURITY-001-BaseStation-ContactSensor-White', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/eubj2pxfxjdxapyl_setting_xxx_0_90_end_2000.png?alt=media&token=70fc21f0-7afb-4399-b2f2-67ff1a39beed '),
-  (83, 42, '2 Cameras', 'White', '499.99', 'SECURITY-002-2Cameras-White', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/eubj2pxfxjdxapyl_setting_xxx_0_90_end_2000.png?alt=media&token=70fc21f0-7afb-4399-b2f2-67ff1a39beed '),
-  (84, 42, '1 Camera', 'White', '299.99', 'SECURITY-002-1Camera-White', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/eubj2pxfxjdxapyl_setting_xxx_0_90_end_2000.png?alt=media&token=70fc21f0-7afb-4399-b2f2-67ff1a39beed '),
-  (85, 43, 'Battery-Powered', 'White', '199.99', 'SECURITY-003-BatteryPowered-White', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/eubj2pxfxjdxapyl_setting_xxx_0_90_end_2000.png?alt=media&token=70fc21f0-7afb-4399-b2f2-67ff1a39beed '),
-  (86, 43, 'Hardwired', 'Black', '249.99', 'SECURITY-003-Hardwired-Black', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/eubj2pxfxjdxapyl_setting_xxx_0_90_end_2000.png?alt=media&token=70fc21f0-7afb-4399-b2f2-67ff1a39beed '),
-  (87, 44, 'Wired', 'White', '279.99', 'SECURITY-004-Wired-White', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/eubj2pxfxjdxapyl_setting_xxx_0_90_end_2000.png?alt=media&token=70fc21f0-7afb-4399-b2f2-67ff1a39beed '),
-  (88, 44, 'Wireless', 'Black', '299.99', 'SECURITY-004-Wireless-Black', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/eubj2pxfxjdxapyl_setting_xxx_0_90_end_2000.png?alt=media&token=70fc21f0-7afb-4399-b2f2-67ff1a39beed '),
-  (89, 45, 'Indoor', 'White', '149.99', 'SECURITY-005-Indoor-White', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/eubj2pxfxjdxapyl_setting_xxx_0_90_end_2000.png?alt=media&token=70fc21f0-7afb-4399-b2f2-67ff1a39beed '),
-  (90, 45, 'Indoor', 'Black', '149.99', 'SECURITY-005-Indoor-Black', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/eubj2pxfxjdxapyl_setting_xxx_0_90_end_2000.png?alt=media&token=70fc21f0-7afb-4399-b2f2-67ff1a39beed ');
+  (81, 41, 'Base Station, Contact Sensor, Keypad, Motion Detector', 'White', '399.99', 'SECURITY-001-BaseStation-White', ' '),
+  (82, 41, 'Base Station, Contact Sensor', 'White', '349.99', 'SECURITY-001-BaseStation-ContactSensor-White', ' '),
+  (83, 42, '2 Cameras', 'White', '499.99', 'SECURITY-002-2Cameras-White', ' '),
+  (84, 42, '1 Camera', 'White', '299.99', 'SECURITY-002-1Camera-White', ' '),
+  (85, 43, 'Battery-Powered', 'White', '199.99', 'SECURITY-003-BatteryPowered-White', ' '),
+  (86, 43, 'Hardwired', 'Black', '249.99', 'SECURITY-003-Hardwired-Black', ' '),
+  (87, 44, 'Wired', 'White', '279.99', 'SECURITY-004-Wired-White', ' '),
+  (88, 44, 'Wireless', 'Black', '299.99', 'SECURITY-004-Wireless-Black', ' '),
+  (89, 45, 'Indoor', 'White', '149.99', 'SECURITY-005-Indoor-White', ' '),
+  (90, 45, 'Indoor', 'Black', '149.99', 'SECURITY-005-Indoor-Black', ' ');
   
 -- Variants for Printers with Price, SKU, and Icon
 INSERT INTO Ecom_platform.Variant (variant_id, Product_id, variant_attribute_value_1, variant_attribute_value_2, price, sku, icon)
