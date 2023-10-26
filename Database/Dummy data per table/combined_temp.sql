@@ -647,7 +647,7 @@ VALUES
   (30, '45mm', 'Black', '259.99', 'WATCH-005-45mm-Black', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/60.jpg?alt=media&token=6a7abf78-e4e4-4050-b523-02ff16990937&_gl=1*81xp33*_ga*Nzk0MzkyMTY2LjE2OTgxMzI1MTY.*_ga_CW55HF8NVT*MTY5ODEzNTI2Ny4yLjEuMTY5ODEzNjI4NS42MC4wLjA. ');
   
 -- Variants for Home Appliances with Price, SKU, and Icon
-INSERT INTO Ecom_platform.Variant (variant_id, Product_id, variant_attribute_value_1, variant_attribute_value_2, price, sku, icon)
+INSERT INTO Ecom_platform.Variant (Product_id, variant_attribute_value_1, variant_attribute_value_2, price, sku, icon)
 VALUES
   (31, '600L', 'Stainless Steel', '999.99', 'APPLIANCE-001-600L-StainlessSteel', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/61.jpg?alt=media&token=a2496287-96e9-4d84-bad4-c8ff52d35ab9&_gl=1*cgs5dy*_ga*Nzk0MzkyMTY2LjE2OTgxMzI1MTY.*_ga_CW55HF8NVT*MTY5ODEzNTI2Ny4yLjEuMTY5ODEzNzA4Ni43LjAuMA.. '),
   (31, '450L', 'Black', '799.99', 'APPLIANCE-001-450L-Black', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/62.jpg?alt=media&token=28766fdb-9a2d-43d5-a223-db634f61224c&_gl=1*105lk48*_ga*Nzk0MzkyMTY2LjE2OTgxMzI1MTY.*_ga_CW55HF8NVT*MTY5ODEzNTI2Ny4yLjEuMTY5ODEzNzE1Ni42MC4wLjA.'),
@@ -661,7 +661,7 @@ VALUES
   (35, 'Cordless', 'Red', '129.99', 'APPLIANCE-005-Cordless-Red', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/70.jpg?alt=media&token=077e2d6b-fd6d-4ef6-b4c3-68ff4e217cfe&_gl=1*1wql53b*_ga*Nzk0MzkyMTY2LjE2OTgxMzI1MTY.*_ga_CW55HF8NVT*MTY5ODEzNTI2Ny4yLjEuMTY5ODEzNzQ2OC4zMC4wLjA. ');
   
 -- Variants for Gaming Consoles with Price, SKU, and Icon
-INSERT INTO Ecom_platform.Variant (variant_id, Product_id, variant_attribute_value_1, variant_attribute_value_2, price, sku, icon)
+INSERT INTO Ecom_platform.Variant (Product_id, variant_attribute_value_1, variant_attribute_value_2, price, sku, icon)
 VALUES
   (36, '1TB', 'White', '499.99', 'CONSOLE-001-1TB-White', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/71.jpg?alt=media&token=d7617a88-c3d8-44f5-918a-3abe630f4f0c&_gl=1*6if2wm*_ga*Nzk0MzkyMTY2LjE2OTgxMzI1MTY.*_ga_CW55HF8NVT*MTY5ODEzNTI2Ny4yLjEuMTY5ODEzODA2NS4zMC4wLjA. '),
   (36, '512GB', 'Black', '549.99', 'CONSOLE-001-512GB-Black', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/72.jpg?alt=media&token=c60669f3-fa9c-4451-ac50-fe27a31129b3&_gl=1*116n53h*_ga*Nzk0MzkyMTY2LjE2OTgxMzI1MTY.*_ga_CW55HF8NVT*MTY5ODEzNTI2Ny4yLjEuMTY5ODEzODI3OC42MC4wLjA. '),
@@ -675,7 +675,7 @@ VALUES
   (40, '512GB', 'Robot White', '549.99', 'CONSOLE-005-512GB-RobotWhite', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/80.jpg?alt=media&token=817acc6d-e069-4111-b017-cb4674a337e1&_gl=1*1qf11ng*_ga*Nzk0MzkyMTY2LjE2OTgxMzI1MTY.*_ga_CW55HF8NVT*MTY5ODEzNTI2Ny4yLjEuMTY5ODEzODQ2NC42LjAuMA.. ');
   
 -- Variants for Smart Home Security with Price, SKU, and Icon
-INSERT INTO Ecom_platform.Variant (variant_id, Product_id, variant_attribute_value_1, variant_attribute_value_2, price, sku, icon)
+INSERT INTO Ecom_platform.Variant (Product_id, variant_attribute_value_1, variant_attribute_value_2, price, sku, icon)
 VALUES
   (41, 'Base Station, Contact Sensor, Keypad, Motion Detector', 'White', '399.99', 'SECURITY-001-BaseStation-White', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/81.jpg?alt=media&token=63d6dd9b-04ff-4e2a-9ae4-51c644f41c77&_gl=1*1auqkir*_ga*Nzk0MzkyMTY2LjE2OTgxMzI1MTY.*_ga_CW55HF8NVT*MTY5ODEzNTI2Ny4yLjEuMTY5ODEzOTk0OC4yNi4wLjA. '),
   (41, 'Base Station, Contact Sensor', 'White', '349.99', 'SECURITY-001-BaseStation-ContactSensor-White', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/82.jpg?alt=media&token=b250431d-9541-40cc-b98c-9c6f80bacd1b&_gl=1*cswzb0*_ga*Nzk0MzkyMTY2LjE2OTgxMzI1MTY.*_ga_CW55HF8NVT*MTY5ODEzNTI2Ny4yLjEuMTY5ODE0MDY5OC40NC4wLjA. '),
@@ -689,7 +689,7 @@ VALUES
   (45, 'Indoor', 'Black', '149.99', 'SECURITY-005-Indoor-Black', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/90.jpg?alt=media&token=d5943726-a89c-4934-9dcd-75f1a93b9dec&_gl=1*xdsdm*_ga*Nzk0MzkyMTY2LjE2OTgxMzI1MTY.*_ga_CW55HF8NVT*MTY5ODEzNTI2Ny4yLjEuMTY5ODE0MDg0My4yOC4wLjA. ');
   
 -- Variants for Printers with Price, SKU, and Icon
-INSERT INTO Ecom_platform.Variant (variant_id, Product_id, variant_attribute_value_1, variant_attribute_value_2, price, sku, icon)
+INSERT INTO Ecom_platform.Variant (Product_id, variant_attribute_value_1, variant_attribute_value_2, price, sku, icon)
 VALUES
   (46, '30 ppm', 'White', '299.99', 'PRINTER-001-30ppm-White', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/91.jpg?alt=media&token=c6d15cdb-8951-4dcf-b75a-b74cf626cf81&_gl=1*3s74v3*_ga*Nzk0MzkyMTY2LjE2OTgxMzI1MTY.*_ga_CW55HF8NVT*MTY5ODE1MTkzMi40LjAuMTY5ODE1MTkzMi42MC4wLjA. '),
   (46, '25 ppm', 'Black', '279.99', 'PRINTER-001-25ppm-Black', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/92.jpg?alt=media&token=b1fce6f2-3dac-425f-80eb-f5dcd73a1b90&_gl=1*12jcj13*_ga*Nzk0MzkyMTY2LjE2OTgxMzI1MTY.*_ga_CW55HF8NVT*MTY5ODE1MTkzMi40LjEuMTY5ODE1MTk1Ni4zNi4wLjA. '),
@@ -703,7 +703,7 @@ VALUES
   (50, '22 ppm', 'Black', '249.99', 'PRINTER-005-22ppm-Black', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/100.jpg?alt=media&token=dc568e65-4761-45ad-a53f-9d98d28c2977&_gl=1*13glgzp*_ga*Nzk0MzkyMTY2LjE2OTgxMzI1MTY.*_ga_CW55HF8NVT*MTY5ODE1MTkzMi40LjEuMTY5ODE1MzI5Ni42MC4wLjA. ');
   
 -- Variants for Tablets with Price, SKU, and Icon
-INSERT INTO Ecom_platform.Variant (variant_id, Product_id, variant_attribute_value_1, variant_attribute_value_2, price, sku, icon)
+INSERT INTO Ecom_platform.Variant (Product_id, variant_attribute_value_1, variant_attribute_value_2, price, sku, icon)
 VALUES
   (51, '128GB', 'Space Gray', '449.99', 'TAB-001-128GB-SpaceGray', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/101.jpg?alt=media&token=99d53095-c74b-447c-a9b2-c08fce5fea44&_gl=1*lev42*_ga*Nzk0MzkyMTY2LjE2OTgxMzI1MTY.*_ga_CW55HF8NVT*MTY5ODE1MTkzMi40LjEuMTY5ODE1NDQ0Ni42MC4wLjA. '),
   (51, '256GB', 'Silver', '549.99', 'TAB-001-256GB-Silver', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/102.jpg?alt=media&token=3408eda8-8dc5-4d34-be37-fffe685e572f&_gl=1*e7zkm0*_ga*Nzk0MzkyMTY2LjE2OTgxMzI1MTY.*_ga_CW55HF8NVT*MTY5ODE1MTkzMi40LjEuMTY5ODE1NDQ4NS4yMS4wLjA. '),
