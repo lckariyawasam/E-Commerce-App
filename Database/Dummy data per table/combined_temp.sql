@@ -7,7 +7,7 @@ USE Ecom_platform;
 -- Create the Product table
 CREATE TABLE IF NOT EXISTS Ecom_platform.Product (
   product_id INT NOT NULL AUTO_INCREMENT,
-  title VARCHAR(31) NOT NULL,
+  title VARCHAR(127) NOT NULL,
   weight VARCHAR(31) NOT NULL,
   brand VARCHAR(31) NOT NULL,
   description TEXT,
