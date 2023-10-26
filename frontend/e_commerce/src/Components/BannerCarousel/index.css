@@ -1,0 +1,63 @@
+.carousel-dark-text .carousel-caption h5 {
+    color: #333;
+    font-size: xx-large;
+}
+
+.carousel-dark-text .carousel-caption p {
+    color: #555;
+    font-size: medium;
+}
+
+.carousel-item-image-container {
+    /* Set a base height */
+    height: 25vw;  /* This will be 25% of the viewport width, adjust as needed */
+    overflow: hidden;
+    transition: height 0.3s ease-in-out;
+    
+
+}
+
+.initial-load-animation {
+    animation: growHeight 1s forwards;
+}
+
+
+.carousel-image {
+    object-fit: cover;
+    height: 100%;
+    transition: height 0.3s ease-in-out;  /* Smooth transition */
+}
+
+/* You can adjust these as needed */
+/* As the screen width decreases, the height of the visible portion increases */
+@media (max-width: 1200px) {
+    .carousel-item-image-container {
+        height: 30vw;
+    }
+}
+
+@media (max-width: 992px) {
+    .carousel-item-image-container {
+        height: 35vw;
+    }
+}
+@media (max-width: 768px) {
+    .carousel-item-image-container {
+        height: 35vw;
+    }
+}
+
+@media (max-width: 576px) {
+    .carousel-item-image-container {
+        height: 45vw;
+    }
+}
+
+@keyframes growHeight {
+    from {
+        height: 15vw;  /* starting height */
+    }
+    to {
+        height: 25vw;  /* ending height */
+    }
+}
