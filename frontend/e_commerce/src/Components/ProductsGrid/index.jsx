@@ -12,7 +12,7 @@ const FeaturedProducts = ({ products }) => {
             <div className="col-sm-12 col-md-4 mb-4" key={index}>
                 <div className="card h-100 shadow-sm"> {/* Added shadow for a modern look */}
                     <Link to={`/ProductView/${item.id}`}>
-                        <img src={item.url} className="card-img-top" alt={item.product_name} style={{
+                        <img src={item.url} className="card-img-top" alt={item.title} style={{
                              width: '100%',
                               objectFit: 'cover',
                                height: '200px',
@@ -21,10 +21,10 @@ const FeaturedProducts = ({ products }) => {
                     </Link>
                     <div className="card-body d-flex flex-column justify-content-between"> {/* Flex column to push button to bottom */}
                         <div>
-                            <h5 className="card-title">{item.product_name}</h5>
-                            <p className="card-text">${item.price}</p>
+                            <h5 className="card-title">{item.title}</h5>
+                            {/* <p className="card-text">${item.price}</p> */}
                         </div>
-                        <Link to={`/ProductView/${item.id}`} className="btn btn-outline-dark mt-2">View Product</Link>
+                        <Link to={`/product/${item.product_id}`} className="btn btn-outline-dark mt-2">View Product</Link>
                     </div>
                 </div>
             </div>

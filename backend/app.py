@@ -158,7 +158,7 @@ def product(product_id):
         product[row["custom_attribute_name"]] = row["custom_attribute_value"]
 
     # Get the products variants
-    cursor.execute("SELECT variant_id, price, variant_attribute_value_1, variant_attribute_value_2 FROM variant WHERE product_id = %s", (product_id,))
+    cursor.execute("SELECT variant_id, sku, price, variant_attribute_value_1, variant_attribute_value_2 FROM variant WHERE product_id = %s", (product_id,))
     result = cursor.fetchall()
 
     product["variants"] = result
