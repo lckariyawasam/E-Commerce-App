@@ -1372,8 +1372,8 @@ VALUES
 -- No items in the cart
 
 -- Cart 41
-  (91, 41, 4, 'Pending', NULL, NULL), -- Printers (variant_id 91) - 4 items
-  (101, 41, 2, 'Pending', NULL, NULL); -- Tablets (variant_id 101) - 2 items
+  (91, 41, 4, 'Pending', NULL, NULL), 
+  (101, 41, 2, 'Pending', NULL, NULL); 
 
 -- Dummy data for the Order table with updated dates
 INSERT INTO Ecom_platform.Order (cart_id, user_id, payment_type, delivery_estimation, order_date, status)
