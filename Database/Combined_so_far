@@ -1378,27 +1378,27 @@ VALUES
 -- Dummy data for the Order table with updated dates
 INSERT INTO Ecom_platform.Order (cart_id, user_id, payment_type, delivery_estimation, order_date, status)
 VALUES
-  (1, 1, 'Credit Card', '2 days', '2022-01-12', 'Processing'),
-  (2, 6, 'PayPal', '3 days', '2022-05-11', 'Shipped'),
+  (1, 1, 'Credit Card', '5 days', '2022-01-12', 'Delivered'),
+  (2, 6, 'PayPal', '5 days', '2022-05-11', 'Delivered'),
   (3, 10, 'Cash on Delivery', '5 days', '2023-03-10', 'Delivered'),
-  (4, 13, 'Credit Card', '2 days', '2023-04-09', 'Processing'),
-  (5, 19, 'PayPal', '3 days', '2023-05-08', 'Shipped'),
+  (4, 13, 'Credit Card', '5 days', '2023-04-09', 'Delivered'),
+  (5, 19, 'PayPal', '5 days', '2023-05-08', 'Delivered'),
   (6, 22, 'Cash on Delivery', '5 days', '2023-06-07', 'Delivered'),
-  (7, 28, 'Credit Card', '2 days', '2023-07-06', 'Processing'),
-  (8, 31, 'PayPal', '3 days', '2023-08-05', 'Shipped'),
-  (9, 37, 'Cash on Delivery', '5 days', '2023-09-04', 'Delivered'),
-  (10, 41, 'Credit Card', '2 days', '2023-10-03', 'Processing'),
+  (7, 28, 'Credit Card', '7 days', '2023-07-06', 'Delivered'),
+  (8, 31, 'PayPal', '7 days', '2023-08-05', 'Delivered'),
+  (9, 37, 'Cash on Delivery', '7 days', '2023-09-04', 'Delivered'),
+  (10, 41, 'Credit Card', '7 days', '2023-10-03', 'Delivered'),
 
-  (11, 2, 'Credit Card', '2 days', '2023-01-14', 'Processing'),
-  (12, 7, 'PayPal', '3 days', '2023-02-13', 'Shipped'),
+  (11, 2, 'Credit Card', '5 days', '2023-01-14', 'Processing'),
+  (12, 7, 'PayPal', '5 days', '2023-02-13', 'Delivered'),
   (13, 11, 'Cash on Delivery', '5 days', '2023-03-22', 'Delivered'),
-  (14, 14, 'Credit Card', '2 days', '2023-04-25', 'Processing'),
-  (15, 20, 'PayPal', '3 days', '2023-05-30', 'Shipped'),
+  (14, 14, 'Credit Card', '5 days', '2023-04-25', 'Delivered'),
+  (15, 20, 'PayPal', '5 days', '2023-05-30', 'Delivered'),
   (16, 23, 'Cash on Delivery', '5 days', '2023-06-29', 'Delivered'),
-  (17, 29, 'Credit Card', '2 days', '2023-07-18', 'Processing'),
-  (18, 32, 'PayPal', '3 days', '2023-08-19', 'Shipped'),
-  (19, 38, 'Cash on Delivery', '5 days', '2023-09-24', 'Delivered'),
-  (20, 40, 'Credit Card', '2 days', '2023-10-31', 'Processing');
+  (17, 29, 'Credit Card', '7 days', '2023-07-18', 'Delivered'),
+  (18, 32, 'PayPal', '7 days', '2023-08-19', 'Delivered'),
+  (19, 38, 'Cash on Delivery', '7 days', '2023-09-24', 'Delivered'),
+  (20, 40, 'Credit Card', '7 days', '2023-10-31', 'Processing');
   
 delimiter //
 CREATE DEFINER = root@localhost 
