@@ -14,6 +14,7 @@ import Navbar from './Components/Navbar';
 import NotFound from './Screens/NotFound';
 import AdminPanel from './Screens/AdminPanel';
 import Cart from './Screens/Cart';
+import BillingPage from './Screens/BillingPage';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'font-awesome/css/font-awesome.min.css';
@@ -40,6 +41,7 @@ function App() {
           <Route path="/category/:categoryName" element={<CategoryView />} />
           <Route path="/admin" element={<AdminPanel />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/billing" element={<BillingPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />

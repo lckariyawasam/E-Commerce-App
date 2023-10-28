@@ -251,6 +251,32 @@ def remove_from_cart():
 
     else:
         return ("Incomplete Request", 401)
+    
+@app.route("/user", endpoint='user')
+@session_required
+def user():
+    cursor.execute("SELECT * FROM user WHERE user_id = %s", (session.get("user_id"),))
+    user = cursor.fetchone()
+
+    return user
+    
+
+@app.route("/cart/checkout", methods=['POST'], endpoint='checkout')
+@session_required
+def checkout():
+    print("User id at checkout", session.get("user_id"))
+    cursor.callproc("checkout_user", (session.get("user_id"), "Cash"))
+    
+    for result in cursor.stored_results():
+        return_value = result.fetchall()
+        if (return_value[0]["insufficient_stock_variant_id"] is not None):
+            result = {
+                "insufficient_stock_variant_id": return_value[0]["insufficient_stock_variant_id"],
+            }
+            return (result, 404)
+        else:
+            break
+    return ("Checkout Successful", 200)
 
 
 # For debugging purposes, do not run in production!

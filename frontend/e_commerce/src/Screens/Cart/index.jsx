@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 import './index.css';
 
 const Cart = () => {
-  const [cartItems, setCartItems] = useState([]);
+  const [cartItems, setCartItems] = useState([])
+
+  const navigate = useNavigate()
 
   const loadCart =() => {
     axios.get('http://localhost:5000/cart', {
@@ -44,6 +47,32 @@ const Cart = () => {
 
   };
 
+  // const handleCheckout = () => {
+
+  //   console.log('handleCheckout')
+
+  //   axios.post('http://localhost:5000/cart/checkout',
+  //   {},
+  //   {
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //       'Accept': 'application/json'
+  //     },
+  //     withCredentials: true,
+  //   })
+  //   .then(res => {
+  //     console.log(res)
+  //     if (res.status === 200) {
+  //       loadCart()
+  //     }
+  //   }
+  //   )
+  //   .catch(err => {
+  //     console.log(err)
+  //   }
+  //   )
+  // }
+
   const calculateTotal = () => {
     return cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
   };
@@ -78,6 +107,9 @@ const Cart = () => {
       <div className="cart-total">
         <strong>Total: ${calculateTotal().toFixed(2)}</strong>
       </div>
+      <button onClick={() => navigate("/billing")} disabled={cartItems.length === 0} className="checkout-button">
+                Proceed to Checkout
+      </button>
     </div>
   );
 };
