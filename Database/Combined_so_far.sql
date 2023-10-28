@@ -1,5 +1,4 @@
 -- drop database ecom_platform
-DROP DATABASE IF EXISTS Ecom_platform;
 
 -- Create the Ecom_plaquarterly_sales_reports_for_yeartform schema if it doesn't exist
 CREATE SCHEMA IF NOT EXISTS Ecom_platform DEFAULT CHARACTER SET utf8;
@@ -159,7 +158,7 @@ CREATE TABLE IF NOT EXISTS Ecom_platform.`Order` (
   cart_id INT NOT NULL,
   user_id INT NOT NULL,
   payment_type VARCHAR(31) NOT NULL,
-  delivery_estimation VARCHAR(31) NOT NULL,
+  est_delivery_days INT NOT NULL,
   order_date VARCHAR(31) NOT NULL,
   status VARCHAR(31) NOT NULL,
   PRIMARY KEY (order_id),
@@ -225,18 +224,15 @@ DELIMITER ;
 -- DELIMITER ;
 
 DELIMITER //
-CREATE PROCEDURE update_cart_on_order(IN user_id_param INT, OUT out_of_stock_variant_id INT)
+CREATE PROCEDURE `update_cart_on_order`(IN user_id_param INT, OUT out_of_stock_variant_id INT, IN cart_id_param INT)
 BEGIN
-    DECLARE cartID INT;
     DECLARE vID, q INT;
     DECLARE done INT DEFAULT FALSE;
     DECLARE out_of_stock INT DEFAULT NULL;
-    DECLARE cur CURSOR FOR SELECT variant_id, quantity FROM cart_item WHERE cart_id = cartID;
+    DECLARE cur CURSOR FOR SELECT variant_id, quantity FROM cart_item WHERE cart_id = cart_id_param;
     DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
 
     START TRANSACTION;
-    
-    SELECT cart_id INTO cartID FROM cart WHERE user_id = user_id_param AND status = 'Pending';
     
     OPEN cur;
     read_loop:LOOP
@@ -271,7 +267,7 @@ BEGIN
     END IF;
 
     -- Set the cart status
-    UPDATE Cart SET status = CASE WHEN out_of_stock IS NULL THEN 'Complete' ELSE 'Pending' END WHERE cart_id = cartID;
+    UPDATE Cart SET status = CASE WHEN out_of_stock IS NULL THEN 'Complete' ELSE 'Pending' END WHERE cart_id = cart_id_param;
 END;
 //
 DELIMITER ;
@@ -286,17 +282,21 @@ END
 DELIMITER ;
 
 DELIMITER //
-CREATE PROCEDURE checkout_user(IN user_id_param INT)
+CREATE PROCEDURE `checkout_user`(IN user_id_param INT, IN payment_type_param VARCHAR(31))
 BEGIN
 	DECLARE stock_out_variant_id INT;
     DECLARE delivery_days INT;
-	CALL update_cart_on_order(user_id_param, stock_out_variant_id);
+    DECLARE cartId INT;
+    
+    SELECT cart_id INTO cartID FROM cart WHERE user_id = user_id_param AND status = 'Pending';
+	CALL update_cart_on_order(user_id_param, stock_out_variant_id, cartId);
     IF stock_out_variant_id IS NULL THEN
 		SELECT get_delivery_date_for_user(user_id_param) INTO delivery_days;
+        INSERT INTO Ecom_platform.`Order`(cart_id, user_id, payment_type, est_delivery_days, order_date, `status`) VALUES (cartId, user_id_param, payment_type_param, delivery_days, CURDATE(), 'Processing');
 		CALL create_new_cart_for(user_id_param);
-        SELECT stock_out_variant_id AS insufficient_stock_variant_id, delivery_days AS delivery_estimation_in_days;
+        SELECT stock_out_variant_id AS insufficient_stock_variant_id, delivery_days AS est_delivery_days;
 	ELSE
-		SELECT stock_out_variant_id AS insufficient_stock_variant_id, NULL AS delivery_estimation_in_days;
+		SELECT stock_out_variant_id AS insufficient_stock_variant_id, NULL AS est_delivery_days;
 	END IF;
 END;
 //
@@ -1377,29 +1377,29 @@ VALUES
   (101, 41, 2, 'Pending', NULL, NULL); 
 
 -- Dummy data for the Order table with updated dates
-INSERT INTO Ecom_platform.Order (cart_id, user_id, payment_type, delivery_estimation, order_date, status)
+INSERT INTO Ecom_platform.Order (cart_id, user_id, payment_type, est_delivery_days, order_date, status)
 VALUES
-  (1, 1, 'Credit Card', '5 days', '2022-01-12', 'Delivered'),
-  (2, 6, 'PayPal', '5 days', '2022-05-11', 'Delivered'),
-  (3, 10, 'Cash on Delivery', '5 days', '2023-03-10', 'Delivered'),
-  (4, 13, 'Credit Card', '5 days', '2023-04-09', 'Delivered'),
-  (5, 19, 'PayPal', '5 days', '2023-05-08', 'Delivered'),
-  (6, 22, 'Cash on Delivery', '5 days', '2023-06-07', 'Delivered'),
-  (7, 28, 'Credit Card', '7 days', '2023-07-06', 'Delivered'),
-  (8, 31, 'PayPal', '7 days', '2023-08-05', 'Delivered'),
-  (9, 37, 'Cash on Delivery', '7 days', '2023-09-04', 'Delivered'),
-  (10, 41, 'Credit Card', '7 days', '2023-10-03', 'Delivered'),
+  (1, 1, 'Credit Card', '5', '2022-01-12', 'Delivered'),
+  (2, 6, 'PayPal', '5', '2022-05-11', 'Delivered'),
+  (3, 10, 'Cash on Delivery', '5', '2023-03-10', 'Delivered'),
+  (4, 13, 'Credit Card', '5', '2023-04-09', 'Delivered'),
+  (5, 19, 'PayPal', '5', '2023-05-08', 'Delivered'),
+  (6, 22, 'Cash on Delivery', '5', '2023-06-07', 'Delivered'),
+  (7, 28, 'Credit Card', '7', '2023-07-06', 'Delivered'),
+  (8, 31, 'PayPal', '7', '2023-08-05', 'Delivered'),
+  (9, 37, 'Cash on Delivery', '7', '2023-09-04', 'Delivered'),
+  (10, 41, 'Credit Card', '7', '2023-10-03', 'Delivered'),
 
-  (11, 2, 'Credit Card', '5 days', '2023-01-14', 'Processing'),
-  (12, 7, 'PayPal', '5 days', '2023-02-13', 'Delivered'),
-  (13, 11, 'Cash on Delivery', '5 days', '2023-03-22', 'Delivered'),
-  (14, 14, 'Credit Card', '5 days', '2023-04-25', 'Delivered'),
-  (15, 20, 'PayPal', '5 days', '2023-05-30', 'Delivered'),
-  (16, 23, 'Cash on Delivery', '5 days', '2023-06-29', 'Delivered'),
-  (17, 29, 'Credit Card', '7 days', '2023-07-18', 'Delivered'),
-  (18, 32, 'PayPal', '7 days', '2023-08-19', 'Delivered'),
-  (19, 38, 'Cash on Delivery', '7 days', '2023-09-24', 'Delivered'),
-  (20, 40, 'Credit Card', '7 days', '2023-10-31', 'Processing');
+  (11, 2, 'Credit Card', '5', '2023-01-14', 'Processing'),
+  (12, 7, 'PayPal', '5', '2023-02-13', 'Delivered'),
+  (13, 11, 'Cash on Delivery', '5', '2023-03-22', 'Delivered'),
+  (14, 14, 'Credit Card', '5', '2023-04-25', 'Delivered'),
+  (15, 20, 'PayPal', '5', '2023-05-30', 'Delivered'),
+  (16, 23, 'Cash on Delivery', '5', '2023-06-29', 'Delivered'),
+  (17, 29, 'Credit Card', '7', '2023-07-18', 'Delivered'),
+  (18, 32, 'PayPal', '7', '2023-08-19', 'Delivered'),
+  (19, 38, 'Cash on Delivery', '7', '2023-09-24', 'Delivered'),
+  (20, 40, 'Credit Card', '7', '2023-10-31', 'Processing');
   
 delimiter //
 CREATE DEFINER = root@localhost 
