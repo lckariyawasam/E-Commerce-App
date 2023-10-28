@@ -150,6 +150,9 @@ def product(product_id):
     cursor.execute("SELECT * FROM product WHERE product_id = %s", (product_id,))
     product = cursor.fetchone()
 
+    if (product is None):
+        return ("Product does not exist", 404)
+
     cursor.execute("SELECT custom_attribute_type, custom_attribute_value FROM product_custom_property WHERE product_id = %s", (product_id,))
 
 
@@ -158,7 +161,7 @@ def product(product_id):
         product[row["custom_attribute_name"]] = row["custom_attribute_value"]
 
     # Get the products variants
-    cursor.execute("SELECT variant_id, sku, price, variant_attribute_value_1, variant_attribute_value_2 FROM variant WHERE product_id = %s", (product_id,))
+    cursor.execute("SELECT variant_id, sku, price, variant_attribute_value_1, variant_attribute_value_2, icon FROM variant WHERE product_id = %s", (product_id,))
     result = cursor.fetchall()
 
     product["variants"] = result

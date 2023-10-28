@@ -191,13 +191,18 @@ function ProductView() {
       );
       newAttributes[1] = validSecondAttributes[0];
     }
-
     setSelectedAttributes(newAttributes);
   };
 
   useEffect(() => {
     if (variants && variants.length > 0) {
-      const initialAttributes = Object.values(variants[0]).slice(2, -3);
+      let initialAttributes = []
+      if (currentVariant != null) {
+      initialAttributes = [
+        currentVariant?.variant_attribute_value_1,
+        currentVariant?.variant_attribute_value_2,
+      ]
+    }
       setSelectedAttributes(initialAttributes);
     }
   }, [variants]);
@@ -239,6 +244,8 @@ function ProductView() {
     disabledAttrs.push(...invalidValues);
 
     setDisabledAttributes(disabledAttrs);
+
+    console.log(selectedAttributes)
   }, [selectedAttributes, variants]);
 
   const currentVariant = variants?.find((v) =>
