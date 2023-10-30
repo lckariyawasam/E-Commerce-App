@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 
 import './index.css';
 
@@ -8,6 +8,12 @@ const Cart = () => {
   const [cartItems, setCartItems] = useState([])
 
   const navigate = useNavigate()
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const outOfStock = searchParams.get('outOfStock');
+  const outOfStockVariant = searchParams.get('outOfStockVariant');
+
+  console.log(outOfStock, outOfStockVariant)
 
   const loadCart =() => {
     axios.get('http://localhost:5000/cart', {
@@ -20,6 +26,7 @@ const Cart = () => {
     )
     .then(res => {
       setCartItems(res.data)
+      console.log(res.data)
     }
     )
   }
@@ -97,9 +104,14 @@ const Cart = () => {
                 <span>${parseFloat(item.price).toFixed(2)}</span>
                 <span>Quantity: {item.quantity}</span>
               </div>
-              <button onClick={() => removeItem(item.cart_item_id)} className="remove-button">
-                Remove
-              </button>
+              <div className="remove-out-of-stock"> 
+                <button onClick={() => removeItem(item.cart_item_id)} className="remove-button">
+                  Remove
+                </button>
+                {outOfStock && parseInt(outOfStockVariant) == item.variant_id && (
+                  <span>Out of Stock </span>
+                )}
+              </div>
             </li>
           ))}
         </ul>

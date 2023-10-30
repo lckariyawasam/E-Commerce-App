@@ -1,5 +1,5 @@
-/* index.css for CheckoutPage */
-.checkout-page {
+/* index.css for BillingPage */
+.billing-page {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -80,4 +80,20 @@
     margin-bottom: 20px;
     color: #888888;
     font-weight: normal;
+}
+
+
+.loading-overlay {
+    position: fixed;
+    margin-top: -200px;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.809);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 1.5rem;
+    color: white;
 }

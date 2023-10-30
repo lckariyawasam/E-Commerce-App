@@ -213,9 +213,7 @@ def add_to_cart():
 
         # Get the cart of the user
         cursor.execute("SELECT cart_id FROM cart WHERE user_id = %s AND status = 'Pending'", (session.get("user_id"),))
-
         cart_id = cursor.fetchone()["cart_id"]
-
         cursor.execute("INSERT INTO cart_item (variant_id, cart_id, quantity, status) VALUES (%s, %s, %s, %s)", (variant_id, cart_id, quantity, "Pending"))
         connection.commit()
 
@@ -235,14 +233,11 @@ def remove_from_cart():
 
         # Get the cart of the user
         cursor.execute("SELECT cart_id FROM cart WHERE user_id = %s AND status = 'Pending'", (session.get("user_id"),))
-
         cart_id = cursor.fetchone()["cart_id"]
-
         cursor.execute("SELECT cart_item_id FROM cart_item WHERE cart_id = %s", (cart_id,))
 
         if (cart_item_id not in [row["cart_item_id"] for row in cursor.fetchall()]):
             return ("Unauthorized", 401)
-        
         else:
             cursor.execute("DELETE FROM cart_item WHERE cart_item_id = %s", (cart_item_id,))
             connection.commit()
@@ -252,6 +247,36 @@ def remove_from_cart():
     else:
         return ("Incomplete Request", 401)
     
+    
+
+@app.route("/cart/checkout", methods=['POST'], endpoint='checkout')
+@session_required
+def checkout():
+
+    print(session.get("user_id"))
+    
+    data = request.get_json()
+
+    print(data)
+
+    if data.get("payment_method") and data.get("payment_method") in ("Cash", "Credit Card", "Debit Card"):
+        cursor.callproc("checkout_user", (session.get("user_id"), data.get("payment_method")))
+        
+        for result in cursor.stored_results():
+            return_value = result.fetchall()
+            if (return_value[0]["insufficient_stock_variant_id"] is not None):
+                result = {
+                    "insufficient_stock_variant_id": return_value[0]["insufficient_stock_variant_id"],
+                }
+                return (result, 404)
+            else:
+                break
+        return ("Checkout Successful", 200)
+    
+    else:
+        return ("Incomplete Request", 401)
+
+
 @app.route("/user", endpoint='user')
 @session_required
 def user():
@@ -259,25 +284,54 @@ def user():
     user = cursor.fetchone()
 
     return user
-    
 
-@app.route("/cart/checkout", methods=['POST'], endpoint='checkout')
+@app.route("/user/update", methods=['POST'], endpoint='update_user')
 @session_required
-def checkout():
-    print("User id at checkout", session.get("user_id"))
-    cursor.callproc("checkout_user", (session.get("user_id"), "Cash"))
-    
-    for result in cursor.stored_results():
-        return_value = result.fetchall()
-        if (return_value[0]["insufficient_stock_variant_id"] is not None):
-            result = {
-                "insufficient_stock_variant_id": return_value[0]["insufficient_stock_variant_id"],
-            }
-            return (result, 404)
-        else:
-            break
-    return ("Checkout Successful", 200)
+def update_user():
+    data = request.get_json()
 
+    if data.get("first_name") and data.get("last_name") and data.get("email") and data.get("phone_number") and data.get("address_line01") and data.get("address_city") and data.get("address_state") and data.get("address_zip_code") and data.get("address_country"):
+        first_name = data.get("first_name")
+        last_name = data.get("last_name")
+        email = data.get("email")
+        phone_number = data.get("phone_number")
+        address_line01 = data.get("address_line01")
+        address_city = data.get("address_city")
+        address_state = data.get("address_state")
+        address_zip_code = data.get("address_zip_code")
+        address_country = data.get("address_country")
+
+        cursor.execute("""
+            UPDATE user
+            SET first_name = %s,
+            last_name = %s,
+            email = %s,
+            phone_number = %s,
+            address_line01 = %s,
+            address_city = %s,
+            address_state = %s,
+            address_zip_code = %s,
+            address_country = %s
+            WHERE user_id = %s
+        """,
+        (
+            first_name,
+            last_name,
+            email,
+            phone_number,
+            address_line01,
+            address_city,
+            address_state,
+            address_zip_code,
+            address_country,
+            session.get("user_id")
+        ))
+        connection.commit()
+
+        return ("User Updated", 200)
+    else:
+        return ("Incomplete Request", 401)
+    
 
 # For debugging purposes, do not run in production!
 if __name__ == '__main__':

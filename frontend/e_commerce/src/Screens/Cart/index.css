@@ -30,6 +30,12 @@ h2 {
   flex-direction: column;
 }
 
+.remove-out-of-stock {
+  display: flex;
+  flex-direction: column;
+  color: red;
+}
+
 .remove-button {
   background-color: rgb(143, 143, 143);
   height: 30px;
