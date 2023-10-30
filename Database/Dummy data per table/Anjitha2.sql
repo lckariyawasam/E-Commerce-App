@@ -5,17 +5,16 @@
 -- Insert data for Action Figures
 INSERT INTO Ecom_platform.Product (title, weight, brand, description, Variant_attribute_type_1, Variant_attribute_type_2)
 VALUES
-  ('Superhero Action Figure - Iron Man', '45g', 'ToyCo', 'Collect this detailed Iron Man action figure and add it to your superhero collection. Its perfect for fans of the Marvel universe.', 'Character', 'Accessory'),
-  ('Action Figure - Space Explorer', '55g', 'Toy Universe', 'Join the space adventure with this action figure. It comes with a space helmet and jetpack for intergalactic play.', 'Character', 'Accessories'),
-  ('Ninja Warrior Action Figure', '60g', 'Ninjitsu Toys', 'Engage in epic ninja battles with this action figure. It features posable limbs and comes with ninja weapons.', 'Character', 'Weapons'),
-  ('Action Figure - Fantasy Knight', '50g', 'Knightly Toys', 'Enter a world of medieval fantasy with this knight action figure. Its armed with a sword and shield for epic battles.', 'Character', 'Accessories'),
-  ('Action Figure - Super Villain', '48g', 'Villainy Inc.', 'Bring the world of super villains to life with this action figure. It includes a diabolical accessory and detailed costume.', 'Character', 'Accessory');
-
+  ('Toy Car - Red Racer', '200g', 'Speedy Toys', 'Zoom around with this red toy car. It's designed for speed and fun play for kids.', 'Color', 'Size'),
+  ('Toy Car - Blue Cruiser', '210g', 'DriveMaster', 'Take a leisurely drive with this blue toy car. It's perfect for imaginative adventures.', 'Color', 'Size'),
+  ('Toy Jeep - Safari Adventure', '230g', 'Wild Explorers', 'Embark on a safari adventure with this toy jeep. It features realistic details and a removable roof.', 'Color', 'Size');
+  ('Toy Helicopter - Rescue Chopper', '250g', 'Rescue Heroes', 'Be a hero with this rescue helicopter. It comes with rotating blades and a working winch for daring missions.', 'Color', 'Size'),
+  ('Toy Helicopter - Police Pursuit', '260g', 'Law Enforcement Toys', 'Chase down the bad guys with this police helicopter. It features a searchlight and working doors.', 'Color', 'Size');
 -- Insert data for Board Games
 INSERT INTO Ecom_platform.Product (title, weight, brand, description, Variant_attribute_type_1, Variant_attribute_type_2)
 VALUES
-  ('Adventure Quest Board Game', '950g', 'GameMasters', 'Embark on a grand adventure with this cooperative board game. Its suitable for 2-4 players and includes a large game board for epic quests.', 'Number of Players', 'Game Board Size'),
-  ('Mystery Mansion Board Game', '800g', 'Enigma Games', 'Solve mysteries in this thrilling board game. Explore a haunted mansion and uncover hidden secrets with your friends.', 'Number of Players', 'Game Board Size'),
+  ('Toy Blaster - Laser Shooter', '150g', 'Galactic Warriors', 'Defend the galaxy with this laser blaster. It features light and sound effects for epic battles.', 'Type', 'Color'),
+  ('Toy Sword - Knight's Weapon', '180g', 'Medieval Adventures', 'Become a noble knight with this toy sword. It's perfect for medieval role-play.', 'Type', 'Color');
   ('Dinosaur World Board Game', '850g', 'Prehistoric Games', 'Travel back in time to a world of dinosaurs with this exciting board game. Compete to build the best dinosaur park.', 'Number of Players', 'Game Board Size'),
   ('Pirates Treasure Board Game', '900g', 'Treasure Hunt Games', 'Sail the high seas in search of hidden treasure. This board game is perfect for aspiring pirates and treasure hunters.', 'Number of Players', 'Game Board Size'),
   ('Fantasy Quest Board Game', '875g', 'Mythic Adventures', 'Venture into a realm of fantasy and magic with this cooperative board game. Solve quests and face mythical creatures.', 'Number of Players', 'Game Board Size');
@@ -53,24 +52,24 @@ VALUES
 -- Action Figures Variants
 INSERT INTO Ecom_platform.Variant (Product_id, variant_attribute_value_1, variant_attribute_value_2, price, sku, icon)
 VALUES
-  (56, 'Iron Man', 'Accessories', '14.99', 'AF001-IronMan', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/0.png?alt=media&token=94d5c16a-ee74-42b7-93e7-535d4b725dc2&_gl=1*1i1s1k2*_ga*OTA1NDY0ODY3LjE2OTc3MjM2Mzc.*_ga_CW55HF8NVT*MTY5ODM3OTc5Ni4xMC4xLjE2OTgzNzk5MTQuNjAuMC4w'),
-  (56, 'Iron Man', 'Accessories', '19.99', 'AF002-IronMan', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/0.png?alt=media&token=94d5c16a-ee74-42b7-93e7-535d4b725dc2&_gl=1*1i1s1k2*_ga*OTA1NDY0ODY3LjE2OTc3MjM2Mzc.*_ga_CW55HF8NVT*MTY5ODM3OTc5Ni4xMC4xLjE2OTgzNzk5MTQuNjAuMC4w'),
-  (57, 'Space Explorer', 'Accessories', '19.99', 'AF003-SpaceExplorer', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/0.png?alt=media&token=94d5c16a-ee74-42b7-93e7-535d4b725dc2&_gl=1*1i1s1k2*_ga*OTA1NDY0ODY3LjE2OTc3MjM2Mzc.*_ga_CW55HF8NVT*MTY5ODM3OTc5Ni4xMC4xLjE2OTgzNzk5MTQuNjAuMC4w'),
-  (57, 'Space Explorer', 'Accessories', '24.99', 'AF004-SpaceExplorer', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/0.png?alt=media&token=94d5c16a-ee74-42b7-93e7-535d4b725dc2&_gl=1*1i1s1k2*_ga*OTA1NDY0ODY3LjE2OTc3MjM2Mzc.*_ga_CW55HF8NVT*MTY5ODM3OTc5Ni4xMC4xLjE2OTgzNzk5MTQuNjAuMC4w'),
-  (58, 'Ninja Warrior', 'Weapons', '16.99', 'AF005-NinjaWarrior', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/0.png?alt=media&token=94d5c16a-ee74-42b7-93e7-535d4b725dc2&_gl=1*1i1s1k2*_ga*OTA1NDY0ODY3LjE2OTc3MjM2Mzc.*_ga_CW55HF8NVT*MTY5ODM3OTc5Ni4xMC4xLjE2OTgzNzk5MTQuNjAuMC4w'),
-  (58, 'Ninja Warrior', 'Weapons', '21.99', 'AF006-NinjaWarrior', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/0.png?alt=media&token=94d5c16a-ee74-42b7-93e7-535d4b725dc2&_gl=1*1i1s1k2*_ga*OTA1NDY0ODY3LjE2OTc3MjM2Mzc.*_ga_CW55HF8NVT*MTY5ODM3OTc5Ni4xMC4xLjE2OTgzNzk5MTQuNjAuMC4w'),
-  (59, 'Fantasy Knight', 'Accessories', '18.99', 'AF007-FantasyKnight', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/0.png?alt=media&token=94d5c16a-ee74-42b7-93e7-535d4b725dc2&_gl=1*1i1s1k2*_ga*OTA1NDY0ODY3LjE2OTc3MjM2Mzc.*_ga_CW55HF8NVT*MTY5ODM3OTc5Ni4xMC4xLjE2OTgzNzk5MTQuNjAuMC4w'),
-  (59, 'Fantasy Knight', 'Accessories', '23.99', 'AF008-FantasyKnight', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/0.png?alt=media&token=94d5c16a-ee74-42b7-93e7-535d4b725dc2&_gl=1*1i1s1k2*_ga*OTA1NDY0ODY3LjE2OTc3MjM2Mzc.*_ga_CW55HF8NVT*MTY5ODM3OTc5Ni4xMC4xLjE2OTgzNzk5MTQuNjAuMC4w'),
-  (60, 'Super Villain', 'Accessory', '15.99', 'AF009-SuperVillain', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/0.png?alt=media&token=94d5c16a-ee74-42b7-93e7-535d4b725dc2&_gl=1*1i1s1k2*_ga*OTA1NDY0ODY3LjE2OTc3MjM2Mzc.*_ga_CW55HF8NVT*MTY5ODM3OTc5Ni4xMC4xLjE2OTgzNzk5MTQuNjAuMC4w'),
-  (60, 'Super Villain', 'Accessory', '20.99', 'AF010-SuperVillain', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/0.png?alt=media&token=94d5c16a-ee74-42b7-93e7-535d4b725dc2&_gl=1*1i1s1k2*_ga*OTA1NDY0ODY3LjE2OTc3MjM2Mzc.*_ga_CW55HF8NVT*MTY5ODM3OTc5Ni4xMC4xLjE2OTgzNzk5MTQuNjAuMC4w');
+  (56, 'Red Racer', 'Small', '9.99', 'TC001-RedRacerSmall', 'https://example.com/toy_car_1_small.jpg'),
+  (56, 'Red Racer', 'Large', '14.99', 'TC002-RedRacerLarge', 'https://example.com/toy_car_1_large.jpg'),
+  (57, 'Blue Cruiser', 'Small', '10.99', 'TC003-BlueCruiserSmall', 'https://example.com/toy_car_2_small.jpg'),
+  (57, 'Blue Cruiser', 'Large', '15.99', 'TC004-BlueCruiserLarge', 'https://example.com/toy_car_2_large.jpg');
+  (58, 'Safari Adventure', 'Small', '12.99', 'TJ001-SafariSmall', 'https://example.com/toy_jeep_1_small.jpg'),
+  (58, 'Safari Adventure', 'Large', '17.99', 'TJ002-SafariLarge', 'https://example.com/toy_jeep_1_large.jpg');
+  (59, 'Rescue Chopper', 'Small', '11.99', 'TH001-RescueSmall', 'https://example.com/toy_helicopter_1_small.jpg'),
+  (59, 'Rescue Chopper', 'Large', '16.99', 'TH002-RescueLarge', 'https://example.com/toy_helicopter_1_large.jpg'),
+  (60, 'Police Pursuit', 'Small', '12.99', 'TH003-PoliceSmall', 'https://example.com/toy_helicopter_2_small.jpg'),
+  (60, 'Police Pursuit', 'Large', '17.99', 'TH004-PoliceLarge', 'https://example.com/toy_helicopter_2_large.jpg');
   
 -- Board Games Variants
 INSERT INTO Ecom_platform.Variant (Product_id, variant_attribute_value_1, variant_attribute_value_2, price, sku, icon)
 VALUES
-  (61, 'Adventure Quest', '2-4 Players', '34.99', 'BG001-AdventureQuest', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/0.png?alt=media&token=94d5c16a-ee74-42b7-93e7-535d4b725dc2&_gl=1*1i1s1k2*_ga*OTA1NDY0ODY3LjE2OTc3MjM2Mzc.*_ga_CW55HF8NVT*MTY5ODM3OTc5Ni4xMC4xLjE2OTgzNzk5MTQuNjAuMC4w'),
-  (61, 'Adventure Quest', '2-4 Players', '39.99', 'BG002-AdventureQuest', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/0.png?alt=media&token=94d5c16a-ee74-42b7-93e7-535d4b725dc2&_gl=1*1i1s1k2*_ga*OTA1NDY0ODY3LjE2OTc3MjM2Mzc.*_ga_CW55HF8NVT*MTY5ODM3OTc5Ni4xMC4xLjE2OTgzNzk5MTQuNjAuMC4w'),
-  (62, 'Mystery Mansion', '2-6 Players', '29.99', 'BG003-MysteryMansion', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/0.png?alt=media&token=94d5c16a-ee74-42b7-93e7-535d4b725dc2&_gl=1*1i1s1k2*_ga*OTA1NDY0ODY3LjE2OTc3MjM2Mzc.*_ga_CW55HF8NVT*MTY5ODM3OTc5Ni4xMC4xLjE2OTgzNzk5MTQuNjAuMC4w'),
-  (62, 'Mystery Mansion', '2-6 Players', '34.99', 'BG004-MysteryMansion', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/0.png?alt=media&token=94d5c16a-ee74-42b7-93e7-535d4b725dc2&_gl=1*1i1s1k2*_ga*OTA1NDY0ODY3LjE2OTc3MjM2Mzc.*_ga_CW55HF8NVT*MTY5ODM3OTc5Ni4xMC4xLjE2OTgzNzk5MTQuNjAuMC4w'),
+  (61, 'Laser Shooter', 'Red', '7.99', 'TW001-LaserRed', 'https://example.com/toy_weapon_1_red.jpg'),
+  (61, 'Laser Shooter', 'Blue', '7.99', 'TW002-LaserBlue', 'https://example.com/toy_weapon_1_blue.jpg'),
+  (62, 'Knight\'s Weapon', 'Silver', '9.99', 'TW003-SwordSilver', 'https://example.com/toy_weapon_2_silver.jpg'),
+  (62, 'Knight\'s Weapon', 'Gold', '9.99', 'TW004-SwordGold', 'https://example.com/toy_weapon_2_gold.jpg');
   (63, 'Dinosaur World', '2-5 Players', '32.99', 'BG005-DinosaurWorld', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/0.png?alt=media&token=94d5c16a-ee74-42b7-93e7-535d4b725dc2&_gl=1*1i1s1k2*_ga*OTA1NDY0ODY3LjE2OTc3MjM2Mzc.*_ga_CW55HF8NVT*MTY5ODM3OTc5Ni4xMC4xLjE2OTgzNzk5MTQuNjAuMC4w'),
   (63, 'Dinosaur World', '2-5 Players', '37.99', 'BG006-DinosaurWorld', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/0.png?alt=media&token=94d5c16a-ee74-42b7-93e7-535d4b725dc2&_gl=1*1i1s1k2*_ga*OTA1NDY0ODY3LjE2OTc3MjM2Mzc.*_ga_CW55HF8NVT*MTY5ODM3OTc5Ni4xMC4xLjE2OTgzNzk5MTQuNjAuMC4w'),
   (64, 'Pirates Treasure', '2-4 Players', '28.99', 'BG007-PiratesTreasure', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/0.png?alt=media&token=94d5c16a-ee74-42b7-93e7-535d4b725dc2&_gl=1*1i1s1k2*_ga*OTA1NDY0ODY3LjE2OTc3MjM2Mzc.*_ga_CW55HF8NVT*MTY5ODM3OTc5Ni4xMC4xLjE2OTgzNzk5MTQuNjAuMC4w'),
