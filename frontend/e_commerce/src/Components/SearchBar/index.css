@@ -1,0 +1,33 @@
+.autocomplete-dropdown {
+    position: 'absolute' ;
+    background-color: white;
+    border: 1px solid #ccc;
+    width: 100%;
+    max-height: 200px;
+    overflow-y: auto;
+    margin: 0;
+    padding: 0;
+    z-index: 1000;
+    list-style-type: none;
+}
+
+.autocomplete-dropdown li {
+    padding: 8px 12px;
+    display: inline-block;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.2s;
+
+    &:hover {
+        background-color: #ececec;
+    }
+}
+
+.autocomplete-dropdown a {
+    text-decoration: none;
+    color: inherit;  /* Optional: this will make the link color same as text color */
+}
+
+.autocomplete-dropdown a:hover {
+    text-decoration: underline;  /* Optional: underline on hover for better UX */
+}

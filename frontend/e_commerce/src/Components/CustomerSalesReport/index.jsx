@@ -1,4 +1,6 @@
-import React from "react";
+import React, {useState} from "react";
+import SearchBar from "../SearchBar";
+import "./index.css";
 
 
     const salesData = 	[
@@ -25,37 +27,48 @@ import React from "react";
 	
     ];
 
-function CustomerSalesReport() {
-    return (
-        <div>
-            <table border="1" style={{ width: '80%', margin: '0 auto' }}>
-                <thead>
-                    <tr>
-                        <th>Order ID</th>
-                        <th>Cart ID</th>
-                        <th>User ID</th>
-                        <th>Payment Type</th>
-                        <th>User Type</th>
-                        <th>Order Date</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {salesData.map((order) => (
-                        <tr key={order.order_id}>
-                            <td>{order.order_id}</td>
-                            <td>{order.cart_id}</td>
-                            <td>{order.user_id}</td>
-                            <td>{order.payment_type}</td>
-                            <td>{order.user_type}</td>
-                            <td>{order.order_date}</td>
-                            <td>{order.status}</td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
-        </div>
-    );
-}
-
-export default CustomerSalesReport;
+    function CustomerSalesReport() {
+        const [selectedOrder, setSelectedOrder] = useState(null);
+    
+        const handleOrderSelection = (userId) => {
+            const order = salesData.find(o => o.user_id.toString() === userId);
+            setSelectedOrder(order);
+        };
+    
+        return (
+            <div>
+                <SearchBar isStrictSelection={true} onProductSelected={handleOrderSelection} />
+                
+                {selectedOrder ? (
+                    <table className="sales-table">
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Cart ID</th>
+                                <th>User ID</th>
+                                <th>Payment Type</th>
+                                <th>User Type</th>
+                                <th>Order Date</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{selectedOrder.order_id}</td>
+                                <td>{selectedOrder.cart_id}</td>
+                                <td>{selectedOrder.user_id}</td>
+                                <td>{selectedOrder.payment_type}</td>
+                                <td>{selectedOrder.user_type}</td>
+                                <td>{selectedOrder.order_date}</td>
+                                <td>{selectedOrder.status}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                ) : (
+                    <p>Select a customer to view their orders.</p>
+                )}
+            </div>
+        );
+    }
+    
+    export default CustomerSalesReport;

@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import React, { useState } from "react";
 import "./index.css";
 
 import QuarterlySales from "../../Components/QuarterlySales";
@@ -8,34 +7,47 @@ import MostSalesCategory from "../../Components/MostSalesCategory";
 import MostSalesMonth from "../../Components/MostSalesMonth";
 import CustomerSalesReport from "../../Components/CustomerSalesReport";
 
-function CategoryView() {
 
+function CategoryView() {
+  const [activeTab, setActiveTab] = useState("quarterlySales");
+
+  const renderContent = () => {
+    switch (activeTab) {
+      case "quarterlySales":
+        return <QuarterlySales />;
+      case "mostSales":
+        return <MostSales />;
+      case "mostSalesCategory":
+        return <MostSalesCategory />;
+      case "mostSalesMonth":
+        return <MostSalesMonth />;
+      case "customerSalesReport":
+        return <CustomerSalesReport />;
+      default:
+        return <QuarterlySales />;
+    }
+  };
 
   return (
-    <div style={{minHeight: '100vh'}}>
-      
-        <div>
-          <h2>quarterly sales</h2>
-          <QuarterlySales />
-        </div>
-        <div>
-          <h2>Most sales</h2>
-          <MostSales />
-        </div>
-
-        <div>
-          <h2>Most sales Catogory</h2>
-          <MostSalesCategory />
-        </div>
-        <div>
-          <h2>Most sales Month</h2>
-          <MostSalesMonth />
-        </div>
-        <div>
-          <h2>Customer Sales Report</h2>
-          <CustomerSalesReport />
-        </div>
-
+    <div className="admin-panel">
+      <aside className="side-menu">
+        <button className={activeTab === "quarterlySales" ? "active" : ""} onClick={() => setActiveTab("quarterlySales")}>
+          Quarterly Sales
+        </button>
+        <button className={activeTab === "mostSales" ? "active" : ""} onClick={() => setActiveTab("mostSales")}>
+          Most Sales
+        </button>
+        <button className={activeTab === "mostSalesCategory" ? "active" : ""} onClick={() => setActiveTab("mostSalesCategory")}>
+          Most Sales Category
+        </button>
+        <button className={activeTab === "mostSalesMonth" ? "active" : ""} onClick={() => setActiveTab("mostSalesMonth")}>
+          Most Sales Month
+        </button>
+        <button className={activeTab === "customerSalesReport" ? "active" : ""} onClick={() => setActiveTab("customerSalesReport")}>
+          Customer Sales Report
+        </button>
+      </aside>
+      <main className="content">{renderContent()}</main>
     </div>
   );
 }

@@ -1,5 +1,8 @@
-import React from "react";
-
+import React ,{useState} from "react";
+import { Bar } from 'react-chartjs-2';
+import "./index.css";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
     const salesData = [
 		{
@@ -64,30 +67,77 @@ import React from "react";
 		}
 	]
 
+	function MostSales() {
+		const productNames = salesData.map(product => product.title);
+		const totalSales = salesData.map(product => product.total_sales);
+		const [startDate, setStartDate] = useState(new Date());
+		const [endDate, setEndDate] = useState(new Date());
+	
+		const chartData = {
+			labels: productNames,
+			datasets: [{
+				data: totalSales,
+				backgroundColor: 'rgba(75,192,192,0.6)',
+				borderColor: 'rgba(75,192,192,1)',
+				borderWidth: 1,
+			}]
+		};
+	
+		const options = {
+			plugins: {
+				title: {
+					display: true,
+					text: 'Most Sales by Product'
+				},
+				legend: {
+					display: false
+				}
+			},
+			scales: {
+				y: {
+					beginAtZero: true
+				}
+			}
+		};
+	
+		return (
+			<div className="most-sales-container">
+			<div className="row">
+                <div className="col-md-4">
+                    <label>Start Date:</label>
+                        <DatePicker selected={startDate} onChange={date => setStartDate(date)} />
+                </div>
+                <div className="col-md-4">
+                    <label>End Date:</label>
+                    <DatePicker selected={endDate} onChange={date => setEndDate(date)} />
+                </div>
+                
+               
 
-function MostSales() {
-    return (
-        <div>
-            <table border="1" style={{ width: '80%', margin: '0 auto' }}>
-                <thead>
-                    <tr>
-                        <th>Title</th>
-                        <th>SKU</th>
-                        <th>Total Sales</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {salesData.map((product) => (
-                        <tr key={product.product_id}>
-                            <td>{product.title}</td>
-                            <td>{product.sku}</td>
-                            <td>{product.total_sales}</td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
-        </div>
-    );
-}
+            </div>
+			<table className="sales-table">
+					<thead>
+						<tr>
+							<th>Title</th>
+							<th>SKU</th>
+							<th>Total Sales</th>
+						</tr>
+					</thead>
+					<tbody>
+						{salesData.map((product) => (
+							<tr key={product.product_id}>
+								<td>{product.title}</td>
+								<td>{product.sku}</td>
+								<td>{product.total_sales}</td>
+							</tr>
+						))}
+					</tbody>
+				</table>
+				<Bar data={chartData} options={options} />
+	
 
-export default MostSales;
+			</div>
+		);
+	}
+	
+	export default MostSales;
