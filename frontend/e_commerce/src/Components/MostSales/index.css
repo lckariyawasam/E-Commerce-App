@@ -1,6 +1,6 @@
 .most-sales-container {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: left;
     padding: 20px;
 }

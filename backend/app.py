@@ -376,7 +376,31 @@ def admin():
         return return_value
 
     else:
-        return ("Incomplete Request")
+        return ("Incomplete Request", 401)
+    
+@app.route("/admin/most_sales", methods=["POST"])
+def most_sales():
+    data = request.get_json()
+    print(data)
+    if data.get("start_date") and data.get("end_date"):
+        cursor.execute("""
+            SELECT product_id, title, sum(quantity) as total_sales
+            FROM cart_item NATURAL JOIN variant JOIN product USING(product_id)
+            WHERE sold_date BETWEEN %s AND %s
+            GROUP BY product_id
+            ORDER BY total_sales DESC
+            LIMIT 10
+        """,
+        (data.get("start_date"), data.get("end_date")))
+
+        results = cursor.fetchall()
+        for result in results:
+            print(result) 
+
+        return (results, 200)
+    
+    else:
+        return ("Incomplete Request", 401)
     
 
 # For debugging purposes, do not run in production!
