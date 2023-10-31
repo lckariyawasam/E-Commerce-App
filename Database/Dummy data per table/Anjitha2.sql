@@ -80,41 +80,41 @@ VALUES
 -- Dolls Variants
 INSERT INTO Ecom_platform.Variant (Product_id, variant_attribute_value_1, variant_attribute_value_2, price, sku, icon)
 VALUES
-  (66, 'Fashion Model - Summer Style', 'Accessory Set', '9.99', 'DL001-FashionModelSummer', 'a*OTA1NDY0ODY3LjE2OTc3MjM2Mzc.*_ga_CW55HF8NVT*MTY5ODM3OTc5Ni4xMC4xLjE2OTgzNzk5MTQuNjAuMC4w'),
-  (66, 'Fashion Model - Summer Style', 'Accessory Set', '11.99', 'DL002-FashionModelSummer', '_ga*OTA1NDY0ODY3LjE2OTc3MjM2Mzc.*_ga_CW55HF8NVT*MTY5ODM3OTc5Ni4xMC4xLjE2OTgzNzk5MTQuNjAuMC4w'),
-  (67, 'Princess - Royal Gown', 'Accessory Set', '11.99', 'DL003-PrincessRoyalGown', 'A1NDY0ODY3LjE2OTc3MjM2Mzc.*_ga_CW55HF8NVT*MTY5ODM3OTc5Ni4xMC4xLjE2OTgzNzk5MTQuNjAuMC4w'),
-  (67, 'Princess - Royal Gown', 'Accessory Set', '13.99', 'DL004-PrincessRoyalGown', 'htt1NDY0ODY3LjE2OTc3MjM2Mzc.*_ga_CW55HF8NVT*MTY5ODM3OTc5Ni4xMC4xLjE2OTgzNzk5MTQuNjAuMC4w'),
-  (68, 'Mermaid - Underwater Adventure', 'Accessory Set', '10.99', 'DL005-MermaidAdventure', 'http*_ga*OTA1NDY0ODY3LjE2OTc3MjM2Mzc.*_ga_CW55HF8NVT*MTY5ODM3OTc5Ni4xMC4xLjE2OTgzNzk5MTQuNjAuMC4w'),
-  (68, 'Mermaid - Underwater Adventure', 'Accessory Set', '12.99', 'DL006-MermaidAdventure', 'htt_ga*OTA1NDY0ODY3LjE2OTc3MjM2Mzc.*_ga_CW55HF8NVT*MTY5ODM3OTc5Ni4xMC4xLjE2OTgzNzk5MTQuNjAuMC4w'),
-  (69, 'Pop Star - Stage Sensation', 'Accessory Set', '12.99', 'DL007-PopStarSensation', 'httOTA1NDY0ODY3LjE2OTc3MjM2Mzc.*_ga_CW55HF8NVT*MTY5ODM3OTc5Ni4xMC4xLjE2OTgzNzk5MTQuNjAuMC4w'),
-  (69, 'Pop Star - Stage Sensation', 'Accessory Set', '14.99', 'DL008-PopStarSensation', 'httga*OTA1NDY0ODY3LjE2OTc3MjM2Mzc.*_ga_CW55HF8NVT*MTY5ODM3OTc5Ni4xMC4xLjE2OTgzNzk5MTQuNjAuMC4w'),
-  (70, 'Fairy Tale - Enchanted Forest', 'Accessory Set', '8.99', 'DL009-FairyTaleForest', 'htt_ga*OTA1NDY0ODY3LjE2OTc3MjM2Mzc.*_ga_CW55HF8NVT*MTY5ODM3OTc5Ni4xMC4xLjE2OTgzNzk5MTQuNjAuMC4w'),
-  (70, 'Fairy Tale - Enchanted Forest', 'Accessory Set', '10.99', 'DL010-FairyTaleForest', 'httpsa*OTA1NDY0ODY3LjE2OTc3MjM2Mzc.*_ga_CW55HF8NVT*MTY5ODM3OTc5Ni4xMC4xLjE2OTgzNzk5MTQuNjAuMC4w');
+  (66, 'Fashion Model - Summer Style', 'Accessory Set', '9.99', 'DL001-FashionModelSummer', ''),
+  (66, 'Fashion Model - Summer Style', 'Accessory Set', '11.99', 'DL002-FashionModelSummer', ''),
+  (67, 'Princess - Royal Gown', 'Accessory Set', '11.99', 'DL003-PrincessRoyalGown', ''),
+  (67, 'Princess - Royal Gown', 'Accessory Set', '13.99', 'DL004-PrincessRoyalGown', ''),
+  (68, 'Mermaid - Underwater Adventure', 'Accessory Set', '10.99', 'DL005-MermaidAdventure', ''),
+  (68, 'Mermaid - Underwater Adventure', 'Accessory Set', '12.99', 'DL006-MermaidAdventure', ''),
+  (69, 'Pop Star - Stage Sensation', 'Accessory Set', '12.99', 'DL007-PopStarSensation', ''),
+  (69, 'Pop Star - Stage Sensation', 'Accessory Set', '14.99', 'DL008-PopStarSensation', ''),
+  (70, 'Fairy Tale - Enchanted Forest', 'Accessory Set', '8.99', 'DL009-FairyTaleForest', ''),
+  (70, 'Fairy Tale - Enchanted Forest', 'Accessory Set', '10.99', 'DL010-FairyTaleForest', '');
 
 -- Remote Control Toys Variants
 INSERT INTO Ecom_platform.Variant (Product_id, variant_attribute_value_1, variant_attribute_value_2, price, sku, icon)
 VALUES
-  (71, 'Racing Car - Speedster', '2.4GHz', '29.99', 'RC001-RacingCarSpeedster', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/0.png?alt=media&token=94d5c16a-ee74-42b7-93e7-535d4b725dc2&_gl=1*1i1s1k2*_ga*OTA1NDY0ODY3LjE2OTc3MjM2Mzc.*_ga_CW55HF8NVT*MTY5ODM3OTc5Ni4xMC4xLjE2OTgzNzk5MTQuNjAuMC4w'),
-  (71, 'Racing Car - Speedster', '2.4GHz', '31.99', 'RC002-RacingCarSpeedster', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/0.png?alt=media&token=94d5c16a-ee74-42b7-93e7-535d4b725dc2&_gl=1*1i1s1k2*_ga*OTA1NDY0ODY3LjE2OTc3MjM2Mzc.*_ga_CW55HF8NVT*MTY5ODM3OTc5Ni4xMC4xLjE2OTgzNzk5MTQuNjAuMC4w'),
-  (72, 'Helicopter - Sky Master', '2.4GHz', '39.99', 'RC003-HelicopterSkyMaster', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/0.png?alt=media&token=94d5c16a-ee74-42b7-93e7-535d4b725dc2&_gl=1*1i1s1k2*_ga*OTA1NDY0ODY3LjE2OTc3MjM2Mzc.*_ga_CW55HF8NVT*MTY5ODM3OTc5Ni4xMC4xLjE2OTgzNzk5MTQuNjAuMC4w'),
-  (72, 'Helicopter - Sky Master', '2.4GHz', '41.99', 'RC004-HelicopterSkyMaster', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/0.png?alt=media&token=94d5c16a-ee74-42b7-93e7-535d4b725dc2&_gl=1*1i1s1k2*_ga*OTA1NDY0ODY3LjE2OTc3MjM2Mzc.*_ga_CW55HF8NVT*MTY5ODM3OTc5Ni4xMC4xLjE2OTgzNzk5MTQuNjAuMC4w'),
-  (73, 'Boat - Aquatic Voyager', '2.4GHz', '35.99', 'RC005-BoatAquaticVoyager', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/0.png?alt=media&token=94d5c16a-ee74-42b7-93e7-535d4b725dc2&_gl=1*1i1s1k2*_ga*OTA1NDY0ODY3LjE2OTc3MjM2Mzc.*_ga_CW55HF8NVT*MTY5ODM3OTc5Ni4xMC4xLjE2OTgzNzk5MTQuNjAuMC4w'),
-  (73, 'Boat - Aquatic Voyager', '2.4GHz', '37.99', 'RC006-BoatAquaticVoyager', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/0.png?alt=media&token=94d5c16a-ee74-42b7-93e7-535d4b725dc2&_gl=1*1i1s1k2*_ga*OTA1NDY0ODY3LjE2OTc3MjM2Mzc.*_ga_CW55HF8NVT*MTY5ODM3OTc5Ni4xMC4xLjE2OTgzNzk5MTQuNjAuMC4w'),
-  (74, 'Drone - Aerial Explorer', '2.4GHz', '49.99', 'RC007-DroneAerialExplorer', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/0.png?alt=media&token=94d5c16a-ee74-42b7-93e7-535d4b725dc2&_gl=1*1i1s1k2*_ga*OTA1NDY0ODY3LjE2OTc3MjM2Mzc.*_ga_CW55HF8NVT*MTY5ODM3OTc5Ni4xMC4xLjE2OTgzNzk5MTQuNjAuMC4w'),
-  (74, 'Drone - Aerial Explorer', '2.4GHz', '51.99', 'RC008-DroneAerialExplorer', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/0.png?alt=media&token=94d5c16a-ee74-42b7-93e7-535d4b725dc2&_gl=1*1i1s1k2*_ga*OTA1NDY0ODY3LjE2OTc3MjM2Mzc.*_ga_CW55HF8NVT*MTY5ODM3OTc5Ni4xMC4xLjE2OTgzNzk5MTQuNjAuMC4w'),
-  (75, 'Monster Truck - Off-Road Racer', '2.4GHz', '45.99', 'RC009-MonsterTruckRacer', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/0.png?alt=media&token=94d5c16a-ee74-42b7-93e7-535d4b725dc2&_gl=1*1i1s1k2*_ga*OTA1NDY0ODY3LjE2OTc3MjM2Mzc.*_ga_CW55HF8NVT*MTY5ODM3OTc5Ni4xMC4xLjE2OTgzNzk5MTQuNjAuMC4w'),
-  (75, 'Monster Truck - Off-Road Racer', '2.4GHz', '47.99', 'RC010-MonsterTruckRacer', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/0.png?alt=media&token=94d5c16a-ee74-42b7-93e7-535d4b725dc2&_gl=1*1i1s1k2*_ga*OTA1NDY0ODY3LjE2OTc3MjM2Mzc.*_ga_CW55HF8NVT*MTY5ODM3OTc5Ni4xMC4xLjE2OTgzNzk5MTQuNjAuMC4w');
+  (71, 'Racing Car - Speedster', '2.4GHz', '29.99', 'RC001-RacingCarSpeedster', ''),
+  (71, 'Racing Car - Speedster', '2.4GHz', '31.99', 'RC002-RacingCarSpeedster', ''),
+  (72, 'Helicopter - Sky Master', '2.4GHz', '39.99', 'RC003-HelicopterSkyMaster', ''),
+  (72, 'Helicopter - Sky Master', '2.4GHz', '41.99', 'RC004-HelicopterSkyMaster', ''),
+  (73, 'Boat - Aquatic Voyager', '2.4GHz', '35.99', 'RC005-BoatAquaticVoyager', ''),
+  (73, 'Boat - Aquatic Voyager', '2.4GHz', '37.99', 'RC006-BoatAquaticVoyager', ''),
+  (74, 'Drone - Aerial Explorer', '2.4GHz', '49.99', 'RC007-DroneAerialExplorer', ''),
+  (74, 'Drone - Aerial Explorer', '2.4GHz', '51.99', 'RC008-DroneAerialExplorer', ''),
+  (75, 'Monster Truck - Off-Road Racer', '2.4GHz', '45.99', 'RC009-MonsterTruckRacer', ''),
+  (75, 'Monster Truck - Off-Road Racer', '2.4GHz', '47.99', 'RC010-MonsterTruckRacer', '');
   
   -- Educational Toys Variants
 INSERT INTO Ecom_platform.Variant (Product_id, variant_attribute_value_1, variant_attribute_value_2, price, sku, icon)
 VALUES
-  (76, 'Science Lab Kit - Chemistry Edition', 'Ages 8+', '39.99', 'ET001-ScienceLabChemistry', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/0.png?alt=media&token=94d5c16a-ee74-42b7-93e7-535d4b725dc2&_gl=1*1i1s1k2*_ga*OTA1NDY0ODY3LjE2OTc3MjM2Mzc.*_ga_CW55HF8NVT*MTY5ODM3OTc5Ni4xMC4xLjE2OTgzNzk5MTQuNjAuMC4w'),
-  (76, 'Science Lab Kit - Chemistry Edition', 'Ages 8+', '42.99', 'ET002-ScienceLabChemistry', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/0.png?alt=media&token=94d5c16a-ee74-42b7-93e7-535d4b725dc2&_gl=1*1i1s1k2*_ga*OTA1NDY0ODY3LjE2OTc3MjM2Mzc.*_ga_CW55HF8NVT*MTY5ODM3OTc5Ni4xMC4xLjE2OTgzNzk5MTQuNjAuMC4w'),
-  (77, 'Robotic Building Kit - STEM Explorer', 'Ages 10+', '49.99', 'ET003-RoboticBuildingSTEM', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/0.png?alt=media&token=94d5c16a-ee74-42b7-93e7-535d4b725dc2&_gl=1*1i1s1k2*_ga*OTA1NDY0ODY3LjE2OTc3MjM2Mzc.*_ga_CW55HF8NVT*MTY5ODM3OTc5Ni4xMC4xLjE2OTgzNzk5MTQuNjAuMC4w'),
-  (77, 'Robotic Building Kit - STEM Explorer', 'Ages 10+', '52.99', 'ET004-RoboticBuildingSTEM', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/0.png?alt=media&token=94d5c16a-ee74-42b7-93e7-535d4b725dc2&_gl=1*1i1s1k2*_ga*OTA1NDY0ODY3LjE2OTc3MjM2Mzc.*_ga_CW55HF8NVT*MTY5ODM3OTc5Ni4xMC4xLjE2OTgzNzk5MTQuNjAuMC4w'),
-  (78, 'Math Puzzles Set - Number Cruncher', 'Ages 6+', '19.99', 'ET005-MathPuzzlesNumberCruncher', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/0.png?alt=media&token=94d5c16a-ee74-42b7-93e7-535d4b725dc2&_gl=1*1i1s1k2*_ga*OTA1NDY0ODY3LjE2OTc3MjM2Mzc.*_ga_CW55HF8NVT*MTY5ODM3OTc5Ni4xMC4xLjE2OTgzNzk5MTQuNjAuMC4w'),
-  (78, 'Math Puzzles Set - Number Cruncher', 'Ages 6+', '21.99', 'ET006-MathPuzzlesNumberCruncher', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/0.png?alt=media&token=94d5c16a-ee74-42b7-93e7-535d4b725dc2&_gl=1*1i1s1k2*_ga*OTA1NDY0ODY3LjE2OTc3MjM2Mzc.*_ga_CW55HF8NVT*MTY5ODM3OTc5Ni4xMC4xLjE2OTgzNzk5MTQuNjAuMC4w'),
-  (79, 'Geography Explorer Globe', 'Ages 7+', '24.99', 'ET007-GeographyExplorerGlobe', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/0.png?alt=media&token=94d5c16a-ee74-42b7-93e7-535d4b725dc2&_gl=1*1i1s1k2*_ga*OTA1NDY0ODY3LjE2OTc3MjM2Mzc.*_ga_CW55HF8NVT*MTY5ODM3OTc5Ni4xMC4xLjE2OTgzNzk5MTQuNjAuMC4w'),
-  (79, 'Geography Explorer Globe', 'Ages 7+', '26.99', 'ET008-GeographyExplorerGlobe', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/0.png?alt=media&token=94d5c16a-ee74-42b7-93e7-535d4b725dc2&_gl=1*1i1s1k2*_ga*OTA1NDY0ODY3LjE2OTc3MjM2Mzc.*_ga_CW55HF8NVT*MTY5ODM3OTc5Ni4xMC4xLjE2OTgzNzk5MTQuNjAuMC4w'),
-  (80, 'Solar System Planetarium Kit', 'Ages 9+', '29.99', 'ET009-SolarSystemPlanetarium', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/0.png?alt=media&token=94d5c16a-ee74-42b7-93e7-535d4b725dc2&_gl=1*1i1s1k2*_ga*OTA1NDY0ODY3LjE2OTc3MjM2Mzc.*_ga_CW55HF8NVT*MTY5ODM3OTc5Ni4xMC4xLjE2OTgzNzk5MTQuNjAuMC4w'),
-  (80, 'Solar System Planetarium Kit', 'Ages 9+', '31.99', 'ET010-SolarSystemPlanetarium', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/0.png?alt=media&token=94d5c16a-ee74-42b7-93e7-535d4b725dc2&_gl=1*1i1s1k2*_ga*OTA1NDY0ODY3LjE2OTc3MjM2Mzc.*_ga_CW55HF8NVT*MTY5ODM3OTc5Ni4xMC4xLjE2OTgzNzk5MTQuNjAuMC4w');
+  (76, 'Science Lab Kit - Chemistry Edition', 'Ages 8+', '39.99', 'ET001-ScienceLabChemistry', ''),
+  (76, 'Science Lab Kit - Chemistry Edition', 'Ages 8+', '42.99', 'ET002-ScienceLabChemistry', ''),
+  (77, 'Robotic Building Kit - STEM Explorer', 'Ages 10+', '49.99', 'ET003-RoboticBuildingSTEM', ''),
+  (77, 'Robotic Building Kit - STEM Explorer', 'Ages 10+', '52.99', 'ET004-RoboticBuildingSTEM', ''),
+  (78, 'Math Puzzles Set - Number Cruncher', 'Ages 6+', '19.99', 'ET005-MathPuzzlesNumberCruncher', ''),
+  (78, 'Math Puzzles Set - Number Cruncher', 'Ages 6+', '21.99', 'ET006-MathPuzzlesNumberCruncher', ''),
+  (79, 'Geography Explorer Globe', 'Ages 7+', '24.99', 'ET007-GeographyExplorerGlobe', ''),
+  (79, 'Geography Explorer Globe', 'Ages 7+', '26.99', 'ET008-GeographyExplorerGlobe', ''),
+  (80, 'Solar System Planetarium Kit', 'Ages 9+', '29.99', 'ET009-SolarSystemPlanetarium', ''),
+  (80, 'Solar System Planetarium Kit', 'Ages 9+', '31.99', 'ET010-SolarSystemPlanetarium', '');
