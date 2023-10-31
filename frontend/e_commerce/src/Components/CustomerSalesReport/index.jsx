@@ -37,7 +37,7 @@ import "./index.css";
     
         return (
             <div>
-                <SearchBar isStrictSelection={true} onProductSelected={handleOrderSelection} />
+                <SearchBar isStrictSelection={true} onProductSelected={handleOrderSelection} dataBase={"users"} />
                 
                 {selectedOrder ? (
                     <table className="sales-table">
