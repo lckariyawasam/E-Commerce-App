@@ -362,6 +362,23 @@ def update_user():
         return ("Incomplete Request", 401)
     
 
+@app.route("/admin/quarterly_report", methods=["POST"])
+def admin():
+    data = request.get_json()
+    if (data.get("year")):
+        year = data.get("year")
+        cursor.callproc("quarterly_sales_reports_for_year", (year,))
+        for result in cursor.stored_results():
+            return_value = result.fetchall()
+            print(return_value)
+            break
+
+        return return_value
+
+    else:
+        return ("Incomplete Request")
+    
+
 # For debugging purposes, do not run in production!
 if __name__ == '__main__':
     from werkzeug.serving import run_simple

@@ -1,30 +1,37 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Bar } from 'react-chartjs-2';
 import "./index.css";
 
-const salesData =  [
-    {
-        "Quarter": "Q1",
-        "Total Sales": 57379.31
-    },
-    {
-        "Quarter": "Q2",
-        "Total Sales": 3447.31
-    },
-    {
-        "Quarter": "Q3",
-        "Total Sales": 379989.31
-    },
-    {
-        "Quarter": "Q4",
-        "Total Sales": 14779.31
-    }
-];
+import axios from 'axios'
+
+// const salesData =  [
+//     {
+//         "Quarter": "Q1",
+//         "Total Sales": 57379.31
+//     },
+//     {
+//         "Quarter": "Q2",
+//         "Total Sales": 3447.31
+//     },
+//     {
+//         "Quarter": "Q3",
+//         "Total Sales": 379989.31
+//     },
+//     {
+//         "Quarter": "Q4",
+//         "Total Sales": 14779.31
+//     }
+// ];
+
 
 function QuarterlySales() {
-    const quarters = salesData.map(item => item.Quarter);
-    const totalSales = salesData.map(item => item["Total Sales"]);
+    const [salesData, setSalesData] = useState([])
+    const [quarters, setQuarters] = useState([])
+    const [totalSales, setTotalSales] = useState([])
 
+    const [year, setYear] = useState(2023)
+
+    
     const chartData = {
         labels: quarters,
         datasets: [{
@@ -34,11 +41,11 @@ function QuarterlySales() {
             borderWidth: 1,
         }]
     };
-
+    
     const options = {
         plugins: {
             title: {
-                display: true,
+                display: false,
                 text: 'Quarterly Sales'
             },
             legend: {
@@ -55,8 +62,51 @@ function QuarterlySales() {
         }
     };
 
+    const loadData = () => {
+        axios.post("http://localhost:5000/admin/quarterly_report",
+        {
+            "year": year
+        },
+        {
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            withCredentials: true,
+        })
+        .then(res => {
+            console.log(res)
+            setSalesData(res.data)
+        })
+        .catch(err => {
+            console.log(err)
+        })
+    }
+    
+    useEffect(() => {
+        loadData()
+    }, [])
+
+    useEffect(() => {
+        setQuarters(salesData.map(item => item.Quarter))
+        setTotalSales(salesData.map(item => parseFloat(item["Total Sales"])))
+        console.log("Sales data: ", salesData)
+    }, [salesData])
+
+    useEffect(() => {
+        loadData()
+    }, [year])
+
+
     return (
         <div className="quarterly-sales-container">
+            <h2>Quarterly Sales</h2>
+            <span><label htmlFor="year">Select Year</label></span>
+            <select className="year-field" name="year" id="" value={year} onChange={e => setYear(e.target.value)}>
+                <option value="2021">2021</option>
+                <option value="2022">2022</option>
+                <option value="2023">2023</option>
+            </select>
 
 
             <table className="sales-table">
@@ -76,7 +126,7 @@ function QuarterlySales() {
                 </tbody>
             </table>
 
-            <Bar data={chartData} options={options} />
+            <Bar style={{marginTop:100}} data={chartData} options={options} />
         </div>
     );
 }
