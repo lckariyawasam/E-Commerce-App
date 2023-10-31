@@ -103,7 +103,7 @@ function MostOrderedCategories() {
                 </thead>
                 <tbody>
                     {salesData.map((item, index) => (
-                        <tr key={item.category} style={item.orderCount == maxOrders ? { backgroundColor: '#e6ffe6' } : {}}>
+                        <tr key={item.category} style={parseInt(item.orderCount) === maxOrders ? { backgroundColor: '#e6ffe6' } : {}}>
                             <td>{item.category}</td>
                             <td>{item.orderCount}</td>
                         </tr>
