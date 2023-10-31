@@ -7,7 +7,8 @@ import ProductsGrid from '../../Components/ProductsGrid';
 
 const HomePage = () => {
 
-    const [products, setProducts] = useState([]);
+    const [electronics, setElectronics] = useState([]);
+    const [toys, setToys] = useState([]);
     const userIsLoggedIn = true;
 
     const loadProducts = () => {
@@ -20,7 +21,13 @@ const HomePage = () => {
       })
       .then(res => {
           console.log(res.data)
-          setProducts(res.data)
+          if (res.data["Electronics"]) {
+            setElectronics(res.data["Electronics"])
+          }
+
+          if (res.data["Toys"]) {
+            setToys(res.data["Toys"])
+          }
 
       })
       .catch(err => console.log(err))
@@ -104,7 +111,13 @@ const HomePage = () => {
                 <h2>Recommendations</h2>
               </div>
               <div className="card-body">
-                <ProductsGrid products={products} />
+                <ProductsGrid products={electronics} />
+              </div>
+              <div className="card-header">
+                <h2>Toys</h2>
+              </div>
+              <div className="card-body">
+                <ProductsGrid products={toys} />
               </div>
             </div>
                   

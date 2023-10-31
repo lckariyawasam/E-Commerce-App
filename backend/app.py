@@ -130,15 +130,44 @@ def logout():
 @app.route('/products')
 def products():
     # Query the database for all products
-    cursor.execute("SELECT * FROM product")
-    result = cursor.fetchall()
+    # cursor.execute("SELECT * FROM product")
+    cursor.execute("""
+        SELECT product_id, title, c.name as category, c2.name as parent_category 
+        FROM product NATURAL JOIN product_sub_category 
+        JOIN category c USING(category_id) 
+        JOIN category c2 ON c.parent_category_id = c2.category_id
+        LIMIT 9
+        """
+    )
+    results = cursor.fetchall()
 
-    return result
+    categoriesed_results = {}
+    
+    for result in results:
+        if result["parent_category"] not in categoriesed_results:
+            categoriesed_results[result["parent_category"]] = []
+        categoriesed_results[result["parent_category"]].append(result)
+
+        if result["category"] not in categoriesed_results:
+            categoriesed_results[result["category"]] = []
+        categoriesed_results[result["category"]].append(result)
+
+    return categoriesed_results
 
 @app.route('/products/<string:category>')
 def products_by_category(category):
     # Query the database for all products
-    cursor.execute("SELECT * FROM (product NATURAL JOIN product_sub_category) JOIN category using(category_id) WHERE category.name = %s", (category,))
+    # cursor.execute("SELECT * FROM (product NATURAL JOIN product_sub_category) JOIN category using(category_id) WHERE category.name = %s", (category,))
+    cursor.execute("""
+            SELECT product_id, title, c.name as category, c2.name as parent_category 
+            FROM product NATURAL JOIN product_sub_category 
+	        JOIN category c USING(category_id) 
+	        JOIN category c2 ON c.parent_category_id = c2.category_id
+            WHERE c2.name = %s OR c.name = %s
+            LIMIT 9
+        """,
+        (category, category))
+    
     result = cursor.fetchall()
 
     return result
