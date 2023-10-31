@@ -52,30 +52,30 @@ VALUES
 -- Action Figures Variants
 INSERT INTO Ecom_platform.Variant (Product_id, variant_attribute_value_1, variant_attribute_value_2, price, sku, icon)
 VALUES
-  (56, 'Red Racer', 'Small', '9.99', 'TC001-RedRacerSmall', ''),
-  (56, 'Red Racer', 'Large', '14.99', 'TC002-RedRacerLarge', ''),
-  (57, 'Blue Cruiser', 'Small', '10.99', 'TC003-BlueCruiserSmall', ''),
-  (57, 'Blue Cruiser', 'Large', '15.99', 'TC004-BlueCruiserLarge', '');
-  (58, 'Safari Adventure', 'Small', '12.99', 'TJ001-SafariSmall', ''),
-  (58, 'Safari Adventure', 'Large', '17.99', 'TJ002-SafariLarge', '');
-  (59, 'Rescue Chopper', 'Small', '11.99', 'TH001-RescueSmall', ''),
-  (59, 'Rescue Chopper', 'Large', '16.99', 'TH002-RescueLarge', ''),
-  (60, 'Police Pursuit', 'Small', '12.99', 'TH003-PoliceSmall', ''),
-  (60, 'Police Pursuit', 'Large', '17.99', 'TH004-PoliceLarge', '');
+  (56, 'Red Racer', 'Small', '9.99', 'TC001-RedRacerSmall', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/111.jpg?alt=media&token=5238bf0b-5640-446f-b75a-15feecf7918a&_gl=1*1ndk6t7*_ga*Nzk0MzkyMTY2LjE2OTgxMzI1MTY.*_ga_CW55HF8NVT*MTY5ODc0Njc2Ny41LjAuMTY5ODc0Njc2Ny42MC4wLjA.'),
+  (56, 'Red Racer', 'Large', '14.99', 'TC002-RedRacerLarge', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/112.jpg?alt=media&token=c93a8cd8-7769-4b44-96ba-a740acca12f1&_gl=1*1pi0i8x*_ga*Nzk0MzkyMTY2LjE2OTgxMzI1MTY.*_ga_CW55HF8NVT*MTY5ODc0Njc2Ny41LjEuMTY5ODc0Njc3NC41My4wLjA.'),
+  (57, 'Blue Cruiser', 'Small', '10.99', 'TC003-BlueCruiserSmall', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/113.jpg?alt=media&token=6108f7d7-7526-448e-aa77-1bf6227fef33&_gl=1*lukne1*_ga*Nzk0MzkyMTY2LjE2OTgxMzI1MTY.*_ga_CW55HF8NVT*MTY5ODc0Njc2Ny41LjEuMTY5ODc0Njc4MC40Ny4wLjA.'),
+  (57, 'Blue Cruiser', 'Large', '15.99', 'TC004-BlueCruiserLarge', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/114.jpg?alt=media&token=2410efbc-4ac3-4c36-b00c-1891d03d0f2a&_gl=1*1rf4xrl*_ga*Nzk0MzkyMTY2LjE2OTgxMzI1MTY.*_ga_CW55HF8NVT*MTY5ODc0Njc2Ny41LjEuMTY5ODc0NjgyNi4xLjAuMA..');
+  (58, 'Safari Adventure', 'Small', '12.99', 'TJ001-SafariSmall', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/115.jpg?alt=media&token=3fae24c2-0b13-4dcb-be3b-4aea73849216&_gl=1*wzcg75*_ga*Nzk0MzkyMTY2LjE2OTgxMzI1MTY.*_ga_CW55HF8NVT*MTY5ODc0Njc2Ny41LjEuMTY5ODc0NjgzMS42MC4wLjA.'),
+  (58, 'Safari Adventure', 'Large', '17.99', 'TJ002-SafariLarge', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/116.jpg?alt=media&token=289326d5-30f3-4281-af11-15e8f43045a8&_gl=1*5qbgn4*_ga*Nzk0MzkyMTY2LjE2OTgxMzI1MTY.*_ga_CW55HF8NVT*MTY5ODc0Njc2Ny41LjEuMTY5ODc0NjgzNC41Ny4wLjA.');
+  (59, 'Rescue Chopper', 'Small', '11.99', 'TH001-RescueSmall', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/117.jpg?alt=media&token=218c71fd-8f7d-4471-baa2-0514edf9bd85&_gl=1*1me1z7o*_ga*Nzk0MzkyMTY2LjE2OTgxMzI1MTY.*_ga_CW55HF8NVT*MTY5ODc0Njc2Ny41LjEuMTY5ODc0NjgzNy41NC4wLjA.'),
+  (59, 'Rescue Chopper', 'Large', '16.99', 'TH002-RescueLarge', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/118.jpg?alt=media&token=c4cb5748-3238-40fc-aa4a-aad677ad9bc3&_gl=1*1jmsxmx*_ga*Nzk0MzkyMTY2LjE2OTgxMzI1MTY.*_ga_CW55HF8NVT*MTY5ODc0Njc2Ny41LjEuMTY5ODc0Njg0MS41MC4wLjA.'),
+  (60, 'Police Pursuit', 'Small', '12.99', 'TH003-PoliceSmall', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/119.jpg?alt=media&token=362731b1-390c-4520-af0a-61786b7912ee&_gl=1*12ttxsf*_ga*Nzk0MzkyMTY2LjE2OTgxMzI1MTY.*_ga_CW55HF8NVT*MTY5ODc0Njc2Ny41LjEuMTY5ODc0Njg0Ni40NS4wLjA.'),
+  (60, 'Police Pursuit', 'Large', '17.99', 'TH004-PoliceLarge', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/120.jpg?alt=media&token=24bc866a-df3a-4572-bbbf-e0f147609875&_gl=1*v0heew*_ga*Nzk0MzkyMTY2LjE2OTgxMzI1MTY.*_ga_CW55HF8NVT*MTY5ODc0Njc2Ny41LjEuMTY5ODc0Njg1My4zOC4wLjA.');
   
 -- Board Games Variants
 INSERT INTO Ecom_platform.Variant (Product_id, variant_attribute_value_1, variant_attribute_value_2, price, sku, icon)
 VALUES
-  (61, 'Laser Shooter', 'Red', '7.99', 'TW001-LaserRed', ''),
-  (61, 'Laser Shooter', 'Blue', '7.99', 'TW002-LaserBlue', ''),
-  (62, 'Knight\'s Weapon', 'Silver', '9.99', 'TW003-SwordSilver', ''),
-  (62, 'Knight\'s Weapon', 'Gold', '9.99', 'TW004-SwordGold', '');
-  (63, 'Dinosaur World', '2-5 Players', '32.99', 'BG005-DinosaurWorld', ''),
-  (63, 'Dinosaur World', '2-5 Players', '37.99', 'BG006-DinosaurWorld', ''),
-  (64, 'Pirates Treasure', '2-4 Players', '28.99', 'BG007-PiratesTreasure', ''),
-  (64, 'Pirates Treasure', '2-4 Players', '33.99', 'BG008-PiratesTreasure', ''),
-  (65, 'Fantasy Quest', '2-6 Players', '31.99', 'BG009-FantasyQuest', ''),
-  (65, 'Fantasy Quest', '2-6 Players', '36.99', 'BG010-FantasyQuest', '');
+  (61, 'Laser Shooter', 'Red', '7.99', 'TW001-LaserRed', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/121.jpg?alt=media&token=c6d4fd51-77f6-463e-bd80-875f3942518d&_gl=1*13dibzu*_ga*Nzk0MzkyMTY2LjE2OTgxMzI1MTY.*_ga_CW55HF8NVT*MTY5ODc0Njc2Ny41LjEuMTY5ODc0Njk0OC42MC4wLjA.'),
+  (61, 'Laser Shooter', 'Blue', '7.99', 'TW002-LaserBlue', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/122.jpg?alt=media&token=ca91662c-cb4a-45a1-9726-59844067f9b6&_gl=1*1b67pj*_ga*Nzk0MzkyMTY2LjE2OTgxMzI1MTY.*_ga_CW55HF8NVT*MTY5ODc0Njc2Ny41LjEuMTY5ODc0Njk1Mi41Ni4wLjA.'),
+  (62, 'Knight\'s Weapon', 'Silver', '9.99', 'TW003-SwordSilver', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/123.jpg?alt=media&token=314a57d8-5bd3-45b6-9923-1aeadb8b1088&_gl=1*1ydqx04*_ga*Nzk0MzkyMTY2LjE2OTgxMzI1MTY.*_ga_CW55HF8NVT*MTY5ODc0Njc2Ny41LjEuMTY5ODc0Njk1Ni41Mi4wLjA.'),
+  (62, 'Knight\'s Weapon', 'Gold', '9.99', 'TW004-SwordGold', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/124.jpg?alt=media&token=74a45fc3-8608-4a7d-8e03-79eab85a8acc&_gl=1*1w4ersx*_ga*Nzk0MzkyMTY2LjE2OTgxMzI1MTY.*_ga_CW55HF8NVT*MTY5ODc0Njc2Ny41LjEuMTY5ODc0Njk1OS40OS4wLjA.');
+  (63, 'Dinosaur World', '2-5 Players', '32.99', 'BG005-DinosaurWorld', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/125.jpg?alt=media&token=cea8a379-acc1-4f9c-9522-0a361fc91ddc&_gl=1*3l3o4d*_ga*Nzk0MzkyMTY2LjE2OTgxMzI1MTY.*_ga_CW55HF8NVT*MTY5ODc0Njc2Ny41LjEuMTY5ODc0Njk2My40NS4wLjA.'),
+  (63, 'Dinosaur World', '2-5 Players', '37.99', 'BG006-DinosaurWorld', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/126.jpg?alt=media&token=e1147672-ad23-4cdd-a194-3be85e5fabcb&_gl=1*1i6fvnb*_ga*Nzk0MzkyMTY2LjE2OTgxMzI1MTY.*_ga_CW55HF8NVT*MTY5ODc0Njc2Ny41LjEuMTY5ODc0Njk2OC40MC4wLjA.'),
+  (64, 'Pirates Treasure', '2-4 Players', '28.99', 'BG007-PiratesTreasure', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/127.jpg?alt=media&token=f3bf9cf2-d8a5-4b3b-ae0b-64b8d0e8ab39&_gl=1*fkrl06*_ga*Nzk0MzkyMTY2LjE2OTgxMzI1MTY.*_ga_CW55HF8NVT*MTY5ODc0Njc2Ny41LjEuMTY5ODc0Njk3Mi4zNi4wLjA.'),
+  (64, 'Pirates Treasure', '2-4 Players', '33.99', 'BG008-PiratesTreasure', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/128.jpg?alt=media&token=dc352ee6-aba6-4dcc-a90b-10f4d625821d&_gl=1*u0ehqr*_ga*Nzk0MzkyMTY2LjE2OTgxMzI1MTY.*_ga_CW55HF8NVT*MTY5ODc0Njc2Ny41LjEuMTY5ODc0Njk3NS4zMy4wLjA.'),
+  (65, 'Fantasy Quest', '2-6 Players', '31.99', 'BG009-FantasyQuest', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/129.jpg?alt=media&token=d019933d-2159-42f8-b679-06c66971980d&_gl=1*1scibti*_ga*Nzk0MzkyMTY2LjE2OTgxMzI1MTY.*_ga_CW55HF8NVT*MTY5ODc0Njc2Ny41LjEuMTY5ODc0Njk3OS4yOS4wLjA.'),
+  (65, 'Fantasy Quest', '2-6 Players', '36.99', 'BG010-FantasyQuest', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/130.jpg?alt=media&token=68927ad1-1f85-44a8-879a-8c7ef1c170f2&_gl=1*1bcmbe*_ga*Nzk0MzkyMTY2LjE2OTgxMzI1MTY.*_ga_CW55HF8NVT*MTY5ODc0Njc2Ny41LjEuMTY5ODc0Njk4NC4yNC4wLjA.');
   
 -- Dolls Variants
 INSERT INTO Ecom_platform.Variant (Product_id, variant_attribute_value_1, variant_attribute_value_2, price, sku, icon)
