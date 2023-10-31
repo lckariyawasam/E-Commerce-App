@@ -402,6 +402,35 @@ def most_sales():
     else:
         return ("Incomplete Request", 401)
     
+@app.route("/admin/most_orders_category", methods=["POST"])
+def most_orders_category():
+    data = request.get_json()
+    print(data)
+    if data.get("start_date") and data.get("end_date"):
+        cursor.execute("""
+            SELECT psc.category_id, name as category, SUM(ci.quantity) as orderCount
+            FROM Cart_Item ci
+            INNER JOIN Variant v ON ci.variant_id = v.variant_id
+            INNER JOIN Product p ON p.product_id = v.product_id
+            INNER JOIN product_sub_category psc ON psc.product_id = p.product_id
+            INNER JOIN Category c ON c.category_id = psc.category_id
+            WHERE c.parent_category_id IS NOT NULL
+            AND sold_date BETWEEN %s AND %s
+            GROUP BY psc.category_id
+            ORDER BY SUM(ci.quantity) DESC
+            LIMIT 5
+        """,
+        (data.get("start_date"), data.get("end_date")))
+
+        results = cursor.fetchall()
+        for result in results:
+            print(result) 
+
+        return (results, 200)
+    
+    else:
+        return ("Incomplete Request", 401)
+    
 
 # For debugging purposes, do not run in production!
 if __name__ == '__main__':

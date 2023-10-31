@@ -73,8 +73,10 @@ import axios from 'axios'
 		const [productNames, setProductNames] = useState([])
 		const [totalSales, setTotalSales] = useState([])
 
-		const [startDate, setStartDate] = useState(new Date());
 		const [endDate, setEndDate] = useState(new Date());
+		const oneWeekAgo = new Date();
+		oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
+		const [startDate, setStartDate] = useState(oneWeekAgo);
 
 		const [salesData, setSalesData] = useState([])
 	

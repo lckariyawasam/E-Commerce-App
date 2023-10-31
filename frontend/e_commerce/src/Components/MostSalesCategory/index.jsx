@@ -1,21 +1,29 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Bar } from 'react-chartjs-2';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
+import axios from 'axios'
+import { max } from "date-fns";
+
 function MostOrderedCategories() {
-    const [startDate, setStartDate] = useState(new Date());
     const [endDate, setEndDate] = useState(new Date());
+    const oneWeekAgo = new Date();
+    oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
+    const [startDate, setStartDate] = useState(oneWeekAgo);
 
-    const categories = ['Electronics', 'Clothing', 'Home Appliances', 'Books'];
-    const orderCounts = [150, 90, 65, 120];  // Dummy data for number of orders
 
-    const maxOrders = Math.max(...orderCounts);
+    const [salesData, setSalesData] = useState([])
+
+    // const categories = ['Electronics', 'Clothing', 'Home Appliances', 'Books'];
+    // const orderCounts = [150, 90, 65, 120];  // Dummy data for number of orders
+
+    const [maxOrders, setMaxOrders] = useState(Math.max(salesData.map(sale => sale.orderCount)))
 
     const chartData = {
-        labels: categories,
+        labels: salesData.map(sale => sale.category),
         datasets: [{
-            data: orderCounts,
+            data: salesData.map(sale => sale.orderCount),
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
@@ -32,6 +40,39 @@ function MostOrderedCategories() {
         } 
     ]
     };
+
+
+    const loadData = () => {
+        axios.post("http://localhost:5000/admin/most_orders_category",
+        {
+            "start_date": startDate,
+            "end_date": endDate
+        },
+        {
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            withCredentials: true,
+        })
+        .then(res => {
+            console.log(res.data)
+            setSalesData(res.data)
+        })
+        .catch(err => {
+            console.log(err)
+        })
+    }
+
+    useEffect(loadData, [])
+
+    useEffect(loadData, [startDate, endDate])
+
+    useEffect(() => {
+        setMaxOrders(Math.max(...salesData.map(sale => sale.orderCount)))
+    }, [salesData])
+
+    useEffect(() => console.log(maxOrders), [maxOrders])
 
     return (
         <div style={{ width: '80%', margin: '0 auto', padding: '20px' }}>
@@ -61,10 +102,10 @@ function MostOrderedCategories() {
                     </tr>
                 </thead>
                 <tbody>
-                    {categories.map((category, index) => (
-                        <tr key={category} style={orderCounts[index] === maxOrders ? { backgroundColor: '#e6ffe6' } : {}}>
-                            <td>{category}</td>
-                            <td>{orderCounts[index]}</td>
+                    {salesData.map((item, index) => (
+                        <tr key={item.category} style={item.orderCount == maxOrders ? { backgroundColor: '#e6ffe6' } : {}}>
+                            <td>{item.category}</td>
+                            <td>{item.orderCount}</td>
                         </tr>
                     ))}
                 </tbody>
