@@ -331,7 +331,7 @@ BEGIN
 	INNER JOIN Product p
 		ON p.product_id = v.product_id
     WHERE ci.sold_date BETWEEN start_date_param AND end_date_param
-    GROUP BY ci.variant_id
+    GROUP BY v.product_id, v.sku
     ORDER BY total_sales DESC
     LIMIT 10; 
 END //
