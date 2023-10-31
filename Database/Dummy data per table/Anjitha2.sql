@@ -52,44 +52,44 @@ VALUES
 -- Action Figures Variants
 INSERT INTO Ecom_platform.Variant (Product_id, variant_attribute_value_1, variant_attribute_value_2, price, sku, icon)
 VALUES
-  (56, 'Red Racer', 'Small', '9.99', 'TC001-RedRacerSmall', 'https://example.com/toy_car_1_small.jpg'),
-  (56, 'Red Racer', 'Large', '14.99', 'TC002-RedRacerLarge', 'https://example.com/toy_car_1_large.jpg'),
-  (57, 'Blue Cruiser', 'Small', '10.99', 'TC003-BlueCruiserSmall', 'https://example.com/toy_car_2_small.jpg'),
-  (57, 'Blue Cruiser', 'Large', '15.99', 'TC004-BlueCruiserLarge', 'https://example.com/toy_car_2_large.jpg');
-  (58, 'Safari Adventure', 'Small', '12.99', 'TJ001-SafariSmall', 'https://example.com/toy_jeep_1_small.jpg'),
-  (58, 'Safari Adventure', 'Large', '17.99', 'TJ002-SafariLarge', 'https://example.com/toy_jeep_1_large.jpg');
-  (59, 'Rescue Chopper', 'Small', '11.99', 'TH001-RescueSmall', 'https://example.com/toy_helicopter_1_small.jpg'),
-  (59, 'Rescue Chopper', 'Large', '16.99', 'TH002-RescueLarge', 'https://example.com/toy_helicopter_1_large.jpg'),
-  (60, 'Police Pursuit', 'Small', '12.99', 'TH003-PoliceSmall', 'https://example.com/toy_helicopter_2_small.jpg'),
-  (60, 'Police Pursuit', 'Large', '17.99', 'TH004-PoliceLarge', 'https://example.com/toy_helicopter_2_large.jpg');
+  (56, 'Red Racer', 'Small', '9.99', 'TC001-RedRacerSmall', ''),
+  (56, 'Red Racer', 'Large', '14.99', 'TC002-RedRacerLarge', ''),
+  (57, 'Blue Cruiser', 'Small', '10.99', 'TC003-BlueCruiserSmall', ''),
+  (57, 'Blue Cruiser', 'Large', '15.99', 'TC004-BlueCruiserLarge', '');
+  (58, 'Safari Adventure', 'Small', '12.99', 'TJ001-SafariSmall', ''),
+  (58, 'Safari Adventure', 'Large', '17.99', 'TJ002-SafariLarge', '');
+  (59, 'Rescue Chopper', 'Small', '11.99', 'TH001-RescueSmall', ''),
+  (59, 'Rescue Chopper', 'Large', '16.99', 'TH002-RescueLarge', ''),
+  (60, 'Police Pursuit', 'Small', '12.99', 'TH003-PoliceSmall', ''),
+  (60, 'Police Pursuit', 'Large', '17.99', 'TH004-PoliceLarge', '');
   
 -- Board Games Variants
 INSERT INTO Ecom_platform.Variant (Product_id, variant_attribute_value_1, variant_attribute_value_2, price, sku, icon)
 VALUES
-  (61, 'Laser Shooter', 'Red', '7.99', 'TW001-LaserRed', 'https://example.com/toy_weapon_1_red.jpg'),
-  (61, 'Laser Shooter', 'Blue', '7.99', 'TW002-LaserBlue', 'https://example.com/toy_weapon_1_blue.jpg'),
-  (62, 'Knight\'s Weapon', 'Silver', '9.99', 'TW003-SwordSilver', 'https://example.com/toy_weapon_2_silver.jpg'),
-  (62, 'Knight\'s Weapon', 'Gold', '9.99', 'TW004-SwordGold', 'https://example.com/toy_weapon_2_gold.jpg');
-  (63, 'Dinosaur World', '2-5 Players', '32.99', 'BG005-DinosaurWorld', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/0.png?alt=media&token=94d5c16a-ee74-42b7-93e7-535d4b725dc2&_gl=1*1i1s1k2*_ga*OTA1NDY0ODY3LjE2OTc3MjM2Mzc.*_ga_CW55HF8NVT*MTY5ODM3OTc5Ni4xMC4xLjE2OTgzNzk5MTQuNjAuMC4w'),
-  (63, 'Dinosaur World', '2-5 Players', '37.99', 'BG006-DinosaurWorld', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/0.png?alt=media&token=94d5c16a-ee74-42b7-93e7-535d4b725dc2&_gl=1*1i1s1k2*_ga*OTA1NDY0ODY3LjE2OTc3MjM2Mzc.*_ga_CW55HF8NVT*MTY5ODM3OTc5Ni4xMC4xLjE2OTgzNzk5MTQuNjAuMC4w'),
-  (64, 'Pirates Treasure', '2-4 Players', '28.99', 'BG007-PiratesTreasure', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/0.png?alt=media&token=94d5c16a-ee74-42b7-93e7-535d4b725dc2&_gl=1*1i1s1k2*_ga*OTA1NDY0ODY3LjE2OTc3MjM2Mzc.*_ga_CW55HF8NVT*MTY5ODM3OTc5Ni4xMC4xLjE2OTgzNzk5MTQuNjAuMC4w'),
-  (64, 'Pirates Treasure', '2-4 Players', '33.99', 'BG008-PiratesTreasure', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/0.png?alt=media&token=94d5c16a-ee74-42b7-93e7-535d4b725dc2&_gl=1*1i1s1k2*_ga*OTA1NDY0ODY3LjE2OTc3MjM2Mzc.*_ga_CW55HF8NVT*MTY5ODM3OTc5Ni4xMC4xLjE2OTgzNzk5MTQuNjAuMC4w'),
-  (65, 'Fantasy Quest', '2-6 Players', '31.99', 'BG009-FantasyQuest', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/0.png?alt=media&token=94d5c16a-ee74-42b7-93e7-535d4b725dc2&_gl=1*1i1s1k2*_ga*OTA1NDY0ODY3LjE2OTc3MjM2Mzc.*_ga_CW55HF8NVT*MTY5ODM3OTc5Ni4xMC4xLjE2OTgzNzk5MTQuNjAuMC4w'),
-  (65, 'Fantasy Quest', '2-6 Players', '36.99', 'BG010-FantasyQuest', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/0.png?alt=media&token=94d5c16a-ee74-42b7-93e7-535d4b725dc2&_gl=1*1i1s1k2*_ga*OTA1NDY0ODY3LjE2OTc3MjM2Mzc.*_ga_CW55HF8NVT*MTY5ODM3OTc5Ni4xMC4xLjE2OTgzNzk5MTQuNjAuMC4w');
+  (61, 'Laser Shooter', 'Red', '7.99', 'TW001-LaserRed', ''),
+  (61, 'Laser Shooter', 'Blue', '7.99', 'TW002-LaserBlue', ''),
+  (62, 'Knight\'s Weapon', 'Silver', '9.99', 'TW003-SwordSilver', ''),
+  (62, 'Knight\'s Weapon', 'Gold', '9.99', 'TW004-SwordGold', '');
+  (63, 'Dinosaur World', '2-5 Players', '32.99', 'BG005-DinosaurWorld', ''),
+  (63, 'Dinosaur World', '2-5 Players', '37.99', 'BG006-DinosaurWorld', ''),
+  (64, 'Pirates Treasure', '2-4 Players', '28.99', 'BG007-PiratesTreasure', ''),
+  (64, 'Pirates Treasure', '2-4 Players', '33.99', 'BG008-PiratesTreasure', ''),
+  (65, 'Fantasy Quest', '2-6 Players', '31.99', 'BG009-FantasyQuest', ''),
+  (65, 'Fantasy Quest', '2-6 Players', '36.99', 'BG010-FantasyQuest', '');
   
 -- Dolls Variants
 INSERT INTO Ecom_platform.Variant (Product_id, variant_attribute_value_1, variant_attribute_value_2, price, sku, icon)
 VALUES
-  (66, 'Fashion Model - Summer Style', 'Accessory Set', '9.99', 'DL001-FashionModelSummer', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/0.png?alt=media&token=94d5c16a-ee74-42b7-93e7-535d4b725dc2&_gl=1*1i1s1k2*_ga*OTA1NDY0ODY3LjE2OTc3MjM2Mzc.*_ga_CW55HF8NVT*MTY5ODM3OTc5Ni4xMC4xLjE2OTgzNzk5MTQuNjAuMC4w'),
-  (66, 'Fashion Model - Summer Style', 'Accessory Set', '11.99', 'DL002-FashionModelSummer', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/0.png?alt=media&token=94d5c16a-ee74-42b7-93e7-535d4b725dc2&_gl=1*1i1s1k2*_ga*OTA1NDY0ODY3LjE2OTc3MjM2Mzc.*_ga_CW55HF8NVT*MTY5ODM3OTc5Ni4xMC4xLjE2OTgzNzk5MTQuNjAuMC4w'),
-  (67, 'Princess - Royal Gown', 'Accessory Set', '11.99', 'DL003-PrincessRoyalGown', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/0.png?alt=media&token=94d5c16a-ee74-42b7-93e7-535d4b725dc2&_gl=1*1i1s1k2*_ga*OTA1NDY0ODY3LjE2OTc3MjM2Mzc.*_ga_CW55HF8NVT*MTY5ODM3OTc5Ni4xMC4xLjE2OTgzNzk5MTQuNjAuMC4w'),
-  (67, 'Princess - Royal Gown', 'Accessory Set', '13.99', 'DL004-PrincessRoyalGown', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/0.png?alt=media&token=94d5c16a-ee74-42b7-93e7-535d4b725dc2&_gl=1*1i1s1k2*_ga*OTA1NDY0ODY3LjE2OTc3MjM2Mzc.*_ga_CW55HF8NVT*MTY5ODM3OTc5Ni4xMC4xLjE2OTgzNzk5MTQuNjAuMC4w'),
-  (68, 'Mermaid - Underwater Adventure', 'Accessory Set', '10.99', 'DL005-MermaidAdventure', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/0.png?alt=media&token=94d5c16a-ee74-42b7-93e7-535d4b725dc2&_gl=1*1i1s1k2*_ga*OTA1NDY0ODY3LjE2OTc3MjM2Mzc.*_ga_CW55HF8NVT*MTY5ODM3OTc5Ni4xMC4xLjE2OTgzNzk5MTQuNjAuMC4w'),
-  (68, 'Mermaid - Underwater Adventure', 'Accessory Set', '12.99', 'DL006-MermaidAdventure', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/0.png?alt=media&token=94d5c16a-ee74-42b7-93e7-535d4b725dc2&_gl=1*1i1s1k2*_ga*OTA1NDY0ODY3LjE2OTc3MjM2Mzc.*_ga_CW55HF8NVT*MTY5ODM3OTc5Ni4xMC4xLjE2OTgzNzk5MTQuNjAuMC4w'),
-  (69, 'Pop Star - Stage Sensation', 'Accessory Set', '12.99', 'DL007-PopStarSensation', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/0.png?alt=media&token=94d5c16a-ee74-42b7-93e7-535d4b725dc2&_gl=1*1i1s1k2*_ga*OTA1NDY0ODY3LjE2OTc3MjM2Mzc.*_ga_CW55HF8NVT*MTY5ODM3OTc5Ni4xMC4xLjE2OTgzNzk5MTQuNjAuMC4w'),
-  (69, 'Pop Star - Stage Sensation', 'Accessory Set', '14.99', 'DL008-PopStarSensation', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/0.png?alt=media&token=94d5c16a-ee74-42b7-93e7-535d4b725dc2&_gl=1*1i1s1k2*_ga*OTA1NDY0ODY3LjE2OTc3MjM2Mzc.*_ga_CW55HF8NVT*MTY5ODM3OTc5Ni4xMC4xLjE2OTgzNzk5MTQuNjAuMC4w'),
-  (70, 'Fairy Tale - Enchanted Forest', 'Accessory Set', '8.99', 'DL009-FairyTaleForest', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/0.png?alt=media&token=94d5c16a-ee74-42b7-93e7-535d4b725dc2&_gl=1*1i1s1k2*_ga*OTA1NDY0ODY3LjE2OTc3MjM2Mzc.*_ga_CW55HF8NVT*MTY5ODM3OTc5Ni4xMC4xLjE2OTgzNzk5MTQuNjAuMC4w'),
-  (70, 'Fairy Tale - Enchanted Forest', 'Accessory Set', '10.99', 'DL010-FairyTaleForest', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/0.png?alt=media&token=94d5c16a-ee74-42b7-93e7-535d4b725dc2&_gl=1*1i1s1k2*_ga*OTA1NDY0ODY3LjE2OTc3MjM2Mzc.*_ga_CW55HF8NVT*MTY5ODM3OTc5Ni4xMC4xLjE2OTgzNzk5MTQuNjAuMC4w');
+  (66, 'Fashion Model - Summer Style', 'Accessory Set', '9.99', 'DL001-FashionModelSummer', 'a*OTA1NDY0ODY3LjE2OTc3MjM2Mzc.*_ga_CW55HF8NVT*MTY5ODM3OTc5Ni4xMC4xLjE2OTgzNzk5MTQuNjAuMC4w'),
+  (66, 'Fashion Model - Summer Style', 'Accessory Set', '11.99', 'DL002-FashionModelSummer', '_ga*OTA1NDY0ODY3LjE2OTc3MjM2Mzc.*_ga_CW55HF8NVT*MTY5ODM3OTc5Ni4xMC4xLjE2OTgzNzk5MTQuNjAuMC4w'),
+  (67, 'Princess - Royal Gown', 'Accessory Set', '11.99', 'DL003-PrincessRoyalGown', 'A1NDY0ODY3LjE2OTc3MjM2Mzc.*_ga_CW55HF8NVT*MTY5ODM3OTc5Ni4xMC4xLjE2OTgzNzk5MTQuNjAuMC4w'),
+  (67, 'Princess - Royal Gown', 'Accessory Set', '13.99', 'DL004-PrincessRoyalGown', 'htt1NDY0ODY3LjE2OTc3MjM2Mzc.*_ga_CW55HF8NVT*MTY5ODM3OTc5Ni4xMC4xLjE2OTgzNzk5MTQuNjAuMC4w'),
+  (68, 'Mermaid - Underwater Adventure', 'Accessory Set', '10.99', 'DL005-MermaidAdventure', 'http*_ga*OTA1NDY0ODY3LjE2OTc3MjM2Mzc.*_ga_CW55HF8NVT*MTY5ODM3OTc5Ni4xMC4xLjE2OTgzNzk5MTQuNjAuMC4w'),
+  (68, 'Mermaid - Underwater Adventure', 'Accessory Set', '12.99', 'DL006-MermaidAdventure', 'htt_ga*OTA1NDY0ODY3LjE2OTc3MjM2Mzc.*_ga_CW55HF8NVT*MTY5ODM3OTc5Ni4xMC4xLjE2OTgzNzk5MTQuNjAuMC4w'),
+  (69, 'Pop Star - Stage Sensation', 'Accessory Set', '12.99', 'DL007-PopStarSensation', 'httOTA1NDY0ODY3LjE2OTc3MjM2Mzc.*_ga_CW55HF8NVT*MTY5ODM3OTc5Ni4xMC4xLjE2OTgzNzk5MTQuNjAuMC4w'),
+  (69, 'Pop Star - Stage Sensation', 'Accessory Set', '14.99', 'DL008-PopStarSensation', 'httga*OTA1NDY0ODY3LjE2OTc3MjM2Mzc.*_ga_CW55HF8NVT*MTY5ODM3OTc5Ni4xMC4xLjE2OTgzNzk5MTQuNjAuMC4w'),
+  (70, 'Fairy Tale - Enchanted Forest', 'Accessory Set', '8.99', 'DL009-FairyTaleForest', 'htt_ga*OTA1NDY0ODY3LjE2OTc3MjM2Mzc.*_ga_CW55HF8NVT*MTY5ODM3OTc5Ni4xMC4xLjE2OTgzNzk5MTQuNjAuMC4w'),
+  (70, 'Fairy Tale - Enchanted Forest', 'Accessory Set', '10.99', 'DL010-FairyTaleForest', 'httpsa*OTA1NDY0ODY3LjE2OTc3MjM2Mzc.*_ga_CW55HF8NVT*MTY5ODM3OTc5Ni4xMC4xLjE2OTgzNzk5MTQuNjAuMC4w');
 
 -- Remote Control Toys Variants
 INSERT INTO Ecom_platform.Variant (Product_id, variant_attribute_value_1, variant_attribute_value_2, price, sku, icon)
