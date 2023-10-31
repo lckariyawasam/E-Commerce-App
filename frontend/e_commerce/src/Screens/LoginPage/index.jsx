@@ -4,7 +4,6 @@ import './index.css';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-
 const LoginPage = () => {
     const usernameRef = useRef();
     const passwordRef = useRef();
@@ -58,6 +57,16 @@ const LoginPage = () => {
             <h1>This is the Login Page</h1>
             <Link to={"/"}>Home</Link>
             <Link to={"/register"}>Register</Link>
+            <div className='login-form'>
+                <h1 className='login-heading'>Login</h1>
+                <input className='input-field' placeholder='Email' type="email" />
+                <input className='input-field' placeholder='Password' type="password" />
+                <button className='login-button'>Sign In</button>
+            </div>
+            <div className='login-links'>
+                <Link to="/">Home</Link>
+                <Link to="/register">Register</Link>
+            </div>
         </div>
     );
 };
