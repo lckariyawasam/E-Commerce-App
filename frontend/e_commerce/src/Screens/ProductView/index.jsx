@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./index.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-import Navbar from "../../Components/Navbar";
 import ProductsGrid from "../../Components/ProductsGrid";
 
 function ProductView() {
@@ -12,8 +12,64 @@ function ProductView() {
   const [quantity, setQuantity] = useState(1);
   const [selectedAttributes, setSelectedAttributes] = useState([]);
   const [disabledAttributes, setDisabledAttributes] = useState([]);
-  const [varients, setVarients] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [variants, setVariants] = useState(null);
   const { productId } = useParams();
+
+  const navigate = useNavigate();
+
+  const loadProduct = () => {
+    axios.get(`http://localhost:5000/product/${productId}`, {
+        withCredentials: true,
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        }
+    })
+    .then(res => {
+        setProduct({...res.data})
+        console.log(res.data)
+        setLoading(false)
+    })
+    .catch(err => {
+        console.log(err)
+        setLoading(false)
+    })
+}
+
+  const addToCart = (variant_id) => {
+      axios.post('http://localhost:5000/cart/add',
+      {
+          "variant_id": variant_id,
+          "quantity": quantity
+      },
+      {
+          headers: {
+              'Content-Type': 'application/json',
+              'Accept': 'application/json'
+          },
+          withCredentials: true,
+      })
+      .then(res => {
+          if (res.status === 200) {
+              navigate('/cart')
+          }
+      })
+      .catch(err => {
+          console.log(err)
+          console.log({
+              "variant_id": variant_id,
+              "quantity": quantity
+          })
+      })
+  }
+
+
+  useEffect(() => {
+     if (productId !== null) {
+        loadProduct()
+     }
+  }, [productId])
 
   const samplerecommendedProducts = [
     {
@@ -115,10 +171,13 @@ function ProductView() {
     },
   ];
 
+
   useEffect(() => {
-    setProduct(sampleProduct);
-    setVarients(sampleVarients);
-  }, [productId]);
+    if (product !== null) {
+      setVariants(product.variants)
+    }
+  }, [product])
+
 
   const handleAttributeSelection = (index, value) => {
     const newAttributes = [...selectedAttributes];
@@ -128,20 +187,25 @@ function ProductView() {
       const validSecondAttributes = getValidValuesForAttribute(
         1,
         newAttributes,
-        varients
+        variants
       );
       newAttributes[1] = validSecondAttributes[0];
     }
-
     setSelectedAttributes(newAttributes);
   };
 
   useEffect(() => {
-    if (varients && varients.length > 0) {
-      const initialAttributes = Object.values(varients[0]).slice(2, -3);
+    if (variants && variants.length > 0) {
+      let initialAttributes = []
+      if (currentVariant != null) {
+      initialAttributes = [
+        currentVariant?.variant_attribute_value_1,
+        currentVariant?.variant_attribute_value_2,
+      ]
+    }
       setSelectedAttributes(initialAttributes);
     }
-  }, [varients]);
+  }, [variants]);
 
   const getValidValuesForAttribute = (
     attributeIndex,
@@ -162,17 +226,17 @@ function ProductView() {
   };
 
   useEffect(() => {
-    if (!varients) return;
+    if (!variants) return;
 
     const disabledAttrs = [];
 
     const validValues = getValidValuesForAttribute(
       1,
       selectedAttributes,
-      varients
+      variants
     );
     const allValues = [
-      ...new Set(varients.map((v) => v[`variant_attribute_value_2`])),
+      ...new Set(variants.map((v) => v[`variant_attribute_value_2`])),
     ];
     const invalidValues = allValues.filter(
       (attr) => !validValues.includes(attr)
@@ -180,9 +244,11 @@ function ProductView() {
     disabledAttrs.push(...invalidValues);
 
     setDisabledAttributes(disabledAttrs);
-  }, [selectedAttributes, varients]);
 
-  const currentVariant = varients?.find((v) =>
+    console.log(selectedAttributes)
+  }, [selectedAttributes, variants]);
+
+  const currentVariant = variants?.find((v) =>
     selectedAttributes.every(
       (attr, index) => attr === v[`variant_attribute_value_${index + 1}`]
     )
@@ -221,7 +287,7 @@ function ProductView() {
                       <label>{product[key]}:</label>
                       {[
                         ...new Set(
-                          varients.map(
+                          variants.map(
                             (v) => v[`variant_attribute_value_${index + 1}`]
                           )
                         ),
@@ -256,6 +322,7 @@ function ProductView() {
               <button
                 type="button"
                 className="btn btn-outline-dark btn-lg btn-block"
+                onClick={() => addToCart(currentVariant.variant_id)}
               >
                 Add to the Cart
               </button>

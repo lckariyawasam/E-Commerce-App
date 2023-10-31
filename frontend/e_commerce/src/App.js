@@ -13,6 +13,9 @@ import ScrollToTop from './Components/ScrollToTop';
 import Navbar from './Components/Navbar';
 import NotFound from './Screens/NotFound';
 import AdminPanel from './Screens/AdminPanel';
+import Cart from './Screens/Cart';
+import BillingPage from './Screens/BillingPage';
+import Checkout from './Screens/Checkout';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'font-awesome/css/font-awesome.min.css';
@@ -35,9 +38,12 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
-          <Route path="/ProductView/:productId" element={<ProductView />} />
+          <Route path="/product/:productId" element={<ProductView />} />
           <Route path="/category/:categoryName" element={<CategoryView />} />
           <Route path="/admin" element={<AdminPanel />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/billing" element={<BillingPage />} />
+          <Route path="/checkout" element={<Checkout />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />

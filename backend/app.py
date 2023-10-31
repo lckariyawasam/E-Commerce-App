@@ -1,11 +1,13 @@
 from flask import Flask, request, render_template, redirect, session
 from flask_session import Session
+from flask_cors import CORS, cross_origin
 from db_connector import get_database_connection, close_database_connection
 from passlib.hash import bcrypt_sha256
 
 app = Flask(__name__)
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
+CORS(app, supports_credentials=True, origins=["http://localhost:3000"])
 Session(app)
 
 
@@ -14,7 +16,21 @@ connection = get_database_connection()
 cursor = connection.cursor(dictionary=True) # This is used to execute queries
 
 
+# Write a decorator to check if the user is logged in
+def session_required(f):
+    def decorated_function(*args, **kwargs):
+        if session.get("user_id") is None:
+            # Create a guest user
+            cursor.execute("INSERT INTO user (user_type) VALUES ('Guest')")
+            connection.commit()
+            session["user_id"] = cursor.lastrowid
+            session["user_type"] = "Guest"
+        return f(*args, **kwargs)
+    return decorated_function
+
+
 @app.route('/')
+@session_required
 def index():
     if session.get("user_id"):
         return "Hello World!"
@@ -26,7 +42,6 @@ def index():
 def login():
     if request.method == 'POST':
         data = request.get_json()
-        print(data)
 
         # Check if the request is valid, whether it contains the email and password
         if data.get("email") and data.get("password"):
@@ -59,13 +74,12 @@ def login():
         else:
             return ("Login Failed, incomplete request", 401)
     
-    return "Page Under Construction"
+    return ("Page Under Construction", 200)
 
 
 @app.route('/register', methods=['POST'])
 def register():
     data = request.get_json()
-    print(data)
 
     if data.get("first_name") and data.get("email") and data.get("password"):
         first_name = data.get("first_name")
@@ -113,24 +127,31 @@ def logout():
     return "Logged out"
 
 
+@app.route('/products')
+def products():
+    # Query the database for all products
+    cursor.execute("SELECT * FROM product")
+    result = cursor.fetchall()
+
+    return result
+
 @app.route('/products/<string:category>')
-def products(category):
-    if category is None:
-        # Query the database for all products
-        cursor.execute("SELECT * FROM product")
-        result = cursor.fetchall()
+def products_by_category(category):
+    # Query the database for all products
+    cursor.execute("SELECT * FROM (product NATURAL JOIN product_sub_category) JOIN category using(category_id) WHERE category.name = %s", (category,))
+    result = cursor.fetchall()
 
-        return result
-    
-    else:
-        return "Categorical Sorting not yet implemented"
+    return result
 
 
-@app.route('/products/<int:product_id>')
+@app.route('/product/<int:product_id>')
 def product(product_id):
     # Query the database for the product
     cursor.execute("SELECT * FROM product WHERE product_id = %s", (product_id,))
     product = cursor.fetchone()
+
+    if (product is None):
+        return ("Product does not exist", 404)
 
     cursor.execute("SELECT custom_attribute_type, custom_attribute_value FROM product_custom_property WHERE product_id = %s", (product_id,))
 
@@ -140,7 +161,7 @@ def product(product_id):
         product[row["custom_attribute_name"]] = row["custom_attribute_value"]
 
     # Get the products variants
-    cursor.execute("SELECT price, variant_attribute_value_1, variant_attribute_value_2 FROM variant WHERE product_id = %s", (product_id,))
+    cursor.execute("SELECT variant_id, sku, price, variant_attribute_value_1, variant_attribute_value_2, icon FROM variant WHERE product_id = %s", (product_id,))
     result = cursor.fetchall()
 
     product["variants"] = result
@@ -148,7 +169,8 @@ def product(product_id):
     return product
 
 
-@app.route('/cart')
+@app.route('/cart', endpoint='cart')
+@session_required
 def cart():
     # Only allow user to access their own cart
     # Admins can access any cart
@@ -180,10 +202,10 @@ def cart():
         return ("Unauthorized", 401)
     
 
-@app.route('/cart/add', methods=['POST'])
+@app.route('/cart/add', methods=['POST'], endpoint='add_to_cart')
+@session_required
 def add_to_cart():
     data = request.get_json()
-    # print(data)
 
     if data.get("variant_id") and data.get("quantity"):
         variant_id = data.get("variant_id")
@@ -191,9 +213,7 @@ def add_to_cart():
 
         # Get the cart of the user
         cursor.execute("SELECT cart_id FROM cart WHERE user_id = %s AND status = 'Pending'", (session.get("user_id"),))
-
         cart_id = cursor.fetchone()["cart_id"]
-
         cursor.execute("INSERT INTO cart_item (variant_id, cart_id, quantity, status) VALUES (%s, %s, %s, %s)", (variant_id, cart_id, quantity, "Pending"))
         connection.commit()
 
@@ -207,23 +227,18 @@ def add_to_cart():
 @app.route("/cart/remove", methods=['POST'])
 def remove_from_cart():
     data = request.get_json()
-    # print(data)
 
     if data.get("cart_item_id"):
         cart_item_id = data.get("cart_item_id")
 
         # Get the cart of the user
         cursor.execute("SELECT cart_id FROM cart WHERE user_id = %s AND status = 'Pending'", (session.get("user_id"),))
-
         cart_id = cursor.fetchone()["cart_id"]
-
         cursor.execute("SELECT cart_item_id FROM cart_item WHERE cart_id = %s", (cart_id,))
 
         if (cart_item_id not in [row["cart_item_id"] for row in cursor.fetchall()]):
             return ("Unauthorized", 401)
-        
         else:
-            print("this RAN")
             cursor.execute("DELETE FROM cart_item WHERE cart_item_id = %s", (cart_item_id,))
             connection.commit()
 
@@ -231,7 +246,92 @@ def remove_from_cart():
 
     else:
         return ("Incomplete Request", 401)
+    
+    
 
+@app.route("/cart/checkout", methods=['POST'], endpoint='checkout')
+@session_required
+def checkout():
+
+    print(session.get("user_id"))
+    
+    data = request.get_json()
+
+    print(data)
+
+    if data.get("payment_method") and data.get("payment_method") in ("Cash", "Credit Card", "Debit Card"):
+        cursor.callproc("checkout_user", (session.get("user_id"), data.get("payment_method")))
+        
+        for result in cursor.stored_results():
+            return_value = result.fetchall()
+            if (return_value[0]["insufficient_stock_variant_id"] is not None):
+                result = {
+                    "insufficient_stock_variant_id": return_value[0]["insufficient_stock_variant_id"],
+                }
+                return (result, 404)
+            else:
+                break
+        return ("Checkout Successful", 200)
+    
+    else:
+        return ("Incomplete Request", 401)
+
+
+@app.route("/user", endpoint='user')
+@session_required
+def user():
+    cursor.execute("SELECT * FROM user WHERE user_id = %s", (session.get("user_id"),))
+    user = cursor.fetchone()
+
+    return user
+
+@app.route("/user/update", methods=['POST'], endpoint='update_user')
+@session_required
+def update_user():
+    data = request.get_json()
+
+    if data.get("first_name") and data.get("last_name") and data.get("email") and data.get("phone_number") and data.get("address_line01") and data.get("address_city") and data.get("address_state") and data.get("address_zip_code") and data.get("address_country"):
+        first_name = data.get("first_name")
+        last_name = data.get("last_name")
+        email = data.get("email")
+        phone_number = data.get("phone_number")
+        address_line01 = data.get("address_line01")
+        address_city = data.get("address_city")
+        address_state = data.get("address_state")
+        address_zip_code = data.get("address_zip_code")
+        address_country = data.get("address_country")
+
+        cursor.execute("""
+            UPDATE user
+            SET first_name = %s,
+            last_name = %s,
+            email = %s,
+            phone_number = %s,
+            address_line01 = %s,
+            address_city = %s,
+            address_state = %s,
+            address_zip_code = %s,
+            address_country = %s
+            WHERE user_id = %s
+        """,
+        (
+            first_name,
+            last_name,
+            email,
+            phone_number,
+            address_line01,
+            address_city,
+            address_state,
+            address_zip_code,
+            address_country,
+            session.get("user_id")
+        ))
+        connection.commit()
+
+        return ("User Updated", 200)
+    else:
+        return ("Incomplete Request", 401)
+    
 
 # For debugging purposes, do not run in production!
 if __name__ == '__main__':
