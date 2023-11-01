@@ -1,5 +1,4 @@
 -- drop database ecom_platform
--- drop database dbms_project
 
 -- Create the Ecom_platform schema if it doesn't exist
 CREATE SCHEMA IF NOT EXISTS Ecom_platform DEFAULT CHARACTER SET utf8;
@@ -88,7 +87,7 @@ CREATE TABLE IF NOT EXISTS Ecom_platform.Variant (
   Product_id INT NOT NULL,
   variant_attribute_value_1 VARCHAR(128) NULL,
   variant_attribute_value_2 VARCHAR(128) NULL,
-  price VARCHAR(64) NOT NULL,
+  price NUMERIC(10,2) NOT NULL,
   sku VARCHAR(64) NOT NULL,
   icon VARCHAR(511) NULL,
   PRIMARY KEY (variant_id),
@@ -104,10 +103,10 @@ CREATE TABLE IF NOT EXISTS Ecom_platform.Cart_item (
   cart_item_id INT NOT NULL AUTO_INCREMENT,
   variant_id INT NOT NULL,
   cart_id INT NOT NULL,
-  quantity VARCHAR(31) NOT NULL,
+  quantity INT NOT NULL,
   status VARCHAR(31) NOT NULL,
   sold_date DATE NULL,
-  sold_price_per_item VARCHAR(64) NULL,
+  sold_price_per_item NUMERIC(10,2) NULL,
   PRIMARY KEY (cart_item_id),
   CONSTRAINT fk_Cart_item_Cart
     FOREIGN KEY (cart_id)
@@ -241,4 +240,101 @@ END
 //
 DELIMITER ;
 
+DELIMITER //
+CREATE PROCEDURE products_with_most_number_of_sales_between(
+    IN start_date_param DATE, IN end_date_param DATE)
+BEGIN
+    SELECT 
+    p.product_id,
+    p.title,
+    v.sku,
+	SUM(ci.quantity) AS total_sales
+    FROM Cart_Item ci
+    INNER JOIN Variant v 
+		ON ci.variant_id = v.variant_id
+	INNER JOIN Product p
+		ON p.product_id = v.product_id
+    WHERE ci.sold_date BETWEEN start_date_param AND end_date_param
+    GROUP BY ci.variant_id
+    ORDER BY total_sales DESC
+    LIMIT 10; 
+END //
+DELIMITER ;
+
+
+DELIMITER //
+CREATE PROCEDURE quarterly_sales_reports_for_year(year_param INT)
+BEGIN
+SELECT DISTINCT
+	CONCAT('Q', CAST(QUARTER(sold_date) AS CHAR)) AS Quarter,
+	SUM(sold_price_per_item * quantity) OVER (PARTITION BY QUARTER(sold_date)) AS 'Total Sales'
+FROM Cart_item
+WHERE YEAR(sold_date) = year_param;
+END //
+DELIMITER ;
+
+
+DELIMITER //
+CREATE FUNCTION category_with_most_orders()
+RETURNS VARCHAR(31)
+DETERMINISTIC
+READS SQL DATA
+BEGIN
+    DECLARE category_name VARCHAR(31);
+    SELECT c.name INTO category_name
+    FROM Cart_Item ci
+    INNER JOIN Variant v ON ci.variant_id = v.variant_id
+    INNER JOIN Product p ON p.product_id = v.product_id
+    INNER JOIN product_sub_category psc ON psc.product_id = p.product_id
+    INNER JOIN Category c ON c.category_id = psc.category_id
+    WHERE c.parent_category_id IS NOT NULL
+    GROUP BY psc.category_id
+    ORDER BY SUM(ci.quantity) DESC
+    LIMIT 1;
+    RETURN category_name;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE FUNCTION most_interest_month_for_product(product_id_param INT)
+RETURNS VARCHAR(31)
+DETERMINISTIC
+NO SQL
+READS SQL DATA
+BEGIN
+    DECLARE most_interest_period INT;
+    SELECT
+        MAX(period_number) INTO most_interest_period
+    FROM (
+        SELECT
+            DATE_FORMAT(sold_date, '%Y-%m-01') AS period_start,
+            COUNT(*) AS activity_count,
+            CEIL(MONTH(sold_date)) AS period_number
+        FROM Cart_Item ci
+        INNER JOIN Variant v ON v.variant_id = ci.variant_id
+        WHERE v.product_id = product_id_param
+        GROUP BY period_start, period_number
+        ORDER BY activity_count DESC
+        LIMIT 1
+    ) AS interest_period;
+    RETURN MONTHNAME(CONCAT(YEAR(CURDATE()), '-', most_interest_period, '-01'));
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE order_report_on_customer(IN user_id_param INT)
+BEGIN
+SELECT
+	o.order_id,
+    o.cart_id,
+    o.user_id,
+    o.payment_type,
+    u.user_type,
+    o.order_date,
+    o.`status`
+FROM `Order` o
+INNER JOIN `User` u ON o.user_id = u.user_id
+WHERE o.user_id = user_id_param;
+END //
+DELIMITER ;
 
