@@ -33,6 +33,8 @@ const LoginPage = ({ callback }) => {
                 callback(res.data.user_type)
                 if (res.data.user_type === "Admin") {
                     navigate('/admin')
+                } else if (res.data.user_type === "Inventory Manager") {
+                    navigate('/inventory')
                 } else {
                     navigate('/')
                 }

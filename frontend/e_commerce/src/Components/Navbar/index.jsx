@@ -61,13 +61,22 @@ const Navbar = ({ userType, callback }) => {
                     <i className="fa fa-tachometer"></i> Admin Panel
                     </Link>
                 </li>
-                ) : (
+                ) : userType !== "Inventory Manager" &&  (
                 <li className="nav-item">
                     <Link className="nav-link" to="/cart">
                     <i className="fa fa-shopping-cart"></i> Cart
                     </Link>
                 </li>
                 )
+          }
+          {
+            userType === "Admin" || userType === "Inventory Manager" ? (
+                <li className="nav-item">
+                    <Link className="nav-link" to="/inventory">
+                    <i className="fa fa-tachometer"></i> Inventory
+                    </Link>
+                </li>
+                ) : <></>
           }
           {/* <li className="nav-item">
             <Link className="nav-link" to="/cart">
@@ -77,11 +86,16 @@ const Navbar = ({ userType, callback }) => {
 
           {isLoggedIn ? (
             <>
-              <li className="nav-item">
-                <Link className="nav-link" to="/profile">
-                  <i className="fa fa-user"></i> My Orders
-                </Link>
-              </li>
+            {
+                userType === "Registered" || userType === "Guest" ? (
+                  <li className="nav-item">
+                    <Link className="nav-link" to="/profile">
+                      <i className="fa fa-user"></i> My Orders
+                    </Link>
+                  </li>
+                ) : <></>
+            }
+
               <li className="nav-item">
                 <a className="nav-link" onClick={logout}>
                   <i className="fa fa-sign-out"></i> Sign Out

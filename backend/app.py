@@ -38,6 +38,16 @@ def admin_only(f):
         return f(*args, **kwargs)
     return decorated_function
 
+# Write a decorator to check if the user is an admin
+def inventory_access(f):
+    def decorated_function(*args, **kwargs):
+        if session.get("user_type") != "Admin" and session.get("user_type") != "Inventory Manager":
+            print(session.get("user_type"))
+            return ("Unauthorized", 401)
+        return f(*args, **kwargs)
+    return decorated_function
+
+
 
 
 @app.route('/')
@@ -547,6 +557,19 @@ def monthly_orders():
     
     else:
         return ("Incomplete Request", 401)
+    
+
+@app.route("/admin/inventory", endpoint="inventory")
+@inventory_access
+def inventory():
+    cursor.execute("SELECT * FROM variant NATURAL JOIN inventory JOIN product USING(product_id) ORDER BY quantity DESC")
+    results = cursor.fetchall()
+    for result in results:
+        print(result) 
+
+    return (results, 200)
+
+
     
 
 @app.route("/admin/orders", methods=["GET"], endpoint="orders")

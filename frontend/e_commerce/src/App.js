@@ -20,6 +20,7 @@ import BillingPage from './Screens/BillingPage';
 import Checkout from './Screens/Checkout';
 import Profile from './Screens/Profile';
 import UserOrder from './Screens/UserOrders';
+import InventoryPage from './Screens/InventoryPage';
 
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -59,6 +60,7 @@ function App() {
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/userorder" element={<UserOrder />} />
+          <Route path="/inventory" element={<InventoryPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />
