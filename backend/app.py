@@ -29,7 +29,7 @@ def session_required(f):
     return decorated_function
 
 
-# Write a decorator to check if the user is logged in
+# Write a decorator to check if the user is an admin
 def admin_only(f):
     def decorated_function(*args, **kwargs):
         if session.get("user_type") != "Admin":
@@ -72,7 +72,9 @@ def login():
                     # Passwords match
                     session["user_id"] = result["user_id"]
                     session["user_type"] = result["user_type"]
-                    return ("Login Successful", 200)
+                    return ({
+                        "user_type": result["user_type"]
+                    }, 200)
                 else:
                     # Passwords do not match
                     return ("Login Failed, Password is incorrect", 401)
@@ -85,7 +87,7 @@ def login():
         else:
             return ("Login Failed, incomplete request", 401)
     
-    return ("Page Under Construction", 200)
+    return ("Invalid Method", 404)
 
 
 @app.route('/register', methods=['POST'])
