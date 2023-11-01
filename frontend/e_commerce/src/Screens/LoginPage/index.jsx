@@ -54,6 +54,8 @@ const LoginPage = ({ callback }) => {
                 <input name='email' className='input-field' ref={usernameRef} placeholder='Email' type="email" />
                 <input name='password' className='input-field' ref={passwordRef} placeholder='Password' type="password" />
                 <button className='login-button' onClick={authenticate}>Sign In</button>
+                <p></p>
+                <p>Don't have an account? <Link to="/register">Register</Link> </p>
             </div>
         </div>
     );
