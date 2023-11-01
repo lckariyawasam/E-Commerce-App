@@ -37,7 +37,7 @@ function UserOrderDetails() {
                         <th>Order Date</th>
                         <th>Status</th>
                         <th>Price ($)</th>
-                        <th>Link</th>
+                        <th>View More</th>
                     </tr>
                 </thead>
                 <tbody>
