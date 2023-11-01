@@ -4,9 +4,9 @@ import "./index.css";
 import electronics_banner from './images/electronics.png';
 import toys_banner from './images/toys.png';
 import food_banner from './images/food.png';
-import cosmetics_banner from './images/cosmetics.png';
-import furniture_banner from './images/furniture.png';
-import pet_banner from './images/pet.png';
+import cosmetics_banner from "./images/camera.jpg";
+import furniture_banner from "./images/furniture.png";
+import pet_banner from "./images/cards.jpg";
 
 const BannerCarousel = () => {
 
