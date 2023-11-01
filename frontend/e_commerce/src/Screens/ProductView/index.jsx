@@ -333,14 +333,14 @@ function ProductView() {
           <p>Loading...</p>
         )}
       </div>
-      <div className="card text-center">
+      {/* <div className="card text-center">
         <div className="card-header">
           <h2>Recommendations</h2>
         </div>
         <div className="card-body">
           <ProductsGrid products={samplerecommendedProducts} />
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }
