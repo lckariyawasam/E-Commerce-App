@@ -33,7 +33,7 @@ def session_required(f):
 def admin_only(f):
     def decorated_function(*args, **kwargs):
         if session.get("user_type") != "Admin":
-            print(session.get("user_type"))
+            # print(session.get("user_type"))
             return ("Unauthorized", 401)
         return f(*args, **kwargs)
     return decorated_function
@@ -42,7 +42,7 @@ def admin_only(f):
 def inventory_access(f):
     def decorated_function(*args, **kwargs):
         if session.get("user_type") != "Admin" and session.get("user_type") != "Inventory Manager":
-            print(session.get("user_type"))
+            # print(session.get("user_type"))
             return ("Unauthorized", 401)
         return f(*args, **kwargs)
     return decorated_function
@@ -103,8 +103,6 @@ def login():
 @app.route('/register', methods=['POST'])
 def register():
     data = request.get_json()
-
-    print(data)
 
     if data.get("first_name") and data.get("email") and data.get("password"):
         first_name = data.get("first_name")
@@ -416,7 +414,7 @@ def update_user():
 @app.route("/user/orders", endpoint="user_orders")
 @session_required
 def user_orders():
-    print(session["user_id"])
+    # print(session["user_id"])
     cursor.execute("SELECT * FROM `order` WHERE user_id = %s ORDER BY order_id DESC", (session.get("user_id"),))
     results = cursor.fetchall()
 
@@ -428,7 +426,7 @@ def user_orders():
 def user_order():
     data = request.get_json()
 
-    print(data)
+    # print(data)
 
     if data.get("order_id"):
         cursor.execute("SELECT * FROM `order` WHERE order_id = %s", (data.get("order_id"),))
@@ -475,7 +473,7 @@ def quarterly_report():
         cursor.callproc("quarterly_sales_reports_for_year", (year,))
         for result in cursor.stored_results():
             return_value = result.fetchall()
-            print(return_value)
+            # print(return_value)
             break
 
         return return_value
@@ -487,7 +485,7 @@ def quarterly_report():
 @admin_only
 def most_sales():
     data = request.get_json()
-    print(data)
+    # print(data)
     if data.get("start_date") and data.get("end_date"):
         cursor.execute("""
             SELECT product_id, title, sum(quantity) as total_sales
@@ -500,8 +498,8 @@ def most_sales():
         (data.get("start_date"), data.get("end_date")))
 
         results = cursor.fetchall()
-        for result in results:
-            print(result) 
+        # for result in results:
+            # print(result) 
 
         return (results, 200)
     
@@ -512,7 +510,7 @@ def most_sales():
 @admin_only
 def most_orders_category():
     data = request.get_json()
-    print(data)
+    # print(data)
     if data.get("start_date") and data.get("end_date"):
         cursor.execute("""
             SELECT psc.category_id, name as category, SUM(ci.quantity) as orderCount
@@ -530,8 +528,8 @@ def most_orders_category():
         (data.get("start_date"), data.get("end_date")))
 
         results = cursor.fetchall()
-        for result in results:
-            print(result) 
+        # for result in results:
+        #     print(result) 
 
         return (results, 200)
     
@@ -564,8 +562,8 @@ def monthly_orders():
 def inventory():
     cursor.execute("SELECT * FROM variant NATURAL JOIN inventory JOIN product USING(product_id) ORDER BY quantity DESC")
     results = cursor.fetchall()
-    for result in results:
-        print(result) 
+    # for result in results:
+    #     print(result) 
 
     return (results, 200)
 
