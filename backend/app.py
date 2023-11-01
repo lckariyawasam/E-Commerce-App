@@ -201,7 +201,7 @@ def product(product_id):
 
     # Add the custom attributes to the product
     for row in cursor.fetchall():
-        product[row["custom_attribute_name"]] = row["custom_attribute_value"]
+        product[row["custom_attribute_type"]] = row["custom_attribute_value"]
 
     # Get the products variants
     cursor.execute("""
