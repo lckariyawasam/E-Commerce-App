@@ -79,7 +79,7 @@ const Navbar = ({ userType, callback }) => {
             <>
               <li className="nav-item">
                 <Link className="nav-link" to="/profile">
-                  <i className="fa fa-user"></i> Profile
+                  <i className="fa fa-user"></i> My Orders
                 </Link>
               </li>
               <li className="nav-item">

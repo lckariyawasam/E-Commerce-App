@@ -15,7 +15,7 @@ function UserDetails() {
         })
         .then(res => {
             console.log(res.data);
-            setUserDetails(res.data.rows[0]); 
+            setUserDetails(res.data); 
         })
         .catch(err => console.log(err));
     }
@@ -23,7 +23,7 @@ function UserDetails() {
     useEffect(loadData, []);
 
     return (
-        <div className="vh-100">
+        <div className="">
             {userDetails ? (
                 <div>
                     <h2>User Details</h2>

@@ -40,7 +40,7 @@ import UserOrderDetails from "../../Components/UserOrderDetails";
         // };
 
         const loadData = () => {
-            axios.get('http://localhost:5000/admin/orders', {
+            axios.get('http://localhost:5000/user/orders', {
                 withCredentials: true,
                 headers: {
                     'Content-Type': 'application/json',
@@ -60,7 +60,7 @@ import UserOrderDetails from "../../Components/UserOrderDetails";
         return (
             <div className="vh-100">
                 <UserOrderDetails id="2"/>
-                <UserDetails id="2"/>
+                {/* <UserDetails id="2"/> */}
             </div>
         );
     }

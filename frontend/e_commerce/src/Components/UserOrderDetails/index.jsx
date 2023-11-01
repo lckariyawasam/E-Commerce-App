@@ -7,7 +7,7 @@ function UserOrderDetails() {
     const [orders, setOrders] = useState([]);
 
     const loadData = () => {
-        axios.get('http://localhost:5000/admin/orders', {
+        axios.get('http://localhost:5000/user/orders', {
             withCredentials: true,
             headers: {
                 'Content-Type': 'application/json',
@@ -15,7 +15,7 @@ function UserOrderDetails() {
             }
         })
         .then(res => {
-            console.log(res.data);
+            console.log("orders", res.data);
             setOrders(res.data);
         })
         .catch(err => console.log(err));
@@ -24,10 +24,10 @@ function UserOrderDetails() {
     useEffect(loadData, []);
     
     return (
-        <div className="vh-100">
+        <div className="">
             {orders.length === 0 ? 
                 <div className="no-data">No data available</div>
-                : <h2>User Order Details</h2>
+                : <h2>My Orders</h2>
             }
             <table className="sales-table">
                 <thead>
@@ -36,7 +36,7 @@ function UserOrderDetails() {
                         <th>Payment Type</th>
                         <th>Order Date</th>
                         <th>Status</th>
-                        <th>Price</th>
+                        <th>Price ($)</th>
                         <th>Link</th>
                     </tr>
                 </thead>
@@ -48,7 +48,7 @@ function UserOrderDetails() {
                             <td>{order.order_date}</td>
                             <td>{order.status}</td>
                             <td>{order.cart_id}</td>
-                            <td><button className="btn btn-outline-dark"><Link className="link-button" to={`http://localhost:5000/user/something`} >Details</Link></button></td>
+                            <td><Link className="link-button" to={`/userorder?order=${order.order_id}`} >Details</Link></td>
                         </tr>
                     ))}
                 </tbody>
