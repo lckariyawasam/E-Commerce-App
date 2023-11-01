@@ -4,13 +4,15 @@ import './index.css';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-const LoginPage = () => {
+const LoginPage = ({ callback }) => {
     const usernameRef = useRef();
     const passwordRef = useRef();
 
     const navigate = useNavigate();
 
     const [loginFailed, setLoginFailed] = useState(false);
+
+    console.log(callback)
 
     const authenticate = async () => {
         axios.post('http://localhost:5000/login', 
@@ -27,23 +29,20 @@ const LoginPage = () => {
         })
         .then(res => {
             if (res.status === 200) {
-                navigate('/')
+                console.log(res.data)
+                callback(res.data.user_type)
+                if (res.data.user_type === "Admin") {
+                    navigate('/admin')
+                } else {
+                    navigate('/')
+                }
             }
-            console.log(res)
         })
-        .catch(err => setLoginFailed(true))
+        .catch(err => {
+            setLoginFailed(true)
+            console.log(err)
+        })
     
-    }
-
-    const logout = () => {
-        axios.get('http://localhost:5000/logout', {
-            withCredentials: true,
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            }
-        })
-        .then(res => console.log(res))
     }
 
 

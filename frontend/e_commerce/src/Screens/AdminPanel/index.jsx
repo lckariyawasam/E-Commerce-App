@@ -9,7 +9,7 @@ import CustomerSalesReport from "../../Components/CustomerSalesReport";
 
 
 function CategoryView() {
-  const [activeTab, setActiveTab] = useState("quarterlySales");
+  const [activeTab, setActiveTab] = useState("quarterlySales")
 
   const renderContent = () => {
     switch (activeTab) {
@@ -24,9 +24,9 @@ function CategoryView() {
       case "customerSalesReport":
         return <CustomerSalesReport />;
       default:
-        return <QuarterlySales />;
+        return <></>;
     }
-  };
+  }
 
   return (
     <div className="admin-panel">

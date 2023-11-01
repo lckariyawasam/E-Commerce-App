@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Bar } from 'react-chartjs-2';
 import "./index.css";
 
+import { useNavigate } from 'react-router-dom';
+
 import axios from 'axios'
 
 // const salesData =  [
@@ -30,6 +32,8 @@ function QuarterlySales() {
     const [totalSales, setTotalSales] = useState([])
 
     const [year, setYear] = useState(2023)
+
+    const navigate = useNavigate()
 
     
     const chartData = {
@@ -80,6 +84,9 @@ function QuarterlySales() {
         })
         .catch(err => {
             console.log(err)
+            if (err.response.status === 401) {
+                navigate('/?redirect=true')
+            }
         })
     }
     

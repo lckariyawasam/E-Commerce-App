@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import axios, { all } from 'axios';
+import React, { useState, useEffect, } from 'react';
+import axios from 'axios';
 import "./index.css";
 
 import BannerCarousel from '../../Components/BannerCarousel';
@@ -115,7 +115,7 @@ const HomePage = () => {
             <div className="card text-center">
               {
                 Object.keys(allProducts).length > 0 ? Object.keys(allProducts).map((item, index) => (
-                  <div key={allProducts[item][0].category}>
+                  <div key={item}>
                     <div className="card-header">
                       <h2>{allProducts[item][0].category}</h2>
                     </div>
