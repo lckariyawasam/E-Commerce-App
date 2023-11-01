@@ -30,7 +30,7 @@ const Navbar = ({ isLoggedIn }) => {
                     </li>
                 )}
             </ul>
-        <SearchBar isStrictSelection={false} />
+        <SearchBar isStrictSelection={false} endpoint={"products"}/>
         </div>
     </nav>
    );

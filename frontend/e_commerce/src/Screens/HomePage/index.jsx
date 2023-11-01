@@ -12,7 +12,7 @@ const HomePage = () => {
     const userIsLoggedIn = true;
 
     const loadProducts = () => {
-      axios.get('http://localhost:5000/products', {
+      axios.get('http://localhost:5000/products/sorted', {
           withCredentials: true,
           headers: {
               'Content-Type': 'application/json',

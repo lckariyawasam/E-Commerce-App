@@ -47,27 +47,29 @@ import "./index.css";
       
 // ];
 
-function SearchBar({ isStrictSelection,onProductSelected , dataBase}) {
+function SearchBar({ isStrictSelection,onProductSelected , endpoint}) {
     const [query, setQuery] = useState("");
     const [products, setProducts] = useState([]);
     const [filteredProducts, setFilteredProducts] = useState([]);
     const navigate = useNavigate();
 
     useEffect(() => {
-        let apiUrl = "/api/products";
-        if (dataBase == "users") {
-            apiUrl = "/api/users";
+        if (products.length === 0) {
+            let apiUrl = `http://localhost:5000/${endpoint}`;
+            if (endpoint== "users") {
+                apiUrl = "/api/users";
+            }
+    
+            fetch(apiUrl)
+            .then(response => response.json())
+            .then(data => {
+                setProducts(data);
+            })
+            .catch(error => {
+                console.error("Error fetching data:", error);
+            });
         }
-
-        fetch(apiUrl)
-        .then(response => response.json())
-        .then(data => {
-            setProducts(data);
-        })
-        .catch(error => {
-            console.error("Error fetching data:", error);
-        });
-    }, [dataBase]); 
+    }, []); 
 
     const handleInputChange = (e) => {
         const value = e.target.value;
@@ -79,23 +81,23 @@ function SearchBar({ isStrictSelection,onProductSelected , dataBase}) {
         }
     
         const matchedProducts = products.filter(product => 
-            product.product_name.toLowerCase().includes(value.toLowerCase())
+            product.title.toLowerCase().includes(value.toLowerCase())
         );
     
         setFilteredProducts(matchedProducts);
     };
 
     const handleProductClick = (product) => {
-        setQuery(product.product_name);
+        setQuery(product.title);
         // setSelectedProductId(product.id);
         setFilteredProducts([]); // Collapse the dropdown
 
         if (onProductSelected) {
-            onProductSelected(product.id); // Pass the product ID to the parent component
+            onProductSelected(product); // Pass the product ID to the parent component
         }
     
         if (!isStrictSelection) {
-            navigate(`/ProductView/${product.id}`);
+            navigate(`/product/${product.product_id}`);
         }
     };
 
@@ -128,8 +130,8 @@ function SearchBar({ isStrictSelection,onProductSelected , dataBase}) {
                         }
                     }>
                     {filteredProducts.map(product => (
-                        <li key={product.id} onClick={() => handleProductClick(product)}>
-                            {product.product_name}
+                        <li key={product.product_id} onClick={() => handleProductClick(product)}>
+                            {product.title}
                         </li>
                     ))}
                 </ul>

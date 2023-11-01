@@ -126,9 +126,17 @@ def logout():
     session.clear()
     return "Logged out"
 
-
 @app.route('/products')
 def products():
+    # Query the database for all products
+    cursor.execute("SELECT * FROM product")
+    results = cursor.fetchall()
+
+    return results
+
+
+@app.route('/products/sorted')
+def products_sorted():
     # Query the database for all products
     # cursor.execute("SELECT * FROM product")
     cursor.execute("""
@@ -431,6 +439,32 @@ def most_orders_category():
     else:
         return ("Incomplete Request", 401)
     
+
+@app.route("/admin/monthly_orders", methods=["POST"])
+def monthly_orders():
+    data = request.get_json()
+    if data.get("product_id"):
+        # cursor.callproc("most_interest_month_for_product", (data.get("product_id"),))
+
+        cursor.execute("SELECT most_interest_month_for_product(%s) as month", (data.get("product_id"),))
+
+        results = cursor.fetchall()
+        for result in results:
+            if result is None:
+                return ("No data", 404)
+
+        return (results[0], 200)
+    
+    else:
+        return ("Incomplete Request", 401)
+    
+
+@app.route("/admin/orders")
+def orders():
+    cursor.execute("SELECT * FROM `order` ORDER BY order_id DESC")
+    results = cursor.fetchall()
+
+    return results    
 
 # For debugging purposes, do not run in production!
 if __name__ == '__main__':
