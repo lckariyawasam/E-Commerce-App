@@ -8,6 +8,7 @@ const Checkout = () => {
   const [cartItems, setCartItems] = useState([])
   const [paymentMethod, setPaymentMethod] = useState('')
   const [outOfStockItems, setOutOfStockItems] = useState(false)
+  const [force_checkout, setForceCheckout] = useState(false)
 
   const navigate = useNavigate()
 
@@ -35,7 +36,8 @@ const Checkout = () => {
 
     axios.post('http://localhost:5000/cart/checkout',
     {
-        "payment_method": paymentMethod
+        "payment_method": paymentMethod,
+        "force_checkout": force_checkout
     },
     {
       headers: {
@@ -56,12 +58,22 @@ const Checkout = () => {
       console.log(err)
       if (err.response.status === 404) {
         setOutOfStockItems(true)
-        alert('Some items in your cart are out of stock. Please remove them and try again.')
-        navigate(`/cart?outOfStock=true&outOfStockVariant=${err.response.data.insufficient_stock_variant_id}`)
+        if (window.confirm("Some items in your cart are out of stock. Do you want to proceed?")) {
+          console.log("This bugger wants to continue")
+          setForceCheckout(true)
+        } else {
+          navigate(`/cart?outOfStock=true&outOfStockVariant=${err.response.data.insufficient_stock_variant_id}`)
+        }
       }
     }
     )
   }
+
+  useEffect(() => {
+    if (force_checkout) {
+      handleCheckout()
+    }
+  }, [force_checkout])
 
   const calculateTotal = () => {
     return cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
@@ -99,7 +111,7 @@ const Checkout = () => {
         {/* Add a dropdown menu to select payment option */}
         <div className="payment-method">    
             <label className=''>Payment Option</label>
-            <select className='payment-input' onChange={(e) => setPaymentMethod(e.target.value)} value={paymentMethod}>
+            <select className='payment-input' disabled={outOfStockItems} onChange={(e) => setPaymentMethod(e.target.value)} value={paymentMethod}>
                 <option value="" disabled>Select Payment Option</option>
                 <option value="Cash">Cash</option>
                 <option value="Credit Card">Credit Card</option>
@@ -112,7 +124,7 @@ const Checkout = () => {
                         Confirm & Checkout
             </button>
             :
-            <p className="out-of-stock">Some items in your cart are out of stock. Please remove them and try again.</p>
+            <p className="out-of-stock">Checking out with out of stock items ... Please Wait</p>
         }
         </div>
     </div>
