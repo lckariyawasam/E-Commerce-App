@@ -144,10 +144,11 @@ def products_sorted():
     # Query the database for all products
     # cursor.execute("SELECT * FROM product")
     cursor.execute("""
-        SELECT product_id, title, c.name as category, c2.name as parent_category 
+        SELECT product_id, title, c.name as category, c2.name as parent_category, icon
         FROM product NATURAL JOIN product_sub_category 
         JOIN category c USING(category_id) 
         JOIN category c2 ON c.parent_category_id = c2.category_id
+        JOIN variant USING (product_id)
         """
     )
     results = cursor.fetchall()
@@ -157,12 +158,12 @@ def products_sorted():
     for result in results:
         if result["parent_category"] not in categoriesed_results:
             categoriesed_results[result["parent_category"]] = []
-        if len(categoriesed_results[result["parent_category"]]) < 9:
+        if len(categoriesed_results[result["parent_category"]]) < 3 and result not in categoriesed_results[result["parent_category"]]:
             categoriesed_results[result["parent_category"]].append(result)
 
         if result["category"] not in categoriesed_results:
             categoriesed_results[result["category"]] = []
-        if len(categoriesed_results[result["category"]]) < 9:
+        if len(categoriesed_results[result["category"]]) < 3 and result not in categoriesed_results[result["category"]]:
             categoriesed_results[result["category"]].append(result)
 
     return categoriesed_results
