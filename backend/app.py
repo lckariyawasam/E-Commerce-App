@@ -167,16 +167,22 @@ def products_sorted():
     results = cursor.fetchall()
 
     categoriesed_results = {}
+
+    def check_product_in_category(product, category):
+        for item in categoriesed_results[category]:
+            if item["product_id"] == product["product_id"]:
+                return True
+        return False
     
     for result in results:
         if result["parent_category"] not in categoriesed_results:
             categoriesed_results[result["parent_category"]] = []
-        if len(categoriesed_results[result["parent_category"]]) < 3 and result not in categoriesed_results[result["parent_category"]]:
+        if len(categoriesed_results[result["parent_category"]]) < 3 and not check_product_in_category(result, result["parent_category"]):
             categoriesed_results[result["parent_category"]].append(result)
 
         if result["category"] not in categoriesed_results:
             categoriesed_results[result["category"]] = []
-        if len(categoriesed_results[result["category"]]) < 3 and result not in categoriesed_results[result["category"]]:
+        if len(categoriesed_results[result["category"]]) < 3 and not check_product_in_category(result, result["category"]):
             categoriesed_results[result["category"]].append(result)
 
     return categoriesed_results
