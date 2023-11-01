@@ -40,13 +40,13 @@ const Navbar = ({ isLoggedIn, userName }) => {
                   <i className="fa fa-user"></i> Profile
                 </a>
               </li>
+              <li className="nav-item greeting">
+                <span className="nav-link">Hello, {userName}</span>
+              </li>
               <li className="nav-item">
                 <a className="nav-link" href="/">
                   <i className="fa fa-sign-out"></i> Sign Out
                 </a>
-              </li>
-              <li className="nav-item greeting">
-                <span className="nav-link">Hello, {userName}</span>
               </li>
             </>
           ) : (
