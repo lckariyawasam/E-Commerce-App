@@ -81,17 +81,19 @@ def login():
 def register():
     data = request.get_json()
 
+    print(data)
+
     if data.get("first_name") and data.get("email") and data.get("password"):
         first_name = data.get("first_name")
         last_name = data.get("last_name")
         email = data.get("email")
         input_password = data.get("password")
-        # phone_number = data.get("phone_number")
-        # address_line01 = data.get("address_line01")
-        # address_city = data.get("address_city")
-        # address_state = data.get("address_state")
-        # address_zip_code = data.get("address_zip_code")
-        # address_country = data.get("address_country")
+        phone_number = data.get("phone_number")
+        address_line01 = data.get("address_line01")
+        address_city = data.get("address_city")
+        address_state = data.get("address_state")
+        address_zip_code = data.get("address_zip_code")
+        address_country = data.get("address_country")
 
 
         # Phone number and address details are ignored and commented out for now
@@ -102,16 +104,18 @@ def register():
 
         # Check if the user with email exists
         if result:
-            return ("Registration Failed, email already in use", 401)
+            return ("Registration Failed, email already in use", 400)
         
         else:
             # Encrypt the password
             password_hash = bcrypt_sha256.hash(input_password)
 
             # Insert the user into the database
-            cursor.execute("""INSERT INTO user (user_type, first_name, last_name, email, password_hash)
-                            VALUES ('user', %s, %s, %s, %s)""",
-                            (first_name, last_name, email, password_hash))
+            cursor.execute("""INSERT INTO user (user_type, first_name, last_name, email, password_hash, 
+                           phone_number, address_line01, address_city, address_state, address_zip_code, address_country)
+                            VALUES ('Registered', %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)""",
+                            (first_name, last_name, email, password_hash,
+                             phone_number, address_line01, address_city, address_state, address_zip_code, address_country))
             
             connection.commit()
 
@@ -144,7 +148,6 @@ def products_sorted():
         FROM product NATURAL JOIN product_sub_category 
         JOIN category c USING(category_id) 
         JOIN category c2 ON c.parent_category_id = c2.category_id
-        LIMIT 9
         """
     )
     results = cursor.fetchall()
@@ -154,11 +157,13 @@ def products_sorted():
     for result in results:
         if result["parent_category"] not in categoriesed_results:
             categoriesed_results[result["parent_category"]] = []
-        categoriesed_results[result["parent_category"]].append(result)
+        if len(categoriesed_results[result["parent_category"]]) < 9:
+            categoriesed_results[result["parent_category"]].append(result)
 
         if result["category"] not in categoriesed_results:
             categoriesed_results[result["category"]] = []
-        categoriesed_results[result["category"]].append(result)
+        if len(categoriesed_results[result["category"]]) < 9:
+            categoriesed_results[result["category"]].append(result)
 
     return categoriesed_results
 

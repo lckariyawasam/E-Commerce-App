@@ -108,7 +108,7 @@ const HomePage = () => {
             <BannerCarousel />
             <div className="card text-center">
               <div className="card-header">
-                <h2>Recommendations</h2>
+                <h2>Electronics</h2>
               </div>
               <div className="card-body">
                 <ProductsGrid products={electronics} />
