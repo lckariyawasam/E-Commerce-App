@@ -1474,6 +1474,162 @@ VALUES
   (18, 32, 'PayPal', '7', '2023-08-19', 'Delivered'),
   (19, 38, 'Cash on Delivery', '7', '2023-09-24', 'Delivered'),
   (20, 40, 'Credit Card', '7', '2023-10-31', 'Processing');
+
+-- Insert data for Product_Custom_Property table
+-- Insert custom properties for Mobile Phones
+INSERT INTO Ecom_platform.Product_Custom_Property (product_id, custom_attribute_type, custom_attribute_value)
+VALUES
+  (1, 'Screen Size', '6.1 inches'),
+  (1, 'Operating System', 'iOS 15'),
+  (2, 'Screen Size', '6.2 inches'),
+  (2, 'Operating System', 'Android 11'),
+  (3, 'Screen Size', '6.0 inches'),
+  (3, 'Operating System', 'Android 11'),
+  (4, 'Screen Size', '6.55 inches'),
+  (4, 'Operating System', 'OxygenOS 11'),
+  (5, 'Screen Size', '6.81 inches'),
+  (5, 'Operating System', 'MIUI 12');
+
+-- Insert custom properties for TVs
+INSERT INTO Ecom_platform.Product_Custom_Property (product_id, custom_attribute_type, custom_attribute_value)
+VALUES
+  (6, 'Smart Features', 'Built-in Voice Asst.'),
+  (6, 'HDR Support', 'Dolby Vision'),
+  (7, 'Smart Features', 'WebOS Smart TV'),
+  (7, 'HDR Support', 'OLED HDR'),
+  (8, 'Smart Features', 'Android TV'),
+  (8, 'HDR Support', '4K HDR'),
+  (9, 'Smart Features', 'Android TV'),
+  (9, 'HDR Support', '4K HDR'),
+  (10, 'Smart Features', 'Roku TV'),
+  (10, 'HDR Support', '1080p HDR');
+
+-- Insert custom properties for Laptops
+INSERT INTO Ecom_platform.Product_Custom_Property (product_id, custom_attribute_type, custom_attribute_value)
+VALUES
+  (11, 'Processor', 'Intel Core i7'),
+  (11, 'Display Size', '13.3 inches'),
+  (12, 'Processor', 'Apple M1 Chip'),
+  (12, 'Display Size', '13.3 inches'),
+  (13, 'Processor', 'Intel Core i7'),
+  (13, 'Display Size', '13.3 inches'),
+  (14, 'Processor', 'Intel Core i7'),
+  (14, 'Display Size', '14 inches'),
+  (15, 'Processor', 'AMD Ryzen 9'),
+  (15, 'Display Size', '14 inches');
+
+-- Insert custom properties for Headphones
+INSERT INTO Ecom_platform.Product_Custom_Property (product_id, custom_attribute_type, custom_attribute_value)
+VALUES
+  (16, 'Wireless Tech.', 'Bluetooth 5.0'),
+  (16, 'Battery Life', 'Up to 30 hours'),
+  (17, 'Wireless Tech.', 'Bluetooth 4.2'),
+  (17, 'Battery Life', 'Up to 20 hours'),
+  (18, 'Wireless Tech.', 'Bluetooth 5.0'),
+  (18, 'Battery Life', 'Up to 20 hours'),
+  (19, 'Wireless Tech.', 'Bluetooth 5.0'),
+  (19, 'Battery Life', 'Up to 22 hours'),
+  (20, 'Wireless Tech.', 'Bluetooth 4.2'),
+  (20, 'Battery Life', 'Up to 6 hours');
+
+-- Insert custom properties for Cameras
+INSERT INTO Ecom_platform.Product_Custom_Property (product_id, custom_attribute_type, custom_attribute_value)
+VALUES
+  (21, 'Resolution', '30.4 Megapixels'),
+  (21, 'Lens Type', 'EF 24-105mm f/4L'),
+  (22, 'Resolution', '24.3 Megapixels'),
+  (22, 'Lens Type', 'AF-S NIKKOR 24-120mm'),
+  (23, 'Resolution', '24.2 Megapixels'),
+  (23, 'Lens Type', 'FE 28-70mm f/3.5-5.6'),
+  (24, 'Resolution', '20.3 Megapixels'),
+  (24, 'Lens Type', 'Lumix G Vario 12-60mm'),
+  (25, 'Resolution', '26.1 Megapixels'),
+  (25, 'Lens Type', 'XF 18-55mm f/2.8-4 R');
+
+-- Insert custom properties for Watches
+INSERT INTO Ecom_platform.Product_Custom_Property (product_id, custom_attribute_type, custom_attribute_value)
+VALUES
+  (26, 'Battery Life', 'Up to 18 hours'),
+  (26, 'Health Features', 'ECG and Blood O2'),
+  (27, 'Battery Life', 'Up to 2 days'),
+  (27, 'Health Features', 'Heart Rate and Sleep'),
+  (28, 'Battery Life', 'Up to 14 days'),
+  (28, 'Health Features', 'GPS and Pulse Oxi'),
+  (29, 'Battery Life', 'Up to 24 hours'),
+  (29, 'Health Features', 'Heart Rate and GPS'),
+  (30, 'Battery Life', 'Up to 6 days'),
+  (30, 'Health Features', 'Heart Rate and Activity');
+
+-- Insert custom properties for Home Appliances
+INSERT INTO Ecom_platform.Product_Custom_Property (product_id, custom_attribute_type, custom_attribute_value)
+VALUES
+  (31, 'Energy Efficiency', 'ENERGY STAR Cert.'),
+  (31, 'Capacity', '25.5 cubic feet'),
+  (32, 'Energy Efficiency', 'ENERGY STAR Cert.'),
+  (32, 'Capacity', '4.5 cubic feet'),
+  (33, 'Energy Efficiency', 'ENERGY STAR Cert.'),
+  (33, 'Capacity', '1.6 cubic feet'),
+  (34, 'Energy Efficiency', 'Not Applicable'),
+  (34, 'Capacity', '12 cups'),
+  (35, 'Energy Efficiency', 'ENERGY STAR Cert.'),
+  (35, 'Capacity', '1.3 liters');
+
+-- Insert custom properties for Gaming Consoles
+INSERT INTO Ecom_platform.Product_Custom_Property (product_id, custom_attribute_type, custom_attribute_value)
+VALUES
+  (36, 'CPU', 'Custom AMD Zen 2 Octa'),
+  (36, 'GPU', 'Custom RDNA 2'),
+  (37, 'CPU', 'Custom AMD Zen 2 Octa'),
+  (37, 'GPU', 'Custom RDNA 2'),
+  (38, 'CPU', 'Custom NVIDIA Tegra X1'),
+  (38, 'GPU', 'Custom NVIDIA Tegra X1'),
+  (39, 'CPU', 'Custom AMD Jaguar Octa'),
+  (39, 'GPU', 'AMD Radeon GCN'),
+  (40, 'CPU', 'Custom AMD Jaguar Octa'),
+  (40, 'GPU', 'AMD Radeon GCN');
+
+-- Insert custom properties for Smart Home Security
+INSERT INTO Ecom_platform.Product_Custom_Property (product_id, custom_attribute_type, custom_attribute_value)
+VALUES
+  (41, 'Number of Sensors', '8'),
+  (41, 'Wireless Connectivity', 'Wi-Fi and Z-Wave'),
+  (42, 'Resolution', '2K HDR'),
+  (42, 'Wireless Connectivity', 'Wi-Fi and Bluetooth'),
+  (43, 'Video Resolution', '1080p HD'),
+  (43, 'Wireless Connectivity', 'Wi-Fi and Bluetooth'),
+  (44, 'Number of Sensors', '9'),
+  (44, 'Wireless Connectivity', 'Wi-Fi and Cellular'),
+  (45, 'Resolution', '1080p HD'),
+  (45, 'Wireless Connectivity', 'Wi-Fi and Bluetooth');
+
+-- Insert custom properties for Printers
+INSERT INTO Ecom_platform.Product_Custom_Property (product_id, custom_attribute_type, custom_attribute_value)
+VALUES
+  (46, 'Print Speed', '55 ppm'),
+  (46, 'Color Printing', 'Yes'),
+  (47, 'Print Speed', '15 ppm'),
+  (47, 'Color Printing', 'Yes'),
+  (48, 'Print Speed', '20 ppm'),
+  (48, 'Color Printing', 'Yes'),
+  (49, 'Print Speed', '32 ppm'),
+  (49, 'Color Printing', 'Yes'),
+  (50, 'Print Speed', '70 ppm'),
+  (50, 'Color Printing', 'Yes');
+
+-- Insert custom properties for Tablets
+INSERT INTO Ecom_platform.Product_Custom_Property (product_id, custom_attribute_type, custom_attribute_value)
+VALUES
+  (51, 'Display Size', '11 in.'),
+  (51, 'Processor', 'Apple A12Z Bionic'),
+  (52, 'Display Size', '11 in.'),
+  (52, 'Processor', 'Snapdragon 865+'),
+  (53, 'Display Size', '12.3 in.'),
+  (53, 'Processor', 'Intel Core i7'),
+  (54, 'Display Size', '10.1 in.'),
+  (54, 'Processor', 'MediaTek Helio P60T'),
+  (55, 'Display Size', '10.3 in.'),
+  (55, 'Processor', 'MediaTek Helio P22T');
+
   
 delimiter //
 CREATE DEFINER = root@localhost 
