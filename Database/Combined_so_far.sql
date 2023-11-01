@@ -424,6 +424,80 @@ WHERE o.user_id = user_id_param;
 END //
 DELIMITER ;
 
+DELIMITER //
+CREATE PROCEDURE `update_cart_on_order_on_request`(IN user_id_param INT, IN cart_id_param INT)
+BEGIN
+    DECLARE vID, q INT;
+    DECLARE done INT DEFAULT FALSE;
+    DECLARE out_of_stock INT DEFAULT NULL;
+    DECLARE if_cart_is_partial TINYINT DEFAULT 0;
+    DECLARE available_q, sold_price INT;
+    DECLARE cur CURSOR FOR SELECT variant_id, quantity FROM cart_item WHERE cart_id = cart_id_param;
+    DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
+    
+
+    START TRANSACTION;
+
+    OPEN cur;
+    read_loop:LOOP
+        FETCH cur INTO vID, q;
+        IF done THEN
+            LEAVE read_loop;
+        END IF;
+
+        -- Check if the item is in inventory
+        SELECT quantity FROM Inventory WHERE variant_id = vID INTO available_q;
+        SELECT price FROM Variant WHERE variant_id = vID INTO sold_price;
+        
+        IF available_q < q THEN
+            -- Item is partially in stock
+            SET if_cart_is_partial = 1;
+            UPDATE Cart_item SET status = 'Complete', quantity = available_q WHERE variant_id = vID;
+            INSERT INTO cart_item (variant_id, cart_id, quantity, status, sold_date, sold_price_per_item)
+            VALUES (vID, cart_id_param, q - available_q, 'On Order', CURDATE(), sold_price);
+            UPDATE Cart_item SET sold_date = CURDATE() WHERE variant_id = vID;
+            UPDATE Cart_item SET sold_price_per_item = sold_price WHERE variant_id = vID;
+        ELSE
+            -- Item is in stock
+            CALL update_inventory_quantity_for(vID, q);
+            UPDATE Cart_item SET status = 'Complete' WHERE variant_id = vID;
+            UPDATE Cart_item SET sold_date = CURDATE() WHERE variant_id = vID;
+            UPDATE Cart_item SET sold_price_per_item = sold_price WHERE variant_id = vID;
+        END IF;
+    END LOOP;
+
+    CLOSE cur;
+
+    IF if_cart_is_partial = 1 THEN
+        UPDATE Cart SET status = 'Partial' WHERE cart_id = cart_id_param;
+    ELSE
+        UPDATE Cart SET status = 'Complete' WHERE cart_id = cart_id_param;
+    END IF;
+    COMMIT;
+END;
+//
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE `checkout_user_on_request`(IN user_id_param INT, IN payment_type_param VARCHAR(31))
+BEGIN
+	DECLARE stock_out_variant_id INT;
+    DECLARE delivery_days INT;
+    DECLARE cartId INT;
+    
+    SELECT cart_id INTO cartID FROM cart WHERE user_id = user_id_param AND status = 'Pending';
+	CALL update_cart_on_order_on_request(user_id_param, cartId);
+    
+	SELECT get_delivery_date_for_user(user_id_param) INTO delivery_days;
+    SET delivery_days = delivery_days + 3;
+	INSERT INTO Ecom_platform.`Order`(cart_id, user_id, payment_type, est_delivery_days, order_date, `status`) VALUES (cartId, user_id_param, payment_type_param, delivery_days, CURDATE(), 'Partial');
+	CALL create_new_cart_for(user_id_param);
+	SELECT delivery_days AS est_delivery_days;
+	
+END;
+//
+DELIMITER ;
+
 
 -- Insert data for Users with Randomized Domain Names and All Address Fields NOT NULL
 INSERT INTO Ecom_platform.User (user_type, first_name, last_name, email, password_hash, phone_number, address_line01, address_city, address_state, address_zip_code, address_country)
@@ -1136,7 +1210,7 @@ VALUES
   (67, 12),
   (68, 14),
   (69, 10),
-  (70, 9),
+  (70, 1),
 
   -- Inventory for Gaming Consoles
   (71, 30),
@@ -1446,7 +1520,7 @@ VALUES
 
 -- Cart 25
   (60, 25, 2, 'Pending', NULL, NULL), -- Home Appliances (variant_id 60) - 2 items
-  (70, 25, 1, 'Pending', NULL, NULL), -- Gaming Consoles (variant_id 70) - 1 item (sold)
+  (70, 25, 5, 'Pending', NULL, NULL), -- Gaming Consoles (variant_id 70) - 1 item (sold)
 
 -- Cart 26 (Partial Cart)
   (90, 26, 2, 'Pending', NULL, NULL), -- Smart Home Security (variant_id 90) - 2 items
