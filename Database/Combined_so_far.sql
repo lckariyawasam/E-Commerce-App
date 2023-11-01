@@ -473,9 +473,9 @@ VALUES
   ('Registered', 'Ava', 'Brown', 'ava.b@gmail.com', '$bcrypt-sha256$v=2,t=2b,r=12$4ECMEENZozcTLJR4PDl49u$4Uopa6BZi3HVeDmKqCbGGUrpV6pyy9a', '+1234567890', '789 Elm St', 'Los Angeles', 'CA', '90001', 'United States'),
   ('Guest', 'Guest', 'User', 'guest@gmail.com', '$bcrypt-sha256$v=2,t=2b,r=12$4ECMEENZozcTLJR4PDl49u$4Uopa6BZi3HVeDmKqCbGGUrpV6pyy9a', '+1234567890', '123 Pine St', 'Chicago', 'IL', '60601', 'United States'),
   ('Registered', 'Lucas', 'Martinez', 'lucas.m@gmail.com', '$bcrypt-sha256$v=2,t=2b,r=12$4ECMEENZozcTLJR4PDl49u$4Uopa6BZi3HVeDmKqCbGGUrpV6pyy9a', '+1234567890', '456 Oak St', 'Paris', 'Île-de-France', '75001', 'France'),
-  ('Admin', 'Mahinda', 'Rajapaksha', 'mahi.1@gmail.com', '$bcrypt-sha256$v=2,t=2b,r=12$4ECMEENZozcTLJR4PDl49u$4Uopa6BZi3HVeDmKqCbGGUrpV6pyy9a', '+1234567890', '117, Wijerama Road,', 'Colombo 7', 'Colombo', '00700', 'Sri Lanka'),
-  ('Content Manager', 'Chichchi', 'Rajapaksha', 'chichchiya@gmail.com', '$bcrypt-sha256$v=2,t=2b,r=12$4ECMEENZozcTLJR4PDl49u$4Uopa6BZi3HVeDmKqCbGGUrpV6pyy9a', '+1234567890', '117, Wijerama Road,', 'Colombo 7', 'Colombo', '00700', 'Sri Lanka'),
-  ('Inventory Manager', 'Sanath', 'Nishantha', 'nisha@gmail.com', '$bcrypt-sha256$v=2,t=2b,r=12$4ECMEENZozcTLJR4PDl49u$4Uopa6BZi3HVeDmKqCbGGUrpV6pyy9a', '+1234567890', '117, Wijerama Road,', 'Colombo 7', 'Colombo', '00700', 'Sri Lanka');
+  ('Admin', 'John', 'Smith', 'admin@gmail.com', '$bcrypt-sha256$v=2,t=2b,r=12$4ECMEENZozcTLJR4PDl49u$4Uopa6BZi3HVeDmKqCbGGUrpV6pyy9a', '+1234567890', '117, Wijerama Road,', 'Colombo 7', 'Colombo', '00700', 'Sri Lanka'),
+  ('Content Manager', 'David', 'Brown', 'contentmanager@gmail.com', '$bcrypt-sha256$v=2,t=2b,r=12$4ECMEENZozcTLJR4PDl49u$4Uopa6BZi3HVeDmKqCbGGUrpV6pyy9a', '+1234567890', '117, Wijerama Road,', 'Colombo 7', 'Colombo', '00700', 'Sri Lanka'),
+  ('Inventory Manager', 'James', 'Lee', 'inventorymanager@gmail.com', '$bcrypt-sha256$v=2,t=2b,r=12$4ECMEENZozcTLJR4PDl49u$4Uopa6BZi3HVeDmKqCbGGUrpV6pyy9a', '+1234567890', '117, Wijerama Road,', 'Colombo 7', 'Colombo', '00700', 'Sri Lanka');
 
 
   -- Insert data for Main Categories
