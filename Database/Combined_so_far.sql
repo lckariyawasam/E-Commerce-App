@@ -651,17 +651,16 @@ VALUES
 -- Insert data for Action Figures
 INSERT INTO Ecom_platform.Product (title, weight, brand, description, Variant_attribute_type_1, Variant_attribute_type_2)
 VALUES
-  ('Superhero Action Figure - Iron Man', '45g', 'ToyCo', 'Collect this detailed Iron Man action figure and add it to your superhero collection. Its perfect for fans of the Marvel universe.', 'Character', 'Accessory'),
-  ('Action Figure - Space Explorer', '55g', 'Toy Universe', 'Join the space adventure with this action figure. It comes with a space helmet and jetpack for intergalactic play.', 'Character', 'Accessories'),
-  ('Ninja Warrior Action Figure', '60g', 'Ninjitsu Toys', 'Engage in epic ninja battles with this action figure. It features posable limbs and comes with ninja weapons.', 'Character', 'Weapons'),
-  ('Action Figure - Fantasy Knight', '50g', 'Knightly Toys', 'Enter a world of medieval fantasy with this knight action figure. Its armed with a sword and shield for epic battles.', 'Character', 'Accessories'),
-  ('Action Figure - Super Villain', '48g', 'Villainy Inc.', 'Bring the world of super villains to life with this action figure. It includes a diabolical accessory and detailed costume.', 'Character', 'Accessory');
-
+  ('Toy Car - Red Racer', '200g', 'Speedy Toys', 'Zoom around with this red toy car. It's designed for speed and fun play for kids.', 'Color', 'Size'),
+  ('Toy Car - Blue Cruiser', '210g', 'DriveMaster', 'Take a leisurely drive with this blue toy car. It's perfect for imaginative adventures.', 'Color', 'Size'),
+  ('Toy Jeep - Safari Adventure', '230g', 'Wild Explorers', 'Embark on a safari adventure with this toy jeep. It features realistic details and a removable roof.', 'Color', 'Size');
+  ('Toy Helicopter - Rescue Chopper', '250g', 'Rescue Heroes', 'Be a hero with this rescue helicopter. It comes with rotating blades and a working winch for daring missions.', 'Color', 'Size'),
+  ('Toy Helicopter - Police Pursuit', '260g', 'Law Enforcement Toys', 'Chase down the bad guys with this police helicopter. It features a searchlight and working doors.', 'Color', 'Size');
 -- Insert data for Board Games
 INSERT INTO Ecom_platform.Product (title, weight, brand, description, Variant_attribute_type_1, Variant_attribute_type_2)
 VALUES
-  ('Adventure Quest Board Game', '950g', 'GameMasters', 'Embark on a grand adventure with this cooperative board game. Its suitable for 2-4 players and includes a large game board for epic quests.', 'Number of Players', 'Game Board Size'),
-  ('Mystery Mansion Board Game', '800g', 'Enigma Games', 'Solve mysteries in this thrilling board game. Explore a haunted mansion and uncover hidden secrets with your friends.', 'Number of Players', 'Game Board Size'),
+  ('Toy Blaster - Laser Shooter', '150g', 'Galactic Warriors', 'Defend the galaxy with this laser blaster. It features light and sound effects for epic battles.', 'Type', 'Color'),
+  ('Toy Sword - Knight's Weapon', '180g', 'Medieval Adventures', 'Become a noble knight with this toy sword. It's perfect for medieval role-play.', 'Type', 'Color');
   ('Dinosaur World Board Game', '850g', 'Prehistoric Games', 'Travel back in time to a world of dinosaurs with this exciting board game. Compete to build the best dinosaur park.', 'Number of Players', 'Game Board Size'),
   ('Pirates Treasure Board Game', '900g', 'Treasure Hunt Games', 'Sail the high seas in search of hidden treasure. This board game is perfect for aspiring pirates and treasure hunters.', 'Number of Players', 'Game Board Size'),
   ('Fantasy Quest Board Game', '875g', 'Mythic Adventures', 'Venture into a realm of fantasy and magic with this cooperative board game. Solve quests and face mythical creatures.', 'Number of Players', 'Game Board Size');
