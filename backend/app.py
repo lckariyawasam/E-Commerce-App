@@ -319,27 +319,29 @@ def remove_from_cart():
 @app.route("/cart/checkout", methods=['POST'], endpoint='checkout')
 @session_required
 def checkout():
-
-    print(session.get("user_id"))
-    
     data = request.get_json()
 
-    print(data)
+    if data.get("payment_method") and data.get("force_checkout") is not None:
 
-    if data.get("payment_method") and data.get("payment_method") in ("Cash", "Credit Card", "Debit Card"):
-        cursor.callproc("checkout_user", (session.get("user_id"), data.get("payment_method")))
-        connection.commit()
-        
-        for result in cursor.stored_results():
-            return_value = result.fetchall()
-            if (return_value[0]["insufficient_stock_variant_id"] is not None):
-                result = {
-                    "insufficient_stock_variant_id": return_value[0]["insufficient_stock_variant_id"],
-                }
-                return (result, 404)
-            else:
-                break
-        return ("Checkout Successful", 200)
+        if (data.get("force_checkout") == False):
+            cursor.callproc("checkout_user", (session.get("user_id"), data.get("payment_method")))
+            connection.commit()
+            
+            for result in cursor.stored_results():
+                return_value = result.fetchall()
+                if (return_value[0]["insufficient_stock_variant_id"] is not None):
+                    result = {
+                        "insufficient_stock_variant_id": return_value[0]["insufficient_stock_variant_id"],
+                    }
+                    return (result, 404)
+                else:
+                    break
+            return ("Checkout Successful", 200)
+        else:
+            # Not implmeneted yet 
+            cursor.callproc("checkout_user_on_request", (session.get("user_id"), data.get("payment_method")))
+            connection.commit()
+            return ("Checkout Successful", 200)
     
     else:
         return ("Incomplete Request", 401)
