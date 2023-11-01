@@ -1,0 +1,11 @@
+.category-selector {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  width: 60%;
+
+  margin: 3rem;
+
+  font-size: 1.2rem;
+}

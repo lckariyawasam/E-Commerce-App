@@ -84,17 +84,19 @@ const Navbar = ({ userType, callback }) => {
             </Link>
           </li> */}
 
-          {isLoggedIn ? (
-            <>
-            {
-                userType === "Registered" || userType === "Guest" ? (
-                  <li className="nav-item">
+          {
+            userType === "Registered" || userType === "Guest" ? (
+                <li className="nav-item">
                     <Link className="nav-link" to="/profile">
                       <i className="fa fa-user"></i> My Orders
                     </Link>
-                  </li>
-                ) : <></>
-            }
+                </li>
+            ) : <></>
+          }
+
+
+          {isLoggedIn ? (
+            <>
 
               <li className="nav-item">
                 <a className="nav-link" onClick={logout}>

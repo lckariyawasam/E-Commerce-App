@@ -195,6 +195,45 @@ def products_sorted():
 
     return categoriesed_results
 
+
+@app.route('/products/sorted_full')
+def products_sorted_full():
+    # Query the database for all products
+    # cursor.execute("SELECT * FROM product")
+    cursor.execute("""
+        SELECT product_id, title, c.name as category, c2.name as parent_category, icon
+        FROM product NATURAL JOIN product_sub_category 
+        JOIN category c USING(category_id) 
+        JOIN category c2 ON c.parent_category_id = c2.category_id
+        JOIN variant USING (product_id)
+        """
+    )
+    results = cursor.fetchall()
+
+    categoriesed_results = {}
+
+    def check_product_in_category(product, category):
+        for item in categoriesed_results[category]:
+            if item["product_id"] == product["product_id"]:
+                return True
+        return False
+    
+    for result in results:
+        if result["parent_category"] not in categoriesed_results:
+            categoriesed_results[result["parent_category"]] = []
+        # if len(categoriesed_results[result["parent_category"]]) < 3 and not check_product_in_category(result, result["parent_category"]):
+        if not check_product_in_category(result, result["parent_category"]):
+            categoriesed_results[result["parent_category"]].append(result)
+
+        if result["category"] not in categoriesed_results:
+            categoriesed_results[result["category"]] = []
+        # if len(categoriesed_results[result["category"]]) < 3 and not check_product_in_category(result, result["category"]):
+        if not check_product_in_category(result, result["category"]):
+            categoriesed_results[result["category"]].append(result)
+
+    return categoriesed_results
+
+
 @app.route('/products/<string:category>')
 def products_by_category(category):
     # Query the database for all products
