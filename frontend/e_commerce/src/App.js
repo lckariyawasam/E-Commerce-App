@@ -1,5 +1,7 @@
-import logo from './logo.svg';
+import React, { useEffect, useState } from 'react';
 import './App.css';
+
+import { getCookie, setCookie } from 'react-use-cookie';
 
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
@@ -27,16 +29,28 @@ import 'bootstrap/dist/js/bootstrap.min.js';
 
 function App() {
 
-  const userIsLoggedIn = true;
-  
+  const [userType, setUserType] = useState(getCookie('userType') || 'Guest')
+
+  if (!getCookie('session') == null) {
+    console.log("skdfhksjdnf")
+  }
+
+  function handleUserType(type) {
+    setUserType(type)
+    setCookie('userType', type)
+  }
+
+  useEffect(() => {
+    console.log(userType)
+  }, [userType])
 
   return (
     <Router>
       <ScrollToTop/>
-      <Navbar isLoggedIn={userIsLoggedIn} />
+      <Navbar userType={userType} callback={handleUserType} />
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/login" element={<LoginPage />} />
+          <Route path="/login" element={<LoginPage callback={handleUserType} />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/product/:productId" element={<ProductView />} />
           <Route path="/category/:categoryName" element={<CategoryView />} />

@@ -29,6 +29,17 @@ def session_required(f):
     return decorated_function
 
 
+# Write a decorator to check if the user is an admin
+def admin_only(f):
+    def decorated_function(*args, **kwargs):
+        if session.get("user_type") != "Admin":
+            print(session.get("user_type"))
+            return ("Unauthorized", 401)
+        return f(*args, **kwargs)
+    return decorated_function
+
+
+
 @app.route('/')
 @session_required
 def index():
@@ -61,7 +72,9 @@ def login():
                     # Passwords match
                     session["user_id"] = result["user_id"]
                     session["user_type"] = result["user_type"]
-                    return ("Login Successful", 200)
+                    return ({
+                        "user_type": result["user_type"]
+                    }, 200)
                 else:
                     # Passwords do not match
                     return ("Login Failed, Password is incorrect", 401)
@@ -74,7 +87,7 @@ def login():
         else:
             return ("Login Failed, incomplete request", 401)
     
-    return ("Page Under Construction", 200)
+    return ("Invalid Method", 404)
 
 
 @app.route('/register', methods=['POST'])
@@ -381,8 +394,9 @@ def update_user():
         return ("Incomplete Request", 401)
     
 
-@app.route("/admin/quarterly_report", methods=["POST"])
-def admin():
+@app.route("/admin/quarterly_report", methods=["POST"], endpoint='quarterly_report')
+@admin_only
+def quarterly_report():
     data = request.get_json()
     if (data.get("year")):
         year = data.get("year")
@@ -397,7 +411,8 @@ def admin():
     else:
         return ("Incomplete Request", 401)
     
-@app.route("/admin/most_sales", methods=["POST"])
+@app.route("/admin/most_sales", methods=["POST"], endpoint="most_sales")
+@admin_only
 def most_sales():
     data = request.get_json()
     print(data)
@@ -421,7 +436,8 @@ def most_sales():
     else:
         return ("Incomplete Request", 401)
     
-@app.route("/admin/most_orders_category", methods=["POST"])
+@app.route("/admin/most_orders_category", methods=["POST"], endpoint="most_orders_category")
+@admin_only
 def most_orders_category():
     data = request.get_json()
     print(data)
@@ -451,7 +467,8 @@ def most_orders_category():
         return ("Incomplete Request", 401)
     
 
-@app.route("/admin/monthly_orders", methods=["POST"])
+@app.route("/admin/monthly_orders", methods=["POST"], endpoint="monthly_orders")
+@admin_only
 def monthly_orders():
     data = request.get_json()
     if data.get("product_id"):
@@ -470,7 +487,8 @@ def monthly_orders():
         return ("Incomplete Request", 401)
     
 
-@app.route("/admin/orders")
+@app.route("/admin/orders", methods=["GET"], endpoint="orders")
+@admin_only
 def orders():
     cursor.execute("SELECT * FROM `order` ORDER BY order_id DESC")
     results = cursor.fetchall()
