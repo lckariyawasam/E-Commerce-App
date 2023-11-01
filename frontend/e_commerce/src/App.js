@@ -18,6 +18,9 @@ import AdminPanel from './Screens/AdminPanel';
 import Cart from './Screens/Cart';
 import BillingPage from './Screens/BillingPage';
 import Checkout from './Screens/Checkout';
+import Profile from './Screens/Profile';
+import UserOrder from './Screens/UserOrders';
+
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'font-awesome/css/font-awesome.min.css';
@@ -54,6 +57,8 @@ function App() {
           <Route path="/cart" element={<Cart />} />
           <Route path="/billing" element={<BillingPage />} />
           <Route path="/checkout" element={<Checkout />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/userorder" element={<UserOrder />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />

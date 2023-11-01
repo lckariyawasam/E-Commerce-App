@@ -322,6 +322,7 @@ def checkout():
 
     if data.get("payment_method") and data.get("payment_method") in ("Cash", "Credit Card", "Debit Card"):
         cursor.callproc("checkout_user", (session.get("user_id"), data.get("payment_method")))
+        connection.commit()
         
         for result in cursor.stored_results():
             return_value = result.fetchall()
@@ -390,6 +391,59 @@ def update_user():
         connection.commit()
 
         return ("User Updated", 200)
+    else:
+        return ("Incomplete Request", 401)
+    
+
+@app.route("/user/orders", endpoint="user_orders")
+@session_required
+def user_orders():
+    print(session["user_id"])
+    cursor.execute("SELECT * FROM `order` WHERE user_id = %s ORDER BY order_id DESC", (session.get("user_id"),))
+    results = cursor.fetchall()
+
+    return results
+
+
+@app.route("/user/order", methods=["POST"], endpoint="user_order")
+@session_required
+def user_order():
+    data = request.get_json()
+
+    print(data)
+
+    if data.get("order_id"):
+        cursor.execute("SELECT * FROM `order` WHERE order_id = %s", (data.get("order_id"),))
+        result = cursor.fetchone()
+
+
+        if result and result["user_id"] == session.get("user_id"):
+            cart_id = result["cart_id"]
+            # Query the database for the cart items
+            cursor.execute("SELECT * FROM cart_item JOIN variant using(variant_id) JOIN product using(product_id) WHERE cart_id = (%s)", (cart_id, ))
+
+            cart_items = []
+
+            for cart_item in cursor.fetchall():
+                # Return only the necessary details of the products in the cart
+                modified_cart_item = {
+                    "variant_id": cart_item["variant_id"],
+                    "title": cart_item["title"],
+                    "price": cart_item["price"],
+                    "quantity": cart_item["quantity"],
+                    "cart_item_id": cart_item["cart_item_id"]
+                }
+                cart_items.append(modified_cart_item)
+
+            return_value = {
+                "order_id": result["order_id"],
+                "cart_items": cart_items,
+                "estimated_delivery_date": result["est_delivery_days"],
+            }
+
+            return return_value
+        else:
+            return ("Unauthorized", 401)
     else:
         return ("Incomplete Request", 401)
     
