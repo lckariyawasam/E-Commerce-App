@@ -119,18 +119,18 @@ const BillingPage = () => {
             } */}
             <div className='checkout-form'>
                 <h1 className='form-heading'>Billing Information</h1>
-                <div className='name-fields'>
+                <div className='name-fields-billing'>
                     <input className='input-field-billing' disabled={userType === "Registered"} onChange={(e) => setFirstName(e.target.value)} placeholder='First Name' type="text" value={firstName} />
                     <input className='input-field-billing' disabled={userType === "Registered"} onChange={(e) => setLastName(e.target.value)} placeholder='Last Name' type="text" value={lastName} />
                 </div>
                 <input className='input-field-billing' disabled={userType === "Registered"} onChange={(e) => setEmail(e.target.value)} placeholder='Email' type="email" value={email} />
                 <input className='input-field-billing' onChange={(e) => setPhoneNumber(e.target.value)} placeholder='Phone Number' type="tel" value={phoneNumber} />
                 <input className='input-field-billing' onChange={(e) => setAddressLine01(e.target.value)} placeholder='Address Line 01' type="text" value={addressLine01} />
-                <div className='name-fields'>
+                <div className='name-fields-billing'>
                     <input className='input-field-billing' onChange={(e) => setCity(e.target.value)} placeholder='City' type="text" value={city} />
                     <input className='input-field-billing' onChange={(e) => setZipCode(e.target.value)} placeholder='Zip-Code' type="text" value={zipCode} />
                 </div>
-                <div className='name-fields'>
+                <div className='name-fields-billing'>
                     <input className='input-field-billing' onChange={(e) => setState(e.target.value)} placeholder='State/Province' type="text" value={state} />
                     <select className='input-field-billing' onChange={(e) => setCountry(e.target.value)} placeholder='Country' type="text" value={country}>
                         <option value="" disabled>Select Country</option>

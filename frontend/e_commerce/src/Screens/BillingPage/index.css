@@ -67,7 +67,7 @@
     font-size: 18px;
 }
 
-.name-fields {
+.name-fields-billing {
     display: grid;
     grid-template-columns: 1fr 1fr;
     margin-left: 2rem;
