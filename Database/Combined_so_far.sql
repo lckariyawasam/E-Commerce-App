@@ -900,8 +900,11 @@ VALUES
   (79, 'Geography Explorer Globe', 'Ages 7+', '24.99', 'ET007-GeographyExplorerGlobe', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/157.jpg?alt=media&token=5c63ca88-dfb5-4698-ab37-52b20a527c2c&_gl=1*yrxb0m*_ga*Nzk0MzkyMTY2LjE2OTgxMzI1MTY.*_ga_CW55HF8NVT*MTY5ODc0Njc2Ny41LjEuMTY5ODc0NzQ5OC4yNC4wLjA.'),
   (79, 'Geography Explorer Globe', 'Ages 7+', '26.99', 'ET008-GeographyExplorerGlobe', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/158.jpg?alt=media&token=86011faf-920c-4be0-bf1b-2591fc8a97a8&_gl=1*1x6svv3*_ga*Nzk0MzkyMTY2LjE2OTgxMzI1MTY.*_ga_CW55HF8NVT*MTY5ODc0Njc2Ny41LjEuMTY5ODc0NzUwNC4xOC4wLjA.'),
   (80, 'Solar System Planetarium Kit', 'Ages 9+', '29.99', 'ET009-SolarSystemPlanetarium', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/159.jpg?alt=media&token=501388c1-14e0-43d8-80eb-d5100a5955a7&_gl=1*104solm*_ga*Nzk0MzkyMTY2LjE2OTgxMzI1MTY.*_ga_CW55HF8NVT*MTY5ODc0Njc2Ny41LjEuMTY5ODc0NzUwOS4xMy4wLjA.'),
-  (80, 'Solar System Planetarium Kit', 'Ages 9+', '31.99', 'ET010-SolarSystemPlanetarium', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/160.jpg?alt=media&token=e46c2423-0b23-45ae-b701-f87df8fb4495&_gl=1*1everx5*_ga*Nzk0MzkyMTY2LjE2OTgxMzI1MTY.*_ga_CW55HF8NVT*MTY5ODc0Njc2Ny41LjEuMTY5ODc0NzUxNS43LjAuMA..');
-
+  (80, 'Solar System Planetarium Kit', 'Ages 9+', '31.99', 'ET010-SolarSystemPlanetarium', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/160.jpg?alt=media&token=e46c2423-0b23-45ae-b701-f87df8fb4495&_gl=1*1everx5*_ga*Nzk0MzkyMTY2LjE2OTgxMzI1MTY.*_ga_CW55HF8NVT*MTY5ODc0Njc2Ny41LjEuMTY5ODc0NzUxNS43LjAuMA..'),
+  (1, '265GB', 'Silver', '899.99', 'IP12-001-256GB-Silver', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/1.jpeg?alt=media&token=2864a9ec-eafd-4fce-87dd-06639d891aa6&_gl=1*1jzclm6*_ga*OTA1NDY0ODY3LjE2OTc3MjM2Mzc.*_ga_CW55HF8NVT*MTY5ODMzODA2NS43LjEuMTY5ODMzODU0My42MC4wLjA.'),
+  (1, '265GB', 'Gold', '899.99', 'IP12-001-256GB-Gold', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/2.jpeg?alt=media&token=bc6561c2-4cc2-4620-b04c-062cc33a99ae&_gl=1*tex6im*_ga*OTA1NDY0ODY3LjE2OTc3MjM2Mzc.*_ga_CW55HF8NVT*MTY5ODMzODA2NS43LjEuMTY5ODMzODcyMi42MC4wLjA.'),
+  (7, '65"', 'OLED evo', '1499.99', 'OLED65-001-65-OLED-evo', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/13.jpg?alt=media&token=b3c04374-4dd3-4e77-aa84-fef23169b661&_gl=1*18ii8pz*_ga*OTA1NDY0ODY3LjE2OTc3MjM2Mzc.*_ga_CW55HF8NVT*MTY5ODMzODA2NS43LjEuMTY5ODMzOTAyMi4zNC4wLjA.'),
+  (7, '55"', 'OLED evo', '1299.99', 'OLED55-001-55-OLED-evo', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/14.jpg?alt=media&token=a4051eec-d396-4966-8ce5-ddeccf19d8a3&_gl=1*1ktxnbd*_ga*OTA1NDY0ODY3LjE2OTc3MjM2Mzc.*_ga_CW55HF8NVT*MTY5ODMzODA2NS43LjEuMTY5ODMzOTEwMy4xNi4wLjA.');
 -- Records for Product_Sub_Category
 -- Referring to Electronics Category (Mobile Phones)
 INSERT INTO Ecom_platform.Product_Sub_Category (product_id, category_id)
@@ -1186,7 +1189,14 @@ VALUES
   (108, 72),
   (109, 55),
   (110, 52);
-
+  
+  -- Variants for NewlyAdded
+INSERT INTO Ecom_platform.Inventory (variant_id, quantity)
+VALUES
+  (111, 20),
+  (112, 23),
+  (113, 33),
+  (114, 12);
 
 -- Example Cart records
 INSERT INTO Ecom_platform.Cart (user_id, status)
