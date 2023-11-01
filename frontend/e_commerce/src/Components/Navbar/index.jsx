@@ -42,10 +42,6 @@ const Navbar = ({ userType, callback }) => {
       >
         <span className="navbar-toggler-icon"></span>
       </button>
-{/* 
-   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light sticky-top">
-        <Link className="navbar-brand" to="/">Your Brand</Link> */}
 
       <div className="collapse navbar-collapse" id="navbarNav">
         <ul className="navbar-nav">
@@ -116,53 +112,17 @@ const Navbar = ({ userType, callback }) => {
           )}
         </ul>
         <form className="form-inline">
-          {/* <input
-            className="form-control mr-sm-2"
-            type="search"
-            placeholder="Search"
-            aria-label="Search"
-          /> */}
+        <ul className="navbar-nav">
+        <li className="nav-item">
+              <Link className="nav-link" to="/categories">
+                <i className="fa fa-list"></i> Categories
+              </Link>
+            </li>
+        </ul>
             <SearchBar isStrictSelection={false} endpoint={"products"}/>
-          {/* <button className="btn btn-outline-light my-2 my-sm-0" type="submit">
-            <i className="fa fa-search"></i>
-          </button> */}
         </form>
       </div>
-        {/* <div className="collapse navbar-collapse" id="navbarNav">
-            <ul className="navbar-nav mr-auto">
-                <li className="nav-item">
-                    <Link className="nav-link" to="/"><i className="fa fa-home"></i> Home</Link>
-                </li>
-                {
-                    userType === "Admin" ? (
-                        <li className="nav-item">
-                            <Link className="nav-link" to="/admin"><i className="fa fa-tachometer"></i> Admin Panel </Link>
-                        </li>
-                    ) : (
-                        <li className="nav-item">
-                            <Link className="nav-link" to="/cart"><i className="fa fa-shopping-cart"></i> Cart </Link>
-                        </li>
-                    )
-                }
-                {isLoggedIn ? (
-                    <>
-                    <li className="nav-item">
-                        <Link className="nav-link" to="/profile"><i className="fa fa-user"></i> Profile</Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link className="nav-link" onClick={logout}><i className="fa fa-sign-out"></i> Logout </Link>
-                        <a className="nav-link" onClick={logout}><i className="fa fa-sign-out"></i> Logout </a>
-                    </li>
-                    </>
-                    
-                ) : (
-                    <li className="nav-item">
-                        <Link className="nav-link" to="/login"><i className="fa fa-user"></i> Login/Register</Link>
-                    </li>
-                )}
-            </ul>
-        <SearchBar isStrictSelection={false} endpoint={"products"}/>
-        </div> */}
+       
     </nav>
   );
 };

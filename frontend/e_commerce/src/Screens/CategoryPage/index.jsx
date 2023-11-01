@@ -29,7 +29,6 @@ const CategoryPage = () => {
     }, [])
 
     useEffect(() => {
-      console.log(Object.keys(allProducts))
       setCategory(Object.keys(allProducts)[0])
     }, [allProducts])
 
@@ -40,7 +39,7 @@ const CategoryPage = () => {
           <div className='category-selector'>
             <label htmlFor="category"> Category </label>
            <select className='input-field' name="category" id="category-selector" onChange={e => setCategory(e.target.value)} value={category}>
-            {Object.keys(allProducts).length > 0 ? Object.keys(allProducts).map((item, index) => (
+            { category !== "" && Object.keys(allProducts)?.length > 0 ? Object.keys(allProducts)?.map((item, index) => (
                   <option key={item} value={item}>{item}</option>
                 ))
                 : <></>
@@ -51,9 +50,12 @@ const CategoryPage = () => {
                 {/* <div className="card-header">
                   <h2>{category}</h2>
                 </div> */}
+                {
+                  allProducts[category] && 
                 <div className="card-body">
                   <ProductsGrid products={allProducts[category]} />
                 </div>
+                }
             </div>
                   
         </div>
