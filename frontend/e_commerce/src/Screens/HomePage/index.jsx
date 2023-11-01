@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, } from 'react';
 import axios from 'axios';
 import "./index.css";
 
@@ -9,6 +9,7 @@ const HomePage = () => {
 
     const [electronics, setElectronics] = useState([]);
     const [toys, setToys] = useState([]);
+    const [allProducts, setAllProducts] = useState({});
     const userIsLoggedIn = true;
 
     const loadProducts = () => {
@@ -21,6 +22,7 @@ const HomePage = () => {
       })
       .then(res => {
           console.log(res.data)
+          setAllProducts(res.data)
           if (res.data["Electronics"]) {
             setElectronics(res.data["Electronics"])
           }
@@ -36,6 +38,10 @@ const HomePage = () => {
     useEffect(() => {
         loadProducts()
     }, [])
+
+    useEffect(() => {
+      console.log(Object.keys(allProducts))
+    }, [allProducts])
 
       //   useEffect(() => {
       //     const fetchProduct = async () => {
@@ -107,8 +113,21 @@ const HomePage = () => {
             
             <BannerCarousel />
             <div className="card text-center">
+              {
+                Object.keys(allProducts).length > 0 ? Object.keys(allProducts).map((item, index) => (
+                  <div key={item}>
+                    <div className="card-header">
+                      <h2>{allProducts[item][0].category}</h2>
+                    </div>
+                    <div className="card-body">
+                      <ProductsGrid products={allProducts[item]} />
+                    </div>
+                  </div>
+                ))
+                : <div className="card-header"> sdfsdfsdfsdfsd</div>
+              }
               <div className="card-header">
-                <h2>Recommendations</h2>
+                <h2>Electronics</h2>
               </div>
               <div className="card-body">
                 <ProductsGrid products={electronics} />

@@ -29,6 +29,17 @@ def session_required(f):
     return decorated_function
 
 
+# Write a decorator to check if the user is an admin
+def admin_only(f):
+    def decorated_function(*args, **kwargs):
+        if session.get("user_type") != "Admin":
+            print(session.get("user_type"))
+            return ("Unauthorized", 401)
+        return f(*args, **kwargs)
+    return decorated_function
+
+
+
 @app.route('/')
 @session_required
 def index():
@@ -61,7 +72,9 @@ def login():
                     # Passwords match
                     session["user_id"] = result["user_id"]
                     session["user_type"] = result["user_type"]
-                    return ("Login Successful", 200)
+                    return ({
+                        "user_type": result["user_type"]
+                    }, 200)
                 else:
                     # Passwords do not match
                     return ("Login Failed, Password is incorrect", 401)
@@ -74,24 +87,26 @@ def login():
         else:
             return ("Login Failed, incomplete request", 401)
     
-    return ("Page Under Construction", 200)
+    return ("Invalid Method", 404)
 
 
 @app.route('/register', methods=['POST'])
 def register():
     data = request.get_json()
 
+    print(data)
+
     if data.get("first_name") and data.get("email") and data.get("password"):
         first_name = data.get("first_name")
         last_name = data.get("last_name")
         email = data.get("email")
         input_password = data.get("password")
-        # phone_number = data.get("phone_number")
-        # address_line01 = data.get("address_line01")
-        # address_city = data.get("address_city")
-        # address_state = data.get("address_state")
-        # address_zip_code = data.get("address_zip_code")
-        # address_country = data.get("address_country")
+        phone_number = data.get("phone_number")
+        address_line01 = data.get("address_line01")
+        address_city = data.get("address_city")
+        address_state = data.get("address_state")
+        address_zip_code = data.get("address_zip_code")
+        address_country = data.get("address_country")
 
 
         # Phone number and address details are ignored and commented out for now
@@ -102,16 +117,18 @@ def register():
 
         # Check if the user with email exists
         if result:
-            return ("Registration Failed, email already in use", 401)
+            return ("Registration Failed, email already in use", 400)
         
         else:
             # Encrypt the password
             password_hash = bcrypt_sha256.hash(input_password)
 
             # Insert the user into the database
-            cursor.execute("""INSERT INTO user (user_type, first_name, last_name, email, password_hash)
-                            VALUES ('user', %s, %s, %s, %s)""",
-                            (first_name, last_name, email, password_hash))
+            cursor.execute("""INSERT INTO user (user_type, first_name, last_name, email, password_hash, 
+                           phone_number, address_line01, address_city, address_state, address_zip_code, address_country)
+                            VALUES ('Registered', %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)""",
+                            (first_name, last_name, email, password_hash,
+                             phone_number, address_line01, address_city, address_state, address_zip_code, address_country))
             
             connection.commit()
 
@@ -140,11 +157,11 @@ def products_sorted():
     # Query the database for all products
     # cursor.execute("SELECT * FROM product")
     cursor.execute("""
-        SELECT product_id, title, c.name as category, c2.name as parent_category 
+        SELECT product_id, title, c.name as category, c2.name as parent_category, icon
         FROM product NATURAL JOIN product_sub_category 
         JOIN category c USING(category_id) 
         JOIN category c2 ON c.parent_category_id = c2.category_id
-        LIMIT 9
+        JOIN variant USING (product_id)
         """
     )
     results = cursor.fetchall()
@@ -154,11 +171,13 @@ def products_sorted():
     for result in results:
         if result["parent_category"] not in categoriesed_results:
             categoriesed_results[result["parent_category"]] = []
-        categoriesed_results[result["parent_category"]].append(result)
+        if len(categoriesed_results[result["parent_category"]]) < 3 and result not in categoriesed_results[result["parent_category"]]:
+            categoriesed_results[result["parent_category"]].append(result)
 
         if result["category"] not in categoriesed_results:
             categoriesed_results[result["category"]] = []
-        categoriesed_results[result["category"]].append(result)
+        if len(categoriesed_results[result["category"]]) < 3 and result not in categoriesed_results[result["category"]]:
+            categoriesed_results[result["category"]].append(result)
 
     return categoriesed_results
 
@@ -195,10 +214,15 @@ def product(product_id):
 
     # Add the custom attributes to the product
     for row in cursor.fetchall():
-        product[row["custom_attribute_name"]] = row["custom_attribute_value"]
+        product[row["custom_attribute_type"]] = row["custom_attribute_value"]
 
     # Get the products variants
-    cursor.execute("SELECT variant_id, sku, price, variant_attribute_value_1, variant_attribute_value_2, icon FROM variant WHERE product_id = %s", (product_id,))
+    cursor.execute("""
+                   SELECT variant_id, sku, price, variant_attribute_value_1, variant_attribute_value_2, icon 
+                   FROM variant WHERE product_id = %s
+                   ORDER BY variant_attribute_value_1, variant_attribute_value_2
+                   """, 
+                   (product_id,))
     result = cursor.fetchall()
 
     product["variants"] = result
@@ -370,8 +394,9 @@ def update_user():
         return ("Incomplete Request", 401)
     
 
-@app.route("/admin/quarterly_report", methods=["POST"])
-def admin():
+@app.route("/admin/quarterly_report", methods=["POST"], endpoint='quarterly_report')
+@admin_only
+def quarterly_report():
     data = request.get_json()
     if (data.get("year")):
         year = data.get("year")
@@ -386,7 +411,8 @@ def admin():
     else:
         return ("Incomplete Request", 401)
     
-@app.route("/admin/most_sales", methods=["POST"])
+@app.route("/admin/most_sales", methods=["POST"], endpoint="most_sales")
+@admin_only
 def most_sales():
     data = request.get_json()
     print(data)
@@ -410,7 +436,8 @@ def most_sales():
     else:
         return ("Incomplete Request", 401)
     
-@app.route("/admin/most_orders_category", methods=["POST"])
+@app.route("/admin/most_orders_category", methods=["POST"], endpoint="most_orders_category")
+@admin_only
 def most_orders_category():
     data = request.get_json()
     print(data)
@@ -440,7 +467,8 @@ def most_orders_category():
         return ("Incomplete Request", 401)
     
 
-@app.route("/admin/monthly_orders", methods=["POST"])
+@app.route("/admin/monthly_orders", methods=["POST"], endpoint="monthly_orders")
+@admin_only
 def monthly_orders():
     data = request.get_json()
     if data.get("product_id"):
@@ -459,7 +487,8 @@ def monthly_orders():
         return ("Incomplete Request", 401)
     
 
-@app.route("/admin/orders")
+@app.route("/admin/orders", methods=["GET"], endpoint="orders")
+@admin_only
 def orders():
     cursor.execute("SELECT * FROM `order` ORDER BY order_id DESC")
     results = cursor.fetchall()

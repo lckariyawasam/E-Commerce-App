@@ -11,8 +11,8 @@ const FeaturedProducts = ({ products }) => {
         {products.map((item, index) => (
             <div className="col-sm-12 col-md-4 mb-4" key={index}>
                 <div className="card h-100 shadow-sm"> {/* Added shadow for a modern look */}
-                    <Link to={`/ProductView/${item.id}`}>
-                        <img src={item.url} className="card-img-top" alt={item.title} style={{
+                    <Link to={`/product/${item.product_id}`}>
+                        <img src={item.icon} className="card-img-top" alt={item.title} loading='lazy' style={{
                              width: '100%',
                               objectFit: 'cover',
                                height: '200px',

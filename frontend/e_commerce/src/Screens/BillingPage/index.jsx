@@ -119,20 +119,20 @@ const BillingPage = () => {
             } */}
             <div className='checkout-form'>
                 <h1 className='form-heading'>Billing Information</h1>
-                <div className='name-fields'>
-                    <input className='input-field' disabled={userType === "Registered"} onChange={(e) => setFirstName(e.target.value)} placeholder='First Name' type="text" value={firstName} />
-                    <input className='input-field' disabled={userType === "Registered"} onChange={(e) => setLastName(e.target.value)} placeholder='Last Name' type="text" value={lastName} />
+                <div className='name-fields-billing'>
+                    <input className='input-field-billing' disabled={userType === "Registered"} onChange={(e) => setFirstName(e.target.value)} placeholder='First Name' type="text" value={firstName} />
+                    <input className='input-field-billing' disabled={userType === "Registered"} onChange={(e) => setLastName(e.target.value)} placeholder='Last Name' type="text" value={lastName} />
                 </div>
-                <input className='input-field' disabled={userType === "Registered"} onChange={(e) => setEmail(e.target.value)} placeholder='Email' type="email" value={email} />
-                <input className='input-field' onChange={(e) => setPhoneNumber(e.target.value)} placeholder='Phone Number' type="tel" value={phoneNumber} />
-                <input className='input-field' onChange={(e) => setAddressLine01(e.target.value)} placeholder='Address Line 01' type="text" value={addressLine01} />
-                <div className='name-fields'>
-                    <input className='input-field' onChange={(e) => setCity(e.target.value)} placeholder='City' type="text" value={city} />
-                    <input className='input-field' onChange={(e) => setZipCode(e.target.value)} placeholder='Zip-Code' type="text" value={zipCode} />
+                <input className='input-field-billing' disabled={userType === "Registered"} onChange={(e) => setEmail(e.target.value)} placeholder='Email' type="email" value={email} />
+                <input className='input-field-billing' onChange={(e) => setPhoneNumber(e.target.value)} placeholder='Phone Number' type="tel" value={phoneNumber} />
+                <input className='input-field-billing' onChange={(e) => setAddressLine01(e.target.value)} placeholder='Address Line 01' type="text" value={addressLine01} />
+                <div className='name-fields-billing'>
+                    <input className='input-field-billing' onChange={(e) => setCity(e.target.value)} placeholder='City' type="text" value={city} />
+                    <input className='input-field-billing' onChange={(e) => setZipCode(e.target.value)} placeholder='Zip-Code' type="text" value={zipCode} />
                 </div>
-                <div className='name-fields'>
-                    <input className='input-field' onChange={(e) => setState(e.target.value)} placeholder='State/Province' type="text" value={state} />
-                    <select className='input-field' onChange={(e) => setCountry(e.target.value)} placeholder='Country' type="text" value={country}>
+                <div className='name-fields-billing'>
+                    <input className='input-field-billing' onChange={(e) => setState(e.target.value)} placeholder='State/Province' type="text" value={state} />
+                    <select className='input-field-billing' onChange={(e) => setCountry(e.target.value)} placeholder='Country' type="text" value={country}>
                         <option value="" disabled>Select Country</option>
                         <option value="India">India</option>
                         <option value="United States">USA</option>
@@ -142,7 +142,7 @@ const BillingPage = () => {
                 </div>
                 {/* Add a dropdown menu to select payment option */}
                 {/* <h1 className='form-heading'>Payment Option</h1>
-                <select className='input-field' onChange={(e) => setPaymentMethod(e.target.value)} value={paymentMethod}>
+                <select className='input-field-billing' onChange={(e) => setPaymentMethod(e.target.value)} value={paymentMethod}>
                     <option value="" disabled>Select Payment Option</option>
                     <option value="paypal">Cash on Delivery</option>
                     <option value="credit-card">Credit Card</option>

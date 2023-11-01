@@ -4,14 +4,15 @@ import './index.css';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-
-const LoginPage = () => {
+const LoginPage = ({ callback }) => {
     const usernameRef = useRef();
     const passwordRef = useRef();
 
     const navigate = useNavigate();
 
     const [loginFailed, setLoginFailed] = useState(false);
+
+    console.log(callback)
 
     const authenticate = async () => {
         axios.post('http://localhost:5000/login', 
@@ -28,36 +29,32 @@ const LoginPage = () => {
         })
         .then(res => {
             if (res.status === 200) {
-                navigate('/')
+                console.log(res.data)
+                callback(res.data.user_type)
+                if (res.data.user_type === "Admin") {
+                    navigate('/admin')
+                } else {
+                    navigate('/')
+                }
             }
-            console.log(res)
         })
-        .catch(err => setLoginFailed(true))
+        .catch(err => {
+            setLoginFailed(true)
+            console.log(err)
+        })
     
-    }
-
-    const logout = () => {
-        axios.get('http://localhost:5000/logout', {
-            withCredentials: true,
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            }
-        })
-        .then(res => console.log(res))
     }
 
 
     return (
         <div className='login-page'>
-            {loginFailed && <h3>Invalid Credentials, Try again</h3>}
-            <input ref={usernameRef} placeholder='username' type="text" />
-            <input ref={passwordRef} placeholder='password' type="password" />
-            <button onClick={authenticate}>Login</button>
-            <button onClick={logout}>Logout</button>
-            <h1>This is the Login Page</h1>
-            <Link to={"/"}>Home</Link>
-            <Link to={"/register"}>Register</Link>
+            <div className='login-form'>
+                <h1 className='login-heading'>Login</h1>
+                {loginFailed && <h3>Invalid Credentials, Try again</h3>}
+                <input name='email' className='input-field' ref={usernameRef} placeholder='Email' type="email" />
+                <input name='password' className='input-field' ref={passwordRef} placeholder='Password' type="password" />
+                <button className='login-button' onClick={authenticate}>Sign In</button>
+            </div>
         </div>
     );
 };
