@@ -497,56 +497,52 @@ VALUES
   (10, 1, 'Headphones'),
   (11, 1, 'Cameras'),
   (12, 1, 'Watches'),
-  (13, 1, 'Gaming Consoles');
+  (13, 1, 'Home Appliances'),
+  (14, 1, 'Gaming Consoles'),
+  (15, 1, 'Smart Home Security'),
+  (16, 1, 'Printers'),
+  (17, 1, 'Tablets');
 
 -- Insert data for Subcategories of Toys
 INSERT INTO Ecom_platform.Category (category_id, parent_category_id, name)
 VALUES
-  (14, 2, 'Action Figures'),
-  (15, 2, 'Board Games'),
-  (16, 2, 'Dolls'),
-  (17, 2, 'Remote Control Toys'),
-  (18, 2, 'Educational Toys');
+  (18, 2, 'Action Figures'),
+  (19, 2, 'Board Games'),
+  (20, 2, 'Dolls'),
+  (21, 2, 'Remote Control Toys'),
+  (22, 2, 'Educational Toys');
 
 -- Insert data for Subcategories of Cosmetics and Body Care
 INSERT INTO Ecom_platform.Category (category_id, parent_category_id, name)
 VALUES
-  (19, 3, 'Skincare'),
-  (20, 3, 'Makeup'),
-  (21, 3, 'Fragrances'),
-  (22, 3, 'Hair Care');
+  (23, 3, 'Skincare'),
+  (24, 3, 'Makeup'),
+  (25, 3, 'Fragrances'),
+  (26, 3, 'Hair Care');
 
 -- Insert data for Subcategories of Food and Beverage
 INSERT INTO Ecom_platform.Category (category_id, parent_category_id, name)
 VALUES
-  (23, 4, 'Snacks'),
-  (24, 4, 'Beverages'),
-  (25, 4, 'Canned Goods'),
-  (26, 4, 'Condiments and Spices');
+  (27, 4, 'Snacks'),
+  (28, 4, 'Beverages'),
+  (29, 4, 'Canned Goods'),
+  (30, 4, 'Condiments and Spices');
 
 -- Insert data for Subcategories of Furniture and Decor
 INSERT INTO Ecom_platform.Category (category_id, parent_category_id, name)
 VALUES
-  (27, 5, 'Furniture'),
-  (28, 5, 'Home Decor'),
-  (29, 5, 'Lighting'),
-  (30, 5, 'Bedding and Linens');
+  (31, 5, 'Furniture'),
+  (32, 5, 'Home Decor'),
+  (33, 5, 'Lighting'),
+  (34, 5, 'Bedding and Linens');
 
 -- Insert data for Subcategories of Pet Care and Toys
 INSERT INTO Ecom_platform.Category (category_id, parent_category_id, name)
 VALUES
-  (31, 6, 'Pet Food'),
-  (32, 6, 'Pet Toys'),
-  (33, 6, 'Pet Grooming'),
-  (34, 6, 'Pet Accessories');
-  
--- Insert remaining data for Subcategories of Electronics
-INSERT INTO Ecom_platform.Category (category_id, parent_category_id, name)
-VALUES
-  (35, 1, 'Home Appliances'),
-  (36, 1, 'Smart Home Security'),
-  (37, 1, 'Printers'),
-  (38, 1, 'Tablets');
+  (35, 6, 'Pet Food'),
+  (36, 6, 'Pet Toys'),
+  (37, 6, 'Pet Grooming'),
+  (38, 6, 'Pet Accessories');
 
   -- Insert data for Mobile Phones
 INSERT INTO Ecom_platform.Product (title, weight, brand, description, Variant_attribute_type_1, Variant_attribute_type_2)
@@ -651,16 +647,16 @@ VALUES
 -- Insert data for Action Figures
 INSERT INTO Ecom_platform.Product (title, weight, brand, description, Variant_attribute_type_1, Variant_attribute_type_2)
 VALUES
-  ('Toy Car - Red Racer', '200g', 'Speedy Toys', 'Zoom around with this red toy car. It's designed for speed and fun play for kids.', 'Color', 'Size'),
-  ('Toy Car - Blue Cruiser', '210g', 'DriveMaster', 'Take a leisurely drive with this blue toy car. It's perfect for imaginative adventures.', 'Color', 'Size'),
-  ('Toy Jeep - Safari Adventure', '230g', 'Wild Explorers', 'Embark on a safari adventure with this toy jeep. It features realistic details and a removable roof.', 'Color', 'Size');
+  ('Toy Car - Red Racer', '200g', 'Speedy Toys', 'Zoom around with this red toy car. Its designed for speed and fun play for kids.', 'Color', 'Size'),
+  ('Toy Car - Blue Cruiser', '210g', 'DriveMaster', 'Take a leisurely drive with this blue toy car. Its perfect for imaginative adventures.', 'Color', 'Size'),
+  ('Toy Jeep - Safari Adventure', '230g', 'Wild Explorers', 'Embark on a safari adventure with this toy jeep. It features realistic details and a removable roof.', 'Color', 'Size'),
   ('Toy Helicopter - Rescue Chopper', '250g', 'Rescue Heroes', 'Be a hero with this rescue helicopter. It comes with rotating blades and a working winch for daring missions.', 'Color', 'Size'),
   ('Toy Helicopter - Police Pursuit', '260g', 'Law Enforcement Toys', 'Chase down the bad guys with this police helicopter. It features a searchlight and working doors.', 'Color', 'Size');
 -- Insert data for Board Games
 INSERT INTO Ecom_platform.Product (title, weight, brand, description, Variant_attribute_type_1, Variant_attribute_type_2)
 VALUES
   ('Toy Blaster - Laser Shooter', '150g', 'Galactic Warriors', 'Defend the galaxy with this laser blaster. It features light and sound effects for epic battles.', 'Type', 'Color'),
-  ('Toy Sword - Knight's Weapon', '180g', 'Medieval Adventures', 'Become a noble knight with this toy sword. It's perfect for medieval role-play.', 'Type', 'Color');
+  ('Toy Sword - Knights Weapon', '180g', 'Medieval Adventures', 'Become a noble knight with this toy sword. Its perfect for medieval role-play.', 'Type', 'Color'),
   ('Dinosaur World Board Game', '850g', 'Prehistoric Games', 'Travel back in time to a world of dinosaurs with this exciting board game. Compete to build the best dinosaur park.', 'Number of Players', 'Game Board Size'),
   ('Pirates Treasure Board Game', '900g', 'Treasure Hunt Games', 'Sail the high seas in search of hidden treasure. This board game is perfect for aspiring pirates and treasure hunters.', 'Number of Players', 'Game Board Size'),
   ('Fantasy Quest Board Game', '875g', 'Mythic Adventures', 'Venture into a realm of fantasy and magic with this cooperative board game. Solve quests and face mythical creatures.', 'Number of Players', 'Game Board Size');
@@ -842,9 +838,9 @@ VALUES
   (56, 'Red Racer', 'Small', '9.99', 'TC001-RedRacerSmall', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/111.jpg?alt=media&token=5238bf0b-5640-446f-b75a-15feecf7918a&_gl=1*1ndk6t7*_ga*Nzk0MzkyMTY2LjE2OTgxMzI1MTY.*_ga_CW55HF8NVT*MTY5ODc0Njc2Ny41LjAuMTY5ODc0Njc2Ny42MC4wLjA.'),
   (56, 'Red Racer', 'Large', '14.99', 'TC002-RedRacerLarge', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/112.jpg?alt=media&token=c93a8cd8-7769-4b44-96ba-a740acca12f1&_gl=1*1pi0i8x*_ga*Nzk0MzkyMTY2LjE2OTgxMzI1MTY.*_ga_CW55HF8NVT*MTY5ODc0Njc2Ny41LjEuMTY5ODc0Njc3NC41My4wLjA.'),
   (57, 'Blue Cruiser', 'Small', '10.99', 'TC003-BlueCruiserSmall', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/113.jpg?alt=media&token=6108f7d7-7526-448e-aa77-1bf6227fef33&_gl=1*lukne1*_ga*Nzk0MzkyMTY2LjE2OTgxMzI1MTY.*_ga_CW55HF8NVT*MTY5ODc0Njc2Ny41LjEuMTY5ODc0Njc4MC40Ny4wLjA.'),
-  (57, 'Blue Cruiser', 'Large', '15.99', 'TC004-BlueCruiserLarge', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/114.jpg?alt=media&token=2410efbc-4ac3-4c36-b00c-1891d03d0f2a&_gl=1*1rf4xrl*_ga*Nzk0MzkyMTY2LjE2OTgxMzI1MTY.*_ga_CW55HF8NVT*MTY5ODc0Njc2Ny41LjEuMTY5ODc0NjgyNi4xLjAuMA..');
+  (57, 'Blue Cruiser', 'Large', '15.99', 'TC004-BlueCruiserLarge', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/114.jpg?alt=media&token=2410efbc-4ac3-4c36-b00c-1891d03d0f2a&_gl=1*1rf4xrl*_ga*Nzk0MzkyMTY2LjE2OTgxMzI1MTY.*_ga_CW55HF8NVT*MTY5ODc0Njc2Ny41LjEuMTY5ODc0NjgyNi4xLjAuMA..'),
   (58, 'Safari Adventure', 'Small', '12.99', 'TJ001-SafariSmall', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/115.jpg?alt=media&token=3fae24c2-0b13-4dcb-be3b-4aea73849216&_gl=1*wzcg75*_ga*Nzk0MzkyMTY2LjE2OTgxMzI1MTY.*_ga_CW55HF8NVT*MTY5ODc0Njc2Ny41LjEuMTY5ODc0NjgzMS42MC4wLjA.'),
-  (58, 'Safari Adventure', 'Large', '17.99', 'TJ002-SafariLarge', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/116.jpg?alt=media&token=289326d5-30f3-4281-af11-15e8f43045a8&_gl=1*5qbgn4*_ga*Nzk0MzkyMTY2LjE2OTgxMzI1MTY.*_ga_CW55HF8NVT*MTY5ODc0Njc2Ny41LjEuMTY5ODc0NjgzNC41Ny4wLjA.');
+  (58, 'Safari Adventure', 'Large', '17.99', 'TJ002-SafariLarge', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/116.jpg?alt=media&token=289326d5-30f3-4281-af11-15e8f43045a8&_gl=1*5qbgn4*_ga*Nzk0MzkyMTY2LjE2OTgxMzI1MTY.*_ga_CW55HF8NVT*MTY5ODc0Njc2Ny41LjEuMTY5ODc0NjgzNC41Ny4wLjA.'),
   (59, 'Rescue Chopper', 'Small', '11.99', 'TH001-RescueSmall', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/117.jpg?alt=media&token=218c71fd-8f7d-4471-baa2-0514edf9bd85&_gl=1*1me1z7o*_ga*Nzk0MzkyMTY2LjE2OTgxMzI1MTY.*_ga_CW55HF8NVT*MTY5ODc0Njc2Ny41LjEuMTY5ODc0NjgzNy41NC4wLjA.'),
   (59, 'Rescue Chopper', 'Large', '16.99', 'TH002-RescueLarge', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/118.jpg?alt=media&token=c4cb5748-3238-40fc-aa4a-aad677ad9bc3&_gl=1*1jmsxmx*_ga*Nzk0MzkyMTY2LjE2OTgxMzI1MTY.*_ga_CW55HF8NVT*MTY5ODc0Njc2Ny41LjEuMTY5ODc0Njg0MS41MC4wLjA.'),
   (60, 'Police Pursuit', 'Small', '12.99', 'TH003-PoliceSmall', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/119.jpg?alt=media&token=362731b1-390c-4520-af0a-61786b7912ee&_gl=1*12ttxsf*_ga*Nzk0MzkyMTY2LjE2OTgxMzI1MTY.*_ga_CW55HF8NVT*MTY5ODc0Njc2Ny41LjEuMTY5ODc0Njg0Ni40NS4wLjA.'),
@@ -856,7 +852,7 @@ VALUES
   (61, 'Laser Shooter', 'Red', '7.99', 'TW001-LaserRed', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/121.jpg?alt=media&token=c6d4fd51-77f6-463e-bd80-875f3942518d&_gl=1*13dibzu*_ga*Nzk0MzkyMTY2LjE2OTgxMzI1MTY.*_ga_CW55HF8NVT*MTY5ODc0Njc2Ny41LjEuMTY5ODc0Njk0OC42MC4wLjA.'),
   (61, 'Laser Shooter', 'Blue', '7.99', 'TW002-LaserBlue', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/122.jpg?alt=media&token=ca91662c-cb4a-45a1-9726-59844067f9b6&_gl=1*1b67pj*_ga*Nzk0MzkyMTY2LjE2OTgxMzI1MTY.*_ga_CW55HF8NVT*MTY5ODc0Njc2Ny41LjEuMTY5ODc0Njk1Mi41Ni4wLjA.'),
   (62, 'Knight\'s Weapon', 'Silver', '9.99', 'TW003-SwordSilver', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/123.jpg?alt=media&token=314a57d8-5bd3-45b6-9923-1aeadb8b1088&_gl=1*1ydqx04*_ga*Nzk0MzkyMTY2LjE2OTgxMzI1MTY.*_ga_CW55HF8NVT*MTY5ODc0Njc2Ny41LjEuMTY5ODc0Njk1Ni41Mi4wLjA.'),
-  (62, 'Knight\'s Weapon', 'Gold', '9.99', 'TW004-SwordGold', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/124.jpg?alt=media&token=74a45fc3-8608-4a7d-8e03-79eab85a8acc&_gl=1*1w4ersx*_ga*Nzk0MzkyMTY2LjE2OTgxMzI1MTY.*_ga_CW55HF8NVT*MTY5ODc0Njc2Ny41LjEuMTY5ODc0Njk1OS40OS4wLjA.');
+  (62, 'Knight\'s Weapon', 'Gold', '9.99', 'TW004-SwordGold', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/124.jpg?alt=media&token=74a45fc3-8608-4a7d-8e03-79eab85a8acc&_gl=1*1w4ersx*_ga*Nzk0MzkyMTY2LjE2OTgxMzI1MTY.*_ga_CW55HF8NVT*MTY5ODc0Njc2Ny41LjEuMTY5ODc0Njk1OS40OS4wLjA.'),
   (63, 'Dinosaur World', '2-5 Players', '32.99', 'BG005-DinosaurWorld', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/125.jpg?alt=media&token=cea8a379-acc1-4f9c-9522-0a361fc91ddc&_gl=1*3l3o4d*_ga*Nzk0MzkyMTY2LjE2OTgxMzI1MTY.*_ga_CW55HF8NVT*MTY5ODc0Njc2Ny41LjEuMTY5ODc0Njk2My40NS4wLjA.'),
   (63, 'Dinosaur World', '2-5 Players', '37.99', 'BG006-DinosaurWorld', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/126.jpg?alt=media&token=e1147672-ad23-4cdd-a194-3be85e5fabcb&_gl=1*1i6fvnb*_ga*Nzk0MzkyMTY2LjE2OTgxMzI1MTY.*_ga_CW55HF8NVT*MTY5ODc0Njc2Ny41LjEuMTY5ODc0Njk2OC40MC4wLjA.'),
   (64, 'Pirates Treasure', '2-4 Players', '28.99', 'BG007-PiratesTreasure', 'https://firebasestorage.googleapis.com/v0/b/ecomproject-7cfba.appspot.com/o/127.jpg?alt=media&token=f3bf9cf2-d8a5-4b3b-ae0b-64b8d0e8ab39&_gl=1*fkrl06*_ga*Nzk0MzkyMTY2LjE2OTgxMzI1MTY.*_ga_CW55HF8NVT*MTY5ODc0Njc2Ny41LjEuMTY5ODc0Njk3Mi4zNi4wLjA.'),
@@ -961,50 +957,95 @@ VALUES
   (29, 12), -- Fossil Gen 5
   (30, 12); -- Fitbit Versa 3
 
--- Referring to Electronics Category (Gaming Consoles)
-INSERT INTO Ecom_platform.Product_Sub_Category (product_id, category_id)
-VALUES
-  (31, 13), -- PlayStation 5
-  (32, 13), -- Xbox Series X
-  (33, 13), -- Nintendo Switch
-  (34, 13), -- Sony PlayStation 4
-  (35, 13); -- Xbox One X
-
 -- Referring to Electronics Category (Home Appliances)
 INSERT INTO Ecom_platform.Product_Sub_Category (product_id, category_id)
 VALUES
-  (36, 35), -- Samsung Refrigerator
-  (37, 35), -- LG Washing Machine
-  (38, 35), -- Whirlpool Microwave Oven
-  (39, 35), -- Breville Coffee Maker
-  (40, 35); -- Dyson Vacuum Cleaner
+  (31, 13), -- Samsung Refrigerator
+  (32, 13), -- LG Washing Machine
+  (33, 13), -- Whirlpool Microwave Oven
+  (34, 13), -- Breville Coffee Maker
+  (35, 13); -- Dyson Vacuum Cleaner\
+  
+-- Referring to Electronics Category (Gaming Consoles)
+INSERT INTO Ecom_platform.Product_Sub_Category (product_id, category_id)
+VALUES
+  (36, 14), -- PlayStation 5
+  (37, 14), -- Xbox Series X
+  (38, 14), -- Nintendo Switch
+  (39, 14), -- Sony PlayStation 4
+  (40, 14); -- Xbox One X
 
 -- Referring to Electronics Category (Smart Home Security)
 INSERT INTO Ecom_platform.Product_Sub_Category (product_id, category_id)
 VALUES
-  (41, 36), -- Ring Alarm Security Kit
-  (42, 36), -- Arlo Pro 4 Security Camera
-  (43, 36), -- Nest Hello Video Doorbell
-  (44, 36), -- SimpliSafe Home Security System
-  (45, 36); -- Blink Mini Indoor Camera
+  (41, 15), -- Ring Alarm Security Kit
+  (42, 15), -- Arlo Pro 4 Security Camera
+  (43, 15), -- Nest Hello Video Doorbell
+  (44, 15), -- SimpliSafe Home Security System
+  (45, 15); -- Blink Mini Indoor Camera
 
 -- Referring to Electronics Category (Printers)
 INSERT INTO Ecom_platform.Product_Sub_Category (product_id, category_id)
 VALUES
-  (46, 37), -- HP LaserJet Pro
-  (47, 37), -- Epson EcoTank
-  (48, 37), -- Canon PIXMA
-  (49, 37), -- Brother HL-L2350DW
-  (50, 37); -- Xerox WorkCentre
+  (46, 16), -- HP LaserJet Pro
+  (47, 16), -- Epson EcoTank
+  (48, 16), -- Canon PIXMA
+  (49, 16), -- Brother HL-L2350DW
+  (50, 16); -- Xerox WorkCentre
 
 -- Referring to Electronics Category (Tablets)
 INSERT INTO Ecom_platform.Product_Sub_Category (product_id, category_id)
 VALUES
-  (51, 38), -- Apple iPad Pro
-  (52, 38), -- Samsung Galaxy Tab S7
-  (53, 38), -- Microsoft Surface Pro 7
-  (54, 38), -- Amazon Fire HD 10
-  (55, 38); -- Lenovo Tab M10;
+  (51, 17), -- Apple iPad Pro
+  (52, 17), -- Samsung Galaxy Tab S7
+  (53, 17), -- Microsoft Surface Pro 7
+  (54, 17), -- Amazon Fire HD 10
+  (55, 17); -- Lenovo Tab M10;
+  
+  -- Referring to Electronics Category (Action Figures)
+INSERT INTO Ecom_platform.Product_Sub_Category (product_id, category_id)
+VALUES
+  (56, 18), 
+  (57, 18), 
+  (58, 18), 
+  (59, 18),
+  (60, 18);
+    
+  -- Referring to Electronics Category (Board Games)
+INSERT INTO Ecom_platform.Product_Sub_Category (product_id, category_id)
+VALUES
+  (61, 19), 
+  (62, 19), 
+  (63, 19), 
+  (64, 19),
+  (65, 19);
+  
+  -- Referring to Electronics Category (Dolls)
+INSERT INTO Ecom_platform.Product_Sub_Category (product_id, category_id)
+VALUES
+  (66, 20), 
+  (67, 20), 
+  (68, 20), 
+  (69, 20),
+  (70, 20); 
+  
+  -- Referring to Electronics Category (Remote Control Toys)
+INSERT INTO Ecom_platform.Product_Sub_Category (product_id, category_id)
+VALUES
+  (71, 21), 
+  (72, 21), 
+  (73, 21), 
+  (74, 21),
+  (75, 21);
+  
+  -- Referring to Electronics Category (Educational Toys)
+INSERT INTO Ecom_platform.Product_Sub_Category (product_id, category_id)
+VALUES
+  (76, 22), 
+  (77, 22), 
+  (78, 22), 
+  (79, 22),
+  (80, 22);
 
 
 -- Insert data for Inventory
