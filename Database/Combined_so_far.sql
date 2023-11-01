@@ -1,4 +1,4 @@
--- drop database ecom_platform
+drop database ecom_platform;
 
 -- Create the Ecom_plaquarterly_sales_reports_for_yeartform schema if it doesn't exist
 CREATE SCHEMA IF NOT EXISTS Ecom_platform DEFAULT CHARACTER SET utf8;
@@ -526,7 +526,7 @@ VALUES
   ('Registered', 'Logan', 'Martinez', 'logan.m@gmail.com', '$bcrypt-sha256$v=2,t=2b,r=12$4ECMEENZozcTLJR4PDl49u$4Uopa6BZi3HVeDmKqCbGGUrpV6pyy9a', '+1234567890', '567 Birch St', 'Houston', 'TX', '77022', 'United States'),
   ('Registered', 'Sophia', 'Harris', 'sophia.h@gmail.com', '$bcrypt-sha256$v=2,t=2b,r=12$4ECMEENZozcTLJR4PDl49u$4Uopa6BZi3HVeDmKqCbGGUrpV6pyy9a', '+1234567890', '890 Pine St', 'Houston', 'TX', '77023', 'United States'),
   ('Registered', 'Liam', 'Taylor', 'liam.t@gmail.com', '$bcrypt-sha256$v=2,t=2b,r=12$4ECMEENZozcTLJR4PDl49u$4Uopa6BZi3HVeDmKqCbGGUrpV6pyy9a', '+1234567890', '123 Elm St', 'Houston', 'TX', '77024', 'United States'),
-  ('Guest', 'Guest', 'User', 'guest@gmail.com', '$bcrypt-sha256$v=2,t=2b,r=12$4ECMEENZozcTLJR4PDl49u$4Uopa6BZi3HVeDmKqCbGGUrpV6pyy9a', '+1234567890', '456 Oak St', 'Houston', 'TX', '77025', 'United States'),
+  ('Registered', 'Tom', 'Steven', 'steven@gmail.com', '$bcrypt-sha256$v=2,t=2b,r=12$4ECMEENZozcTLJR4PDl49u$4Uopa6BZi3HVeDmKqCbGGUrpV6pyy9a', '+1234567890', '456 Oak St', 'Houston', 'TX', '77025', 'United States'),
   ('Registered', 'Sophia', 'Smith', 'sophia.s@gmail.com', '$bcrypt-sha256$v=2,t=2b,r=12$4ECMEENZozcTLJR4PDl49u$4Uopa6BZi3HVeDmKqCbGGUrpV6pyy9a', '+1234567890', '567 Cedar St', 'Houston', 'TX', '77026', 'United States'),
   ('Registered', 'Oliver', 'Lee', 'oliver.l@gmail.com', '$bcrypt-sha256$v=2,t=2b,r=12$4ECMEENZozcTLJR4PDl49u$4Uopa6BZi3HVeDmKqCbGGUrpV6pyy9a', '+1234567890', '890 Birch St', 'Paris', 'Île-de-France', '75001', 'France'),
   ('Registered', 'Emma', 'Gonzalez', 'emma.g@gmail.com', '$bcrypt-sha256$v=2,t=2b,r=12$4ECMEENZozcTLJR4PDl49u$4Uopa6BZi3HVeDmKqCbGGUrpV6pyy9a', '+1234567890', '234 Oak St', 'Seoul', 'Seoul', '04522', 'South Korea'),
