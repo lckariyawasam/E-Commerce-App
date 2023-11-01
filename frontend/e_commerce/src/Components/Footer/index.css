@@ -1,0 +1,75 @@
+/* Add spacing between icons */
+.icon-link {
+    margin-right: 10px;
+    /* Adjust the margin as needed */
+}
+
+/* footer.css */
+
+.footer-distributed {
+    background-color: var(--primary-background);
+    color: #ffffff;
+    padding: 50px 0;
+}
+
+.footer-distributed h3 {
+    color: #ffffff;
+}
+
+.footer-distributed a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.footer-distributed .footer-left {
+    width: 40%;
+    text-align: left;
+    padding: 0 2% 0 2%;
+}
+
+.footer-distributed .footer-center {
+    width: 35%;
+    text-align: center;
+}
+
+.footer-distributed .footer-right {
+    width: 25%;
+    text-align: right;
+    padding: 0 2% 0 2%;
+}
+
+.footer-distributed .footer-icons {
+    margin-top: 20px;
+}
+
+.footer-distributed .footer-icons a {
+    display: inline-block;
+    margin-right: 10px;
+    border: 1px solid #ffffff;
+    border-radius: 50%;
+    padding: 8px;
+}
+
+.footer-distributed .footer-icons i {
+    color: #ffffff;
+    font-size: 20px;
+}
+
+.footer-distributed .footer-links a:hover {
+    text-decoration: underline;
+}
+
+.footer-distributed {
+    display: flex;
+    justify-content: center;
+}
+
+.footer-section {
+    flex: 1;
+    text-align: center;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: auto;
+}

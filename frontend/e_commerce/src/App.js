@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
 
+import { getCookie, setCookie } from 'react-use-cookie';
+
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import HomePage from './Screens/HomePage';
@@ -27,10 +29,11 @@ import 'bootstrap/dist/js/bootstrap.min.js';
 
 function App() {
 
-  const [userType, setUserType] = useState('Guest')
+  const [userType, setUserType] = useState(getCookie('userType') || 'Guest')
 
   function handleUserType(type) {
     setUserType(type)
+    setCookie('userType', type)
   }
 
   useEffect(() => {
