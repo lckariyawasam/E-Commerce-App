@@ -3,6 +3,9 @@ import "./index.css";
 import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
 
+import axios from 'axios';
+import { useNavigate, Link } from 'react-router-dom';
+
 import SearchBar from '../SearchBar';
 
 const Navbar = ({ userType, callback }) => {
@@ -134,6 +137,7 @@ const Navbar = ({ userType, callback }) => {
                     </li>
                     <li className="nav-item">
                         <Link className="nav-link" onClick={logout}><i className="fa fa-sign-out"></i> Logout </Link>
+                        <a className="nav-link" onClick={logout}><i className="fa fa-sign-out"></i> Logout </a>
                     </li>
                     </>
                     

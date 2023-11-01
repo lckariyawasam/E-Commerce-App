@@ -31,10 +31,6 @@ function App() {
 
   const [userType, setUserType] = useState(getCookie('userType') || 'Guest')
 
-  if (!getCookie('session') == null) {
-    console.log("skdfhksjdnf")
-  }
-
   function handleUserType(type) {
     setUserType(type)
     setCookie('userType', type)
