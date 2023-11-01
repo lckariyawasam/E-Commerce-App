@@ -36,7 +36,6 @@ function UserOrderDetails() {
                         <th>Payment Type</th>
                         <th>Order Date</th>
                         <th>Status</th>
-                        <th>Price ($)</th>
                         <th>View More</th>
                     </tr>
                 </thead>
@@ -47,7 +46,6 @@ function UserOrderDetails() {
                             <td>{order.payment_type}</td>
                             <td>{order.order_date}</td>
                             <td>{order.status}</td>
-                            <td>{order.cart_id}</td>
                             <td><Link className="link-button" to={`/userorder?order=${order.order_id}`} >Details</Link></td>
                         </tr>
                     ))}
