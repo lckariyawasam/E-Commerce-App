@@ -1251,7 +1251,7 @@ VALUES
   (44, 'Pending'),
   (45, 'Pending');
 
---new carts for complete carts
+
 INSERT INTO Ecom_platform.Cart (user_id, status)
 VALUES
   (1, 'Pending'),
