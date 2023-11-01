@@ -3,9 +3,6 @@ import "./index.css";
 import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
 
-import axios from 'axios';
-import { useNavigate, Link } from 'react-router-dom';
-
 import SearchBar from '../SearchBar';
 
 const Navbar = ({ userType, callback }) => {
@@ -103,15 +100,16 @@ const Navbar = ({ userType, callback }) => {
           )}
         </ul>
         <form className="form-inline">
-          <input
+          {/* <input
             className="form-control mr-sm-2"
             type="search"
             placeholder="Search"
             aria-label="Search"
-          />
-          <button className="btn btn-outline-light my-2 my-sm-0" type="submit">
+          /> */}
+            <SearchBar isStrictSelection={false} endpoint={"products"}/>
+          {/* <button className="btn btn-outline-light my-2 my-sm-0" type="submit">
             <i className="fa fa-search"></i>
-          </button>
+          </button> */}
         </form>
       </div>
         {/* <div className="collapse navbar-collapse" id="navbarNav">
