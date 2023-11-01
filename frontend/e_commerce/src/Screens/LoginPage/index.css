@@ -25,7 +25,7 @@
 }
 
 .input-field {
-    width: 90%;
+    width: 95%;
     padding: 15px;
     margin: 10px 0;
     border: 1px solid #ccc;
@@ -34,6 +34,7 @@
 }
 
 .login-button {
+    margin-top: 1rem;
     width: 95%;
     padding: 15px; /* Increased padding for a larger button */
     background-color: #005B41;
