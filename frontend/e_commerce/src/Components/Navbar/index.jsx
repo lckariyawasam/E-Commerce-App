@@ -21,7 +21,7 @@ const Navbar = ({ isLoggedIn }) => {
       </button>
 
       <div className="collapse navbar-collapse" id="navbarNav">
-        <ul className="navbar-nav">
+        <ul className="navbar-nav mr-auto">
           <li className="nav-item">
             <a className="nav-link" href="/">
               <i className="fa fa-home"></i> Home
@@ -46,17 +46,7 @@ const Navbar = ({ isLoggedIn }) => {
             </li>
           )}
         </ul>
-        <form className="form-inline">
-          <input
-            className="form-control mr-sm-2"
-            type="search"
-            placeholder="Search"
-            aria-label="Search"
-          />
-          <button className="btn btn-outline-light my-2 my-sm-0" type="submit">
-            <i className="fa fa-search"></i>
-          </button>
-        </form>
+        <SearchBar isStrictSelection={false} endpoint={"products"} />
       </div>
     </nav>
   );
