@@ -47,7 +47,7 @@ import "./index.css";
       
 // ];
 
-function SearchBar({ isStrictSelection,onProductSelected , dataBase}) {
+function SearchBar({ isStrictSelection,onProductSelected , endpoint}) {
     const [query, setQuery] = useState("");
     const [products, setProducts] = useState([]);
     const [filteredProducts, setFilteredProducts] = useState([]);
@@ -55,8 +55,8 @@ function SearchBar({ isStrictSelection,onProductSelected , dataBase}) {
 
     useEffect(() => {
         if (products.length === 0) {
-            let apiUrl = "http://localhost:5000/products";
-            if (dataBase == "users") {
+            let apiUrl = `http://localhost:5000/${endpoint}`;
+            if (endpoint== "users") {
                 apiUrl = "/api/users";
             }
     

@@ -459,6 +459,13 @@ def monthly_orders():
         return ("Incomplete Request", 401)
     
 
+@app.route("/admin/orders")
+def orders():
+    cursor.execute("SELECT * FROM `order` ORDER BY order_id DESC")
+    results = cursor.fetchall()
+
+    return results    
+
 # For debugging purposes, do not run in production!
 if __name__ == '__main__':
     from werkzeug.serving import run_simple

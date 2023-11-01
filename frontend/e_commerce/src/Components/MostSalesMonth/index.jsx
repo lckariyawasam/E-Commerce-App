@@ -97,7 +97,12 @@ import axios from "axios";
 
     return (
         <div className="most-sales-container">
-            <SearchBar isStrictSelection={true} onProductSelected={handleProductSelection} />
+            <h2>Month with most sales for the product</h2>
+            {
+                !selectedProduct && <p>Select product to view details</p>
+            }
+            <SearchBar isStrictSelection={true} onProductSelected={handleProductSelection} endpoint={"products"} />
+
             
             {selectedProduct && (
                 <>
