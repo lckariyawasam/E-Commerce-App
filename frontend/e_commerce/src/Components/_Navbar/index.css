@@ -1,0 +1,39 @@
+/* Navbar Styles */
+
+.navbar {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Adds a slight shadow for depth */
+}
+
+.navbar-brand,
+.navbar-nav .nav-link {
+    font-weight: 500; /* Optional: Makes the brand and nav links slightly bolder */
+    transition: color 0.2s; /* Smooth transition for hover effects */
+}
+
+.navbar-brand:hover,
+.navbar-nav .nav-link:hover {
+    color: #007BFF; /* Change to desired hover color */
+}
+
+/* Search Form Styles */
+
+.navbar .form-inline {
+    display: flex;
+    align-items: center;
+}
+
+.navbar .form-control {
+    max-width: 200px; /* Adjust as needed */
+    margin-right: 10px; /* Space between input and button */
+}
+
+.navbar .btn {
+    padding-left: 12px; /* Adjust padding for alignment with icon */
+    padding-right: 12px;
+}
+
+/* Font Awesome Icon Adjustments */
+
+.navbar .fa {
+    margin-right: 5px; /* Adds space between the icon and text */
+}
