@@ -6,11 +6,7 @@ import BannerCarousel from '../../Components/BannerCarousel';
 import ProductsGrid from '../../Components/ProductsGrid';
 
 const HomePage = () => {
-
-    const [electronics, setElectronics] = useState([]);
-    const [toys, setToys] = useState([]);
     const [allProducts, setAllProducts] = useState({});
-    const userIsLoggedIn = true;
 
     const loadProducts = () => {
       axios.get('http://localhost:5000/products/sorted', {
@@ -23,14 +19,6 @@ const HomePage = () => {
       .then(res => {
           console.log(res.data)
           setAllProducts(res.data)
-          if (res.data["Electronics"]) {
-            setElectronics(res.data["Electronics"])
-          }
-
-          if (res.data["Toys"]) {
-            setToys(res.data["Toys"])
-          }
-
       })
       .catch(err => console.log(err))
   }
@@ -124,9 +112,9 @@ const HomePage = () => {
                     </div>
                   </div>
                 ))
-                : <div className="card-header"> sdfsdfsdfsdfsd</div>
+                : <></>
               }
-              <div className="card-header">
+              {/* <div className="card-header">
                 <h2>Electronics</h2>
               </div>
               <div className="card-body">
@@ -137,7 +125,7 @@ const HomePage = () => {
               </div>
               <div className="card-body">
                 <ProductsGrid products={toys} />
-              </div>
+              </div> */}
             </div>
                   
         </div>
