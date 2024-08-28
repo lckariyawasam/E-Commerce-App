@@ -2,10 +2,11 @@
 
 A Fullstack E Commerce App built for the Database Group Project of CS2043 - Database Systems.
 
-![Screenshot 2024-08-28 135328](https://github.com/user-attachments/assets/9780c560-9902-4297-80c3-69397b3412ac)
-![Screenshot 2024-08-28 135156](https://github.com/user-attachments/assets/11aad372-640f-49ac-ac9c-a6d49e0c78ab)
-![Screenshot 2024-08-28 135305](https://github.com/user-attachments/assets/659c3cea-ee49-4dfe-8d0c-ab7f3410b544)
-![Screenshot 2024-08-28 135245](https://github.com/user-attachments/assets/089db55f-1191-48f9-a0c6-6bc609f8be05)
+![Screenshot 2024-08-28 140303](https://github.com/user-attachments/assets/27b5a37b-f3c0-423b-8ded-a6f3b8e62f67)
+![Screenshot 2024-08-28 140250](https://github.com/user-attachments/assets/024c9687-1281-4194-8920-7f211d15843e)
+![Screenshot 2024-08-28 140159](https://github.com/user-attachments/assets/b5e2f1e5-6a17-47f5-a1d9-2d980fee28a3)
+![Screenshot 2024-08-28 140213](https://github.com/user-attachments/assets/48780dc5-44bb-456d-b6c4-80b3ed99e0b5)
+![Screenshot 2024-08-28 140223](https://github.com/user-attachments/assets/8d8da578-e7cc-4699-bd35-b584ac60addb)
 
 
 ## Project Setup
